@@ -1,0 +1,36 @@
+{
+  "name": "qwerty-labs-website",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": {
+    "node": "24.x"
+  },
+  "scripts": {
+    "dev": "astro dev --host 0.0.0.0",
+    "check": "astro check",
+    "build": "astro build",
+    "test": "node --experimental-strip-types --test tests/*.test.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "dependencies": {
+    "@astrojs/markdown-remark": "6.3.8",
+    "@fontsource-variable/manrope": "5.2.8",
+    "@fontsource-variable/source-sans-3": "5.2.9",
+    "astro": "5.15.3",
+    "gsap": "3.13.0",
+    "katex": "0.16.25",
+    "rehype-katex": "7.0.1",
+    "remark-math": "6.0.0",
+    "three": "0.181.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.5",
+    "@types/node": "24.9.2",
+    "@types/three": "0.181.0",
+    "prettier": "3.6.2",
+    "prettier-plugin-astro": "0.14.1",
+    "typescript": "5.9.3"
+  }
+}
