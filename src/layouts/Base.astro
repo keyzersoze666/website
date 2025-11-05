@@ -1,0 +1,78 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { storageKeys, legacyStorageKeys } from '../scripts/browser-storage';
+import '../styles/global.css';
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+  journal?: boolean;
+  editorial?: boolean;
+  structuredData?: Record<string, unknown>;
+  ogType?: 'website' | 'article';
+}
+const {
+  title = 'QWERTY Labs — Custom AI. Built around your business.',
+  description = 'Custom AI agents, chatbots, voice bots, speech-to-text and text-to-speech solutions for enterprises.',
+  noindex = false,
+  journal = false,
+  editorial = false,
+  structuredData,
+  ogType = 'website',
+} = Astro.props;
+---
+
+<!doctype html>
+<html
+  lang="en"
+  class:list={{ 'journal-page': journal, 'editorial-page': editorial }}
+  data-reader-theme={journal || editorial ? 'light' : undefined}
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="theme-color"
+      content={journal || editorial ? '#faf9f5' : '#090d12'}
+    />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content={ogType} />
+    <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site)} />
+    {structuredData && (
+      <script
+        is:inline
+        type="application/ld+json"
+        set:html={JSON.stringify(structuredData).replace(/</g, '\\u003c')}
+      />
+    )}
+    {(journal || editorial) && <script
+      is:inline
+      define:vars={{
+        themeStorageKey: storageKeys.readingTheme,
+        legacyThemeStorageKey: legacyStorageKeys.readingTheme,
+      }}
+    >
+      try {
+        document.documentElement.dataset.readerTheme =
+          (localStorage.getItem(themeStorageKey) ??
+            localStorage.getItem(legacyThemeStorageKey)) === 'dark'
+            ? 'dark'
+            : 'light';
+      } catch {}
+    </script>}
+    {noindex && <meta name="robots" content="noindex" />}
+  </head>
+  <body id="top">
+    <Header />
+    <slot />
+    <Footer />
+    <script>
+      import '../scripts/navigation';
+    </script>
+  </body>
+</html>

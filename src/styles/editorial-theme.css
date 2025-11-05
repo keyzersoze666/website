@@ -1,0 +1,124 @@
+html:is(.journal-page, .editorial-page) {
+  --font-reading: 'Source Sans 3 Variable', 'Segoe UI', Arial, sans-serif;
+  scroll-padding-top: 0;
+  color-scheme: light;
+  --bg: #faf9f5;
+  --paper: #faf9f5;
+  --ink: #202e28;
+  --muted: #627067;
+  --mint: #225d47;
+  --mint-dim: #225d4740;
+  --line: #dce1d7;
+  --panel: #f1f2eb;
+  --header-height: 76px;
+  --header-background: var(--paper);
+  --j-card: #fefdf9;
+  --j-soft: #eef1e8;
+  --j-accent: #225d47;
+  --j-code: #f0f2ec;
+  background: var(--paper);
+  color: var(--ink);
+}
+html:is(.journal-page, .editorial-page)[data-reader-theme='dark'] {
+  color-scheme: dark;
+  --bg: #111c18;
+  --paper: #111c18;
+  --ink: #edf0e8;
+  --muted: #a8b6ab;
+  --mint: #b7ddbf;
+  --mint-dim: #b7ddbf44;
+  --line: #314037;
+  --panel: #192820;
+  --j-card: #15221c;
+  --j-soft: #1e3025;
+  --j-accent: #b7ddbf;
+  --j-code: #18271f;
+}
+:is(.journal-page, .editorial-page) body {
+  background: var(--paper);
+  color: var(--ink);
+}
+:is(.journal-page, .editorial-page) ::selection {
+  background: #bcd7bc;
+  color: #183c2a;
+}
+:is(.journal-page, .editorial-page) .site-header,
+:is(.journal-page, .editorial-page) .site-header.is-compact {
+  height: 76px;
+  background: var(--header-background);
+  border-color: var(--line);
+}
+:is(.journal-page, .editorial-page) .brand {
+  color: var(--j-accent);
+}
+:is(.journal-page, .editorial-page) .main-nav > a,
+:is(.journal-page, .editorial-page) .product-menu summary {
+  color: var(--ink);
+}
+:is(.journal-page, .editorial-page) .main-nav > a:hover,
+:is(.journal-page, .editorial-page) .main-nav > a[aria-current],
+:is(.journal-page, .editorial-page) .product-menu summary:hover,
+:is(.journal-page, .editorial-page) .product-menu summary.selected {
+  color: var(--j-accent);
+}
+:is(.journal-page, .editorial-page) .product-dropdown,
+:is(.journal-page, .editorial-page) .navigation-panel {
+  background: var(--header-background);
+  border-color: var(--line);
+}
+:is(.journal-page, .editorial-page) .product-dropdown > a {
+  color: var(--ink);
+}
+:is(.journal-page, .editorial-page) .dropdown-eyebrow {
+  color: var(--muted);
+}
+:is(.journal-page, .editorial-page) .menu-toggle {
+  background: var(--j-soft);
+  border-color: var(--line);
+}
+:is(.journal-page, .editorial-page) .menu-toggle span {
+  background: var(--j-accent);
+}
+:is(.journal-page, .editorial-page) .button-dark {
+  background: var(--j-accent);
+  color: var(--paper);
+  box-shadow: none;
+}
+:is(.journal-page, .editorial-page) .button-outline {
+  border-color: var(--line);
+  color: var(--ink);
+}
+:is(.journal-page, .editorial-page) .site-footer {
+  --ink: #eff5f2;
+  --muted: #a4b5b7;
+  --mint: #b7f7da;
+  --line: #c9eee51c;
+  color: var(--ink);
+}
+:is(.journal-page, .editorial-page) .site-footer .brand {
+  color: var(--mint);
+}
+:is(.journal-page, .editorial-page) .site-footer .footer-intro > p {
+  color: var(--muted);
+}
+
+.reading-theme {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 38px;
+  padding: 7px 10px;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  font-size: 12px;
+  color: var(--muted);
+}
+.reading-theme:hover {
+  color: var(--ink);
+  border-color: var(--mint-dim);
+}
+.theme-symbol {
+  font-size: 18px;
+  line-height: 1;
+}
