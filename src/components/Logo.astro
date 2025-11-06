@@ -1,0 +1,9 @@
+---
+import SvgAsset from './SvgAsset.astro';
+import { brand } from '../data/site';
+---
+
+<a href="/" class="brand" aria-label={`${brand.name} home`}>
+  <SvgAsset src={brand.logo} class="brand-image" />
+  <span class="brand-name">{brand.name}</span>
+</a>

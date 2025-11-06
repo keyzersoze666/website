@@ -1,0 +1,97 @@
+---
+import Logo from './Logo.astro';
+import { capabilities } from '../data/site';
+const current = Astro.url.pathname;
+const active = (path: string) =>
+  current === path || (path === '/blog/' && current.startsWith(path))
+    ? 'page'
+    : undefined;
+---
+
+<a class="skip-link" href="#main-content">
+  Skip to content
+</a>
+<header class="site-header" id="site-header">
+  <div class="header-shell">
+    <Logo />
+    <button
+      class="menu-toggle"
+      id="menu-toggle"
+      aria-expanded="false"
+      aria-controls="site-navigation"
+      aria-label="Open navigation"
+    >
+      <span></span>
+      <span></span>
+    </button>
+    <div class="navigation-panel" id="site-navigation">
+      <nav class="main-nav" aria-label="Main navigation">
+        <a href="/" aria-current={active('/')}>
+          Home
+        </a>
+        <a href="/about/" aria-current={active('/about/')}>
+          About Us
+        </a>
+        <a href="/solutions/" aria-current={active('/solutions/')}>
+          Solutions
+        </a>
+        <details
+          class="product-menu"
+          id="capabilities-menu"
+          data-navigation-menu
+        >
+          <summary
+            class:list={{ selected: current.startsWith('/capabilities/') }}
+          >
+            Capabilities
+          </summary>
+          <div class="product-dropdown">
+            <span class="dropdown-eyebrow">
+              BUILDING BLOCKS FOR YOUR SOLUTION
+            </span>
+            {capabilities.map((capability) => (
+              <a href={capability.href} aria-current={active(capability.href)}>
+                {capability.name}
+              </a>
+            ))}
+          </div>
+        </details>
+        <details class="product-menu" id="research-menu" data-navigation-menu>
+          <summary
+            class:list={{
+              selected: current.startsWith('/research-development/'),
+            }}
+          >
+            R&amp;D
+          </summary>
+          <div class="product-dropdown">
+            <span class="dropdown-eyebrow">OUR DEVELOPMENT PROGRAMME</span>
+            <a
+              href="/research-development/proprietary-models/"
+              aria-current={active('/research-development/proprietary-models/')}
+            >
+              Proprietary Models
+            </a>
+            <a
+              href="/research-development/workflow-designer/"
+              aria-current={active('/research-development/workflow-designer/')}
+            >
+              Workflow Designer
+            </a>
+          </div>
+        </details>
+        <a href="/blog/" aria-current={active('/blog/')}>
+          Blog
+        </a>
+      </nav>
+      <div class="header-actions">
+        <a href="/book-a-demo/" class="button button-small button-dark">
+          Book a Demo
+        </a>
+        <a href="/contact/" class="button button-small button-outline">
+          Contact Us
+        </a>
+      </div>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,52 @@
+---
+import Logo from './Logo.astro';
+import { brand, capabilities } from '../data/site';
+---
+
+<footer class="site-footer">
+  <div class="footer-main container">
+    <div class="footer-intro">
+      <Logo />
+      <p>
+        Human ambition.
+        <br />
+        Intelligent possibilities.
+      </p>
+      <span class="footer-descriptor">
+        Custom AI, built around your business.
+      </span>
+    </div>
+    <div class="footer-links">
+      <h2>Company</h2>
+      <a href="/about/">About Us</a>
+      <a href="/solutions/">Solutions</a>
+      <a href="/blog/">Blog</a>
+      <a href="/contact/">Contact Us</a>
+    </div>
+    <div class="footer-links">
+      <h2>Capabilities</h2>
+      {capabilities.map((capability) => (
+        <a href={capability.href}>{capability.name}</a>
+      ))}
+    </div>
+    <div class="footer-links">
+      <h2>R&amp;D</h2>
+      <a href="/research-development/proprietary-models/">Proprietary Models</a>
+      <a href="/research-development/workflow-designer/">Workflow Designer</a>
+      <a href="/book-a-demo/">Book a demo</a>
+    </div>
+  </div>
+  <div class="footer-bottom container">
+    <span>
+      © {new Date().getUTCFullYear()} {brand.name}. All rights
+      reserved.
+    </span>
+    <div>
+      <a href="/privacy/">Privacy Policy</a>
+      <a href="/terms/">Terms of Service</a>
+      <a href="#top" class="back-top">
+        Back to top
+      </a>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg"
+     width="80"
+     height="72"
+     viewBox="0 0 640 576"
+     preserveAspectRatio="xMidYMid meet"
+     role="img"
+     aria-label="QWERTY Labs symbol">
+
+  <title>QWERTY Labs symbol</title>
+  <rect width="640" height="576" fill="none"/>
+
+  <!-- Dot above the emblem -->
+  <circle cx="320" cy="32" r="16" fill="currentColor"/>
+
+  <g fill="none"
+     stroke="currentColor"
+     stroke-width="10"
+     stroke-linecap="round"
+     stroke-linejoin="round">
+
+    <!-- Frame and wings -->
+    <path d="
+      M296 72
+      H344
+      L625 540
+      L436 500
+      V486
+      Q486 488 480 478
+      L408 348
+      Q400 338 392 348
+      L336 408
+      V360
+      L392 304
+      Q400 292 408 304
+      L515 480
+      L548 488
+      L352 147
+      H288
+      M344 72
+      H296
+      L15 540
+      L204 500
+      V486
+      Q154 488 160 478
+      L232 348
+      Q240 338 248 348
+      L304 408
+      V360
+      L248 304
+      Q240 292 232 304
+      L125 480
+      L92 488
+      L288 147
+      H352"/>
+
+    <!-- Left guard -->
+    <path d="
+      M304 432
+      H244
+      Q240 432 240 436
+      V435
+      Q240 464 244 464
+      H272
+      Q284 464 284 476
+      L288 500
+      L304 512"/>
+
+    <!-- Right guard -->
+    <path d="
+      M336 432 H396
+      Q400 432 400 436
+      V460 Q400 464 396 464
+      H368 Q356 464 356 476
+      L352 500 L336 512"/>
+
+    <!-- Central blade -->
+    <path d="M304 148 V528 L320 548 L336 528 V148"/>
+
+    <!-- Rounded top bars M264 132 H364-->
+    <path d="
+        M310 97 H354
+        M270 122 H352
+
+        "/>
+  </g>
+</svg>
