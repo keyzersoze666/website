@@ -1,0 +1,319 @@
+---
+import Base from '../layouts/Base.astro';
+import Scene from '../components/Scene.astro';
+import HeroWorkflow from '../components/HeroWorkflow.astro';
+import SculptureFallback from '../components/SculptureFallback.astro';
+import {
+  homeProblems,
+  homeCapabilities,
+  homeWorkflow,
+  homeCommitments,
+} from '../data/home';
+import { deliveryStages } from '../data/solutions';
+import { publishedPosts, postHref } from '../scripts/blog-content';
+import '../styles/home.css';
+const reading = (await publishedPosts()).find(
+  (post) => post.id === 'measuring-agentic-ai-roi'
+);
+---
+
+<Base description="QWERTY Labs designs and builds custom AI systems around your business workflows, with agreed scope, controlled access and evaluation against the work you need done.">
+  <main id="main-content" class="home-page">
+    <section class="home-hero" aria-labelledby="hero-title">
+      <div class="home-container home-hero-grid">
+        <div class="home-hero-copy">
+          <h1 id="hero-title">
+            Custom AI
+            <br />
+            built around
+            <br />
+            <span>your business.</span>
+          </h1>
+          <p class="home-lead">
+            We design and build AI systems around the way your business
+            works—connecting information, conversations and everyday processes
+            to help your team get work done.
+          </p>
+          <div class="home-actions">
+            <a class="button button-dark" href="/solutions/">
+              Explore solutions
+            </a>
+            <a class="button button-outline" href="/contact/">
+              Discuss your project
+            </a>
+          </div>
+          <p class="home-hero-principle">
+            Understand the work. Choose the right technology.
+          </p>
+        </div>
+        <HeroWorkflow />
+      </div>
+      <div class="home-container home-hero-bottom">
+        <span>YOUR WORKFLOW IS THE STARTING POINT</span>
+        <a href="#business-problems">Find a familiar challenge</a>
+      </div>
+    </section>
+
+    <section
+      class="home-section home-problems"
+      id="business-problems"
+      aria-labelledby="problems-title"
+    >
+      <div class="home-container">
+        <div class="home-section-heading">
+          <div>
+            <h2 id="problems-title">
+              Where does
+              <br />
+              <span>work get stuck?</span>
+            </h2>
+          </div>
+          <p>
+            You do not need to choose a model or a technology first. Start with
+            the work your team is trying to get through.
+          </p>
+        </div>
+        <div class="home-problem-grid">
+          {homeProblems.map((problem, index) => (
+            <article class="home-problem">
+              <span class="home-number" aria-hidden="true">
+                0{index + 1}
+              </span>
+              <h3>{problem.title}</h3>
+              <p>{problem.situation}</p>
+              <p class="home-problem-direction">{problem.direction}</p>
+              <a class="text-link" href={problem.href}>
+                {problem.link}
+              </a>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="home-section home-purpose"
+      id="purpose"
+      aria-labelledby="purpose-title"
+    >
+      <div class="home-container home-purpose-grid">
+        <h2 id="purpose-title">
+          AI should earn <br />
+          its place <span>at work.</span>
+        </h2>
+        <div class="home-purpose-copy">
+          <p>
+            A supported answer. A spoken update turned into a reviewable record.
+            A next step prepared with the right checks and approvals. These are
+            practical reasons to build with AI.
+          </p>
+          <p>
+            We start with a clearly defined task and evaluate the system in the
+            setting where it will be used. Its value should be visible in the
+            work it helps people get done.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="home-section home-capabilities"
+      id="capabilities"
+      aria-labelledby="capabilities-title"
+    >
+      <div class="home-container">
+        <div class="home-section-heading">
+          <div>
+            <h2 id="capabilities-title">Capabilities for your workflow</h2>
+          </div>
+          <p>
+            A useful system may combine several capabilities. Explore what each
+            contributes and how it connects to the work around it.
+          </p>
+        </div>
+        <div class="home-capability-grid">
+          <div class="home-capability-list">
+            {homeCapabilities.map((capability, index) => (
+              <details
+                class="home-capability"
+                id={capability.id}
+                name="home-capability"
+                open={index === 0}
+                data-home-capability
+                data-stage={capability.shape}
+                data-name={capability.name}
+                data-caption={capability.sceneLabel}
+                data-note={capability.note}
+              >
+                <summary>
+                  <span class="home-number" aria-hidden="true">
+                    0{index + 1}
+                  </span>
+                  <span>{capability.name}</span>
+                  <span
+                    class="home-disclosure-symbol"
+                    aria-hidden="true"
+                  ></span>
+                </summary>
+                <div class="home-capability-copy">
+                  <p class="home-capability-purpose">{capability.purpose}</p>
+                  <p>{capability.copy}</p>
+                  <p class="home-capability-example">
+                    <span>A place to apply it</span>
+                    {capability.example}
+                  </p>
+                  <div class="home-capability-mobile-art" aria-hidden="true">
+                    <SculptureFallback stage={capability.shape} />
+                  </div>
+                  <a class="text-link" href={capability.href}>
+                    {capability.linkLabel}
+                  </a>
+                </div>
+              </details>
+            ))}
+          </div>
+          <div
+            class="home-scene-slot home-capability-art"
+            data-home-scene="capability"
+          >
+            <Scene />
+          </div>
+        </div>
+        <div
+          class="home-workflow"
+          data-home-flow
+          role="group"
+          aria-labelledby="workflow-story-title"
+        >
+          <div class="home-workflow-heading">
+            <h3 id="workflow-story-title">
+              From a question to a useful next step.
+            </h3>
+          </div>
+          <ol>
+            {homeWorkflow.map(([title, copy], index) => (
+              <li>
+                <span class="home-workflow-point" aria-hidden="true">
+                  0{index + 1}
+                </span>
+                <h4>{title}</h4>
+                <p>{copy}</p>
+              </li>
+            ))}
+          </ol>
+          <p class="home-workflow-note">
+            The sources, integrations and permitted actions are defined for each
+            project.{' '}
+            <a href="/solutions/#customer-support">
+              Explore a customer-support workflow.
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="home-section home-method"
+      id="how-we-work"
+      aria-labelledby="method-title"
+    >
+      <div class="home-container">
+        <div class="home-section-heading">
+          <div>
+            <h2 id="method-title">
+              From business problem
+              <br />
+              <span>to working system.</span>
+            </h2>
+          </div>
+          <p>
+            We define the process with you, build around the agreed scope and
+            evaluate the result against the task it needs to support.
+          </p>
+        </div>
+        <ol class="home-method-steps">
+          {deliveryStages.map(([title, copy], index) => (
+            <li>
+              <span class="home-number" aria-hidden="true">
+                0{index + 1}
+              </span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </li>
+          ))}
+        </ol>
+        <a class="text-link" href="/about/">
+          Get to know our approach
+        </a>
+      </div>
+    </section>
+
+    <section
+      class="home-section home-confidence"
+      id="client-confidence"
+      aria-labelledby="confidence-title"
+    >
+      <div class="home-container home-confidence-grid">
+        <div class="home-confidence-intro">
+          <h2 id="confidence-title">
+            Control over your information and systems
+          </h2>
+          <p>
+            Useful AI needs clear boundaries. We agree how information is used,
+            who can access it and where a person should make the decision.
+          </p>
+          <a class="text-link" href="/privacy/">
+            Read our data commitments
+          </a>
+        </div>
+        <div class="home-commitments">
+          {homeCommitments.map(([title, copy]) => (
+            <article>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
+        {reading && (
+          <aside class="home-reading">
+            <div>
+              <h3>What makes an AI workflow worth building?</h3>
+              <p>
+                Our journal examines review, exceptions and cost across the
+                whole process.
+              </p>
+            </div>
+            <a class="text-link" href={postHref(reading)}>
+              Read how we evaluate the business case
+            </a>
+          </aside>
+        )}
+      </div>
+    </section>
+
+    <section class="home-section home-closing" aria-labelledby="closing-title">
+      <div class="home-container">
+        <h2 id="closing-title">
+          Tell us where
+          <br />
+          <span>work gets difficult.</span>
+        </h2>
+        <p>
+          You do not need a finished specification.
+          <br />A short description is enough to start a conversation.
+        </p>
+        <div class="home-actions">
+          <a class="button button-dark" href="/contact/">
+            Discuss your project
+          </a>
+          <a class="button button-outline" href="/book-a-demo/">
+            Request a walkthrough
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <script>
+    import '../scripts/home';
+  </script>
+</Base>
