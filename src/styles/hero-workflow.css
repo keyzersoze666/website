@@ -1,0 +1,312 @@
+.home-hero-art.hero-workflow {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  height: clamp(600px, 50vw, 700px);
+  margin: 0;
+  padding-top: 14px;
+  color: var(--ink);
+}
+.hero-workflow-heading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding-inline: 10px;
+  color: #b7d6c6;
+}
+.hero-workflow-heading p {
+  margin: 0;
+  font: 10px/1.8 var(--mono);
+  letter-spacing: 1.5px;
+}
+.hero-workflow-heading-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--mint);
+  box-shadow: 0 0 13px #b7f7da50;
+}
+.hero-workflow-heading-line {
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+.hero-workflow-art {
+  position: relative;
+  flex: 1;
+  min-height: 0;
+  isolation: isolate;
+}
+.hero-workflow-aura {
+  position: absolute;
+  inset: 0 -5%;
+  background: radial-gradient(ellipse at 50% 50%, #8ce0b715, transparent 65%);
+  pointer-events: none;
+}
+.hero-current {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  color: #c2f7df;
+  --current-review: 0;
+  --current-glint: 0;
+  --current-glint-offset: 0;
+  --current-pulse-opacity: 0;
+}
+.current-strands,
+.current-pulses,
+.current-pulse-halo {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.current-entry {
+  stroke-width: 1.6;
+  opacity: 0.72;
+}
+.current-body {
+  stroke: #b7f7da;
+  stroke-width: 1.25;
+  opacity: 0.46;
+}
+.current-records {
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.current-record-links {
+  stroke: #b4ceb8;
+  stroke-width: 0.8;
+  opacity: 0.32;
+}
+.current-record-cells {
+  stroke: url(#current-data);
+  stroke-width: 2.2;
+  opacity: 0.8;
+}
+.current-record-pulse {
+  stroke-width: 2.6;
+  stroke-linecap: round;
+}
+.current-gate-glint {
+  stroke: #fff3d2;
+  stroke-width: 3;
+  opacity: var(--current-glint, 0);
+  stroke-dashoffset: var(--current-glint-offset, 0);
+}
+.current-pulses {
+  stroke-width: 2;
+  opacity: var(--current-pulse-opacity);
+}
+
+.current-pulse-halo {
+  stroke-width: 5;
+  opacity: calc(var(--current-pulse-opacity) * 0.4);
+}
+.current-traveler {
+  fill: currentColor;
+}
+.current-gate {
+  stroke: #91c5b0;
+  stroke-width: 1.25;
+}
+.current-gate-back {
+  opacity: 0.4;
+}
+.current-gate-front {
+  opacity: 0.85;
+}
+.current-gate-warm {
+  stroke: #e4c896;
+  stroke-width: 2;
+  opacity: var(--current-review);
+}
+.current-scan {
+  stroke: #e4c896;
+  stroke-width: 1;
+}
+.hero-workflow[data-phase='2'] .hero-current {
+  color: #e4c896;
+}
+.hero-workflow[data-phase='2'] .current-gate-warm {
+  opacity: 1;
+}
+
+.hero-workflow-stages {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.hero-workflow-stages button {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 7px;
+  width: 100%;
+  min-height: 66px;
+  padding: 10px 8px;
+  border: 0;
+  border-top: 1px solid var(--line);
+  background: transparent;
+  color: #96afa2;
+  text-align: left;
+  transition:
+    border-color 0.25s,
+    color 0.25s;
+}
+.hero-workflow-stages button:hover,
+.hero-workflow-stages button.is-current {
+  border-color: var(--mint);
+  color: var(--mint);
+}
+.hero-workflow-stages [data-flow-stage='review'].is-current {
+  border-color: #e4c896;
+  color: #e4c896;
+}
+.hero-workflow-number {
+  font: 9px/1.6 var(--mono);
+  letter-spacing: 1px;
+}
+.hero-workflow-stages strong {
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+.hero-workflow-stages button:disabled {
+  cursor: default;
+}
+.hero-workflow-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 92px;
+  padding: 14px 8px 6px;
+}
+.hero-workflow-stage-copy {
+  min-width: 0;
+  min-height: 66px;
+}
+.hero-workflow-stage-copy > strong {
+  font-size: 23px;
+  font-weight: 450;
+  letter-spacing: -0.6px;
+  line-height: 1.35;
+}
+.hero-workflow-stage-copy p {
+  margin: 7px 0 0;
+  color: #a8c0b2;
+  font-size: 13px;
+  line-height: 1.65;
+}
+.hero-workflow-controls {
+  display: flex;
+  gap: 7px;
+  align-items: center;
+}
+.hero-workflow-controls button {
+  min-height: 44px;
+  padding: 8px 11px;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  color: #bfd8cc;
+  background: #b7f7da05;
+  font-size: 12px;
+}
+.hero-workflow-controls button:hover {
+  border-color: var(--mint-dim);
+  color: var(--mint);
+}
+.hero-workflow-controls button:disabled {
+  visibility: hidden;
+}
+@media (max-width: 1100px) and (min-width: 1001px) {
+  .hero-workflow-stages strong {
+    font-size: 12px;
+  }
+  .hero-workflow-stages button {
+    padding-inline: 5px;
+  }
+}
+@media (max-width: 1000px) {
+  .home-hero-art.hero-workflow {
+    width: min(680px, 100%);
+    height: 650px;
+    margin-inline: auto;
+  }
+}
+@media (max-width: 760px) {
+  .current-pulse-halo {
+    filter: none;
+    stroke-width: 4;
+  }
+
+  .home-hero-art.hero-workflow {
+    height: clamp(520px, 125vw, 640px);
+    margin-top: 24px;
+  }
+  .hero-workflow-heading {
+    padding-inline: 3px;
+  }
+  .hero-workflow-heading p {
+    font-size: 9px;
+    letter-spacing: 1px;
+  }
+  .hero-workflow-footer {
+    gap: 10px;
+    padding-inline: 3px;
+  }
+  .hero-workflow-stage-copy > strong {
+    font-size: 21px;
+  }
+  .hero-workflow-stage-copy p {
+    font-size: 12px;
+  }
+  .hero-workflow-controls {
+    gap: 5px;
+  }
+  .hero-workflow-controls button {
+    padding-inline: 9px;
+    font-size: 11px;
+  }
+}
+@media (max-width: 480px) {
+  .hero-workflow-stages {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0 16px;
+  }
+  .hero-workflow-stages button {
+    min-height: 48px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+    gap: 9px;
+    padding: 8px 3px;
+  }
+  .hero-workflow-stages strong {
+    font-size: 12px;
+  }
+  .hero-workflow-footer {
+    align-items: start;
+  }
+  .hero-workflow-stage-copy > strong {
+    font-size: 19px;
+  }
+  .hero-workflow-stage-copy p {
+    max-width: 170px;
+  }
+  .hero-workflow-controls button {
+    padding-inline: 8px;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-workflow-controls button {
+    visibility: hidden;
+  }
+}

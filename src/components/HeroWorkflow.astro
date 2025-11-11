@@ -1,0 +1,289 @@
+---
+import {
+  workflowStages,
+  currentStrands,
+  currentSnapshot,
+} from '../scripts/hero-workflow-model';
+import '../styles/hero-workflow.css';
+const art = currentSnapshot(0);
+---
+
+<figure
+  class="home-hero-art hero-workflow"
+  data-hero-workflow
+  data-phase="0"
+  aria-labelledby="hero-workflow-title"
+  aria-describedby="hero-workflow-description"
+>
+  <div class="hero-workflow-heading">
+    <span class="hero-workflow-heading-dot" aria-hidden="true"></span>
+    <p id="hero-workflow-title">YOUR WORK. TAKING SHAPE.</p>
+    <span class="hero-workflow-heading-line" aria-hidden="true"></span>
+  </div>
+  <div class="hero-workflow-art" data-workflow-art>
+    <div class="hero-workflow-aura" aria-hidden="true"></div>
+    <svg
+      class="hero-current"
+      data-woven-current
+      viewBox="0 0 760 440"
+      fill="none"
+      aria-hidden="true"
+    >
+      <defs>
+        <linearGradient
+          id="current-voice"
+          x1="36"
+          y1="0"
+          x2="360"
+          y2="0"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#9fcedd" />
+          <stop offset="1" stop-color="#b7f7da" />
+        </linearGradient>
+        <linearGradient
+          id="current-text"
+          x1="36"
+          y1="0"
+          x2="360"
+          y2="0"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#e0e9df" />
+          <stop offset="1" stop-color="#b7f7da" />
+        </linearGradient>
+        <linearGradient
+          id="current-data"
+          x1="36"
+          y1="0"
+          x2="360"
+          y2="0"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="#c4ceb2" />
+          <stop offset="1" stop-color="#b7f7da" />
+        </linearGradient>
+        <linearGradient id="current-body-fade">
+          <stop offset="0.22" stop-color="black" />
+          <stop offset="0.4" stop-color="white" />
+        </linearGradient>
+        <linearGradient id="current-entry-fade">
+          <stop offset="0" stop-color="black" />
+          <stop offset="0.08" stop-color="white" />
+          <stop offset="0.22" stop-color="white" />
+          <stop offset="0.4" stop-color="black" />
+        </linearGradient>
+        <mask
+          id="current-body-mask"
+          maskUnits="userSpaceOnUse"
+          x="0"
+          y="0"
+          width="760"
+          height="440"
+        >
+          <rect width="760" height="440" fill="url(#current-body-fade)" />
+        </mask>
+        <mask
+          id="current-entry-mask"
+          maskUnits="userSpaceOnUse"
+          x="0"
+          y="0"
+          width="760"
+          height="440"
+        >
+          <rect width="760" height="440" fill="url(#current-entry-fade)" />
+        </mask>
+        <linearGradient
+          id="current-pulse"
+          data-current-pulse
+          x1="-70"
+          y1="0"
+          x2="10"
+          y2="0"
+          gradientUnits="userSpaceOnUse"
+        >
+          <stop stop-color="currentColor" stop-opacity="0" />
+          <stop offset="0.55" stop-color="currentColor" stop-opacity="0.85" />
+          <stop offset="0.78" stop-color="currentColor" />
+          <stop offset="1" stop-color="currentColor" stop-opacity="0" />
+        </linearGradient>
+        <filter
+          id="current-soft-glow"
+          x="-30%"
+          y="-60%"
+          width="160%"
+          height="220%"
+        >
+          <feGaussianBlur stdDeviation="3" />
+        </filter>
+      </defs>
+      <g class="current-gate current-gate-back">
+        <path d={art.back} data-current-arc="back" />
+        <path d={art.back} data-current-arc="back" class="current-gate-warm" />
+
+        <path
+          d={art.back}
+          data-current-arc="back"
+          class="current-gate-glint"
+          pathLength="1"
+          stroke-dasharray=".14 .86"
+        />
+      </g>
+      <g class="current-strands">
+        {currentStrands.map((strand) => (
+          <g>
+            {strand.kind !== 'data' && (
+              <path
+                class="current-entry"
+                data-current-entry={strand.index}
+                d={art.entries[strand.index]}
+                stroke={`url(#current-${strand.kind})`}
+                mask="url(#current-entry-mask)"
+              />
+            )}
+            <path
+              class="current-body"
+              id={`current-strand-${strand.index}`}
+              data-strand={strand.index}
+              d={art.paths[strand.index]}
+              mask="url(#current-body-mask)"
+            />
+          </g>
+        ))}
+      </g>
+      <g class="current-records" mask="url(#current-entry-mask)">
+        <path
+          class="current-record-links"
+          data-current-records="links"
+          d={art.records.links}
+        />
+        <path
+          class="current-record-cells"
+          data-current-records="cells"
+          d={art.records.cells}
+        />
+      </g>
+      <g class="current-pulse-halo" filter="url(#current-soft-glow)">
+        {currentStrands.map((strand) => (
+          <path
+            data-strand={strand.index}
+            d={art.paths[strand.index]}
+            stroke="url(#current-pulse)"
+            mask="url(#current-body-mask)"
+          />
+        ))}
+      </g>
+      <g class="current-pulses">
+        {currentStrands.map((strand) => (
+          <g>
+            {strand.kind !== 'data' && (
+              <path
+                data-current-entry={strand.index}
+                d={art.entries[strand.index]}
+                stroke="url(#current-pulse)"
+                mask="url(#current-entry-mask)"
+                class="current-entry-pulse"
+              />
+            )}
+            <path
+              data-strand={strand.index}
+              d={art.paths[strand.index]}
+              stroke="url(#current-pulse)"
+              mask="url(#current-body-mask)"
+            />
+          </g>
+        ))}
+        <path
+          class="current-record-pulse"
+          data-current-records="cells"
+          d={art.records.cells}
+          stroke="url(#current-pulse)"
+          mask="url(#current-entry-mask)"
+        />
+      </g>
+      <g class="current-traveler" data-current-traveler opacity="0">
+        <circle r="10" opacity="0.07" />
+        <circle r="5" opacity="0.18" />
+        <circle r="2" />
+      </g>
+      <path class="current-scan" data-current-scan opacity="0" />
+      <g class="current-gate current-gate-front">
+        <path d={art.front} data-current-arc="front" />
+        <path
+          d={art.front}
+          data-current-arc="front"
+          class="current-gate-warm"
+        />
+
+        <path
+          d={art.front}
+          data-current-arc="front"
+          class="current-gate-glint"
+          pathLength="1"
+          stroke-dasharray=".14 .86"
+        />
+      </g>
+    </svg>
+  </div>
+  <p class="sr-only" id="hero-workflow-description">
+    Voice, text and data strands weave into a shared current, pass through a
+    review ring and continue toward the next step.
+  </p>
+  <ol
+    class="hero-workflow-stages"
+    aria-label="Explore the four workflow stages"
+  >
+    {workflowStages.map((stage, index) => (
+      <li>
+        <button
+          type="button"
+          class:list={{ 'is-current': index === 0 }}
+          data-flow-stage={stage.id}
+          disabled
+          aria-current={index === 0 ? 'step' : undefined}
+          aria-label={`Show ${stage.title.toLowerCase()} stage`}
+        >
+          <span class="hero-workflow-number" aria-hidden="true">
+            {stage.number}
+          </span>
+          <strong>{stage.title}</strong>
+          <span class="sr-only">{stage.copy}</span>
+        </button>
+      </li>
+    ))}
+  </ol>
+  <figcaption class="hero-workflow-footer">
+    <div class="hero-workflow-stage-copy">
+      <strong data-flow-title>Understand</strong>
+      <p data-flow-copy>{workflowStages[0].copy}</p>
+    </div>
+    <div
+      class="hero-workflow-controls"
+      role="group"
+      aria-label="Woven current animation controls"
+    >
+      <button
+        type="button"
+        data-flow-pause
+        aria-label="Pause woven current animation"
+        aria-pressed="false"
+        disabled
+      >
+        <span data-flow-pause-label>Pause</span>
+      </button>
+      <button
+        type="button"
+        data-flow-replay
+        aria-label="Restart woven current animation"
+        disabled
+      >
+        Restart
+      </button>
+    </div>
+  </figcaption>
+</figure>
+<script>
+  import { createHeroWorkflow } from '../scripts/hero-workflow';
+  const artwork = document.querySelector<HTMLElement>('[data-hero-workflow]');
+  if (artwork) createHeroWorkflow(artwork);
+</script>
