@@ -1,0 +1,20 @@
+[
+  {
+    "id": "alex-bennett",
+    "name": "Alex Bennett",
+    "role": "Co-founder \u00b7 Business & Product",
+    "description": "Business understanding shapes our project direction: what matters to the client, where the current process gets difficult and how to define a useful result. This perspective keeps product decisions, scope and the working relationship connected to a problem worth solving.",
+    "image": "/team/founder-1.jpeg",
+    "imageAlt": "Profile photo placeholder for Alex Bennett",
+    "isPlaceholder": true
+  },
+  {
+    "id": "maya-reed",
+    "name": "Maya Reed",
+    "role": "Co-founder \u00b7 Engineering & Research",
+    "description": "Engineering judgment connects model evaluation, knowledge retrieval, integrations and human review. This perspective makes design decisions inspectable and keeps evaluation focused on the task, the people using the system and the practical demands of operating it.",
+    "image": "/team/founder-2.jpeg",
+    "imageAlt": "Profile photo placeholder for Maya Reed",
+    "isPlaceholder": true
+  }
+]

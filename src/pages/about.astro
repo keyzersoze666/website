@@ -1,0 +1,274 @@
+---
+import Editorial from '../layouts/Editorial.astro';
+import AboutLogo from '../components/AboutLogo.astro';
+import founders from '../data/founders.json';
+import { enquiryHref } from '../data/enquiry-topics';
+import '../styles/about.css';
+
+const principles = [
+  {
+    title: 'Understand the task.',
+    copy: 'The users, source information and intended outcome guide the design. Complexity needs a clear purpose.',
+  },
+  {
+    title: 'Make results inspectable.',
+    copy: 'Supporting sources, proposed actions and uncertain information should be available for review wherever the task requires them.',
+  },
+  {
+    title: 'Give people meaningful control.',
+    copy: 'Permissions, approvals and handoffs belong in the design from the beginning. Responsibility should remain clear when a system encounters an exception.',
+  },
+  {
+    title: 'Consider everyday operation.',
+    copy: 'Quality matters alongside response time, running cost, maintenance and data access. A system needs to make practical sense for the organisation using it.',
+  },
+];
+const decisions = [
+  [
+    'Your context',
+    'The people, information and responsibilities behind the task.',
+  ],
+  [
+    'Shared decisions',
+    'A defined scope, operating boundaries and a way to judge the result.',
+  ],
+  [
+    'An evaluated next step',
+    'Representative examples and evidence to guide what happens next.',
+  ],
+];
+---
+
+<Editorial
+  title="About Us — QWERTY Labs"
+  label="About Us"
+  description="Meet QWERTY Labs: a custom AI solutions company shaped by business context, inspectable decisions, human oversight and practical engineering."
+>
+  <main id="main-content" class="destination-main about-page">
+    <div class="container">
+      <header class="about-hero">
+        <div class="about-hero-copy">
+          <h1 class="destination-title">About Us</h1>
+          <p class="about-lead">
+            QWERTY Labs is a custom AI solutions company. We design and build
+            systems around the information, conversations and processes that
+            keep a business moving.
+          </p>
+          <p class="about-intro">
+            Our starting point is understanding the work: what people need to
+            accomplish, where a process becomes difficult, and what a better
+            outcome would look like. That understanding shapes the technology we
+            choose and the system we build.
+          </p>
+          <a class="text-link" href="#partnership">
+            How we work together
+          </a>
+        </div>
+        <AboutLogo />
+      </header>
+
+      <section
+        id="partnership"
+        class="about-section about-partnership"
+        aria-labelledby="partnership-title"
+      >
+        <div class="about-narrative">
+          <div>
+            <h2 id="partnership-title">
+              Your context
+              <br />
+              <span>shapes the decisions.</span>
+            </h2>
+          </div>
+          <div class="about-prose">
+            <p>
+              You understand your business: its people, terminology,
+              responsibilities and exceptions. We bring the design and
+              engineering needed to translate that understanding into an AI
+              workflow.
+            </p>
+            <p>
+              Together, we define what the system should do, which information
+              it can use, where people remain involved and how the result will
+              be evaluated.
+            </p>
+            <p>
+              We favour a focused starting point. Working through representative
+              examples makes assumptions visible and gives everyone something
+              concrete to review. The evidence from that work helps determine
+              what should happen next.
+            </p>
+          </div>
+        </div>
+        <ol
+          class="about-decisions"
+          aria-label="How the working relationship takes shape"
+        >
+          {decisions.map(([title, copy], index) => (
+            <li>
+              <span class="about-number" aria-hidden="true">
+                0{index + 1}
+              </span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section class="about-section" aria-labelledby="principles-title">
+        <h2 id="principles-title">
+          The principles
+          <br />
+          <span>behind our work.</span>
+        </h2>
+        <div class="about-principles">
+          {principles.map((principle, index) => (
+            <article>
+              <span class="about-number" aria-hidden="true">
+                0{index + 1}
+              </span>
+              <div>
+                <h3>{principle.title}</h3>
+                <p>{principle.copy}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section
+        class="about-section about-research"
+        aria-labelledby="research-title"
+      >
+        <div class="about-narrative">
+          <div>
+            <h2 id="research-title">Our client work and research</h2>
+          </div>
+          <div class="about-prose">
+            <p>
+              Our current client solutions use established models, selected and
+              evaluated for the intended task.
+            </p>
+            <p>
+              Alongside this work, we are developing focused text and speech
+              models. The programme explores greater deployment choice,
+              task-specific performance and practical operating costs. These
+              remain development goals, with evaluation needed before release.
+            </p>
+            <p>
+              Our workflow designer explores another part of that future: making
+              the steps, decisions and review points in an AI workflow easier to
+              describe and inspect.
+            </p>
+            <p>
+              We share supporting research and engineering explanations through
+              the QWERTY Labs Journal, keeping published findings, illustrative
+              examples and development work clearly identified.
+            </p>
+            <nav
+              class="about-research-links"
+              aria-label="Explore our research and engineering"
+            >
+              <a
+                class="text-link"
+                href="/research-development/proprietary-models/"
+              >
+                Proprietary Models
+              </a>
+              <a
+                class="text-link"
+                href="/research-development/workflow-designer/"
+              >
+                Workflow Designer
+              </a>
+              <a class="text-link" href="/blog/">
+                Journal
+              </a>
+            </nav>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="founders"
+        class="about-section about-founders"
+        aria-labelledby="founders-title"
+      >
+        <div class="about-narrative about-founders-intro">
+          <div>
+            <h2 id="founders-title">
+              The people
+              <br />
+              <span>behind QWERTY Labs.</span>
+            </h2>
+          </div>
+          <div class="about-prose">
+            <p>
+              Business understanding and engineering judgment shape the same
+              decisions. The founders bring those perspectives together around
+              the work QWERTY Labs sets out to do.
+            </p>
+          </div>
+        </div>
+        <div class="founder-grid">
+          {founders.map((founder) => (
+            <article
+              class="founder-profile"
+              aria-labelledby={`${founder.id}-${founder.isPlaceholder ? 'role' : 'name'}`}
+            >
+              <div class="founder-heading">
+                <figure class="founder-photo">
+                  <img
+                    src={founder.image}
+                    alt={founder.isPlaceholder ? '' : founder.imageAlt}
+                    width="112"
+                    height="112"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+                <div class="founder-identity">
+                  {!founder.isPlaceholder && (
+                    <h3 id={`${founder.id}-name`}>{founder.name}</h3>
+                  )}
+                  <p id={`${founder.id}-role`} class="founder-title">
+                    {founder.role}
+                  </p>
+                </div>
+              </div>
+              <p class="founder-description">{founder.description}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="about-invitation" aria-labelledby="invitation-title">
+        <h2 id="invitation-title">
+          What would you like
+          <br />
+          <span>to make work better?</span>
+        </h2>
+        <p>
+          You may have a particular workflow in mind, or a recurring problem
+          that needs a clearer starting point.
+        </p>
+        <p>
+          Tell us how the work happens today, who depends on it and what you
+          would like to improve. We can begin by defining a useful first step.
+        </p>
+        <div class="detail-actions">
+          <a
+            class="button button-dark"
+            href={enquiryHref('contact', 'help-me-decide')}
+          >
+            Discuss your project
+          </a>
+          <a class="text-link" href="/solutions/">
+            Explore example workflows
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+</Editorial>
