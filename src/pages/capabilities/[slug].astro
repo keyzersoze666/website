@@ -1,0 +1,232 @@
+---
+import Editorial from '../../layouts/Editorial.astro';
+import SculptureFallback from '../../components/SculptureFallback.astro';
+import CapabilityExample from '../../components/CapabilityExample.astro';
+import { offerings } from '../../data/site';
+import {
+  capabilityPages,
+  type CapabilityPage,
+} from '../../data/capability-pages';
+import '../../styles/capabilities.css';
+import { capabilityJourneys } from '../../data/customer-journey';
+import { enquiryHref } from '../../data/enquiry-topics';
+
+export function getStaticPaths() {
+  return offerings.map((offer) => ({
+    params: { slug: offer.id },
+    props: {
+      offer,
+      guide: capabilityPages.find((page) => page.id === offer.id)!,
+    },
+  }));
+}
+interface Props {
+  offer: (typeof offerings)[number];
+  guide: CapabilityPage;
+}
+const { offer, guide } = Astro.props;
+const journey = capabilityJourneys[offer.id];
+const projectHref = enquiryHref('contact', offer.id);
+---
+
+<Editorial
+  title={`${offer.short} — QWERTY Labs`}
+  label={offer.short}
+  description={guide.description}
+>
+  <main
+    id="main-content"
+    class="destination-main capability-page"
+    data-capability={offer.id}
+  >
+    <div class="container">
+      <header class="detail-hero capability-hero">
+        <div>
+          <h1 class="destination-title">{offer.short}</h1>
+          <p class="capability-lead">{guide.lead}</p>
+          <p class="capability-intro">{guide.intro}</p>
+          <div class="detail-actions">
+            <a class="button button-dark" href={projectHref}>
+              Discuss your project
+            </a>
+            <a class="text-link" href="#example">
+              See an example
+            </a>
+          </div>
+        </div>
+        <figure class="capability-art">
+          <div class="detail-art">
+            <SculptureFallback stage={offer.shape} />
+            <span>{offer.sceneLabel}</span>
+          </div>
+        </figure>
+      </header>
+
+      <nav class="capability-contents" aria-label="On this page">
+        <a href="#applications">Where it helps</a>
+        <a href="#example">Worked example</a>
+        <a href="#design">Build decisions</a>
+        <a href="#evaluation">Evaluation</a>
+        <a href="#questions">Practical questions</a>
+      </nav>
+
+      <section
+        id="applications"
+        class="capability-section"
+        aria-labelledby="applications-title"
+      >
+        <div class="capability-section-heading">
+          <h2 id="applications-title">Where this capability helps.</h2>
+        </div>
+        <div class="detail-cards capability-use-cases">
+          {guide.uses.map((use, index) => (
+            <article>
+              <span class="card-number">0{index + 1}</span>
+              <h3>{use.title}</h3>
+              <p>{use.copy}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section
+        id="example"
+        class="capability-section capability-worked-example"
+        aria-labelledby="example-title"
+      >
+        <div class="capability-example-heading">
+          <h2 id="example-title">{guide.example.title}</h2>
+          <p>{guide.example.intro}</p>
+        </div>
+        <CapabilityExample kind={offer.id} />
+        <p class="capability-takeaway">{guide.example.takeaway}</p>
+        <p class="capability-connection">
+          See this in a{' '}
+          <a href={`/solutions/#${journey.solutionId}`}>
+            {journey.solutionLabel}
+          </a>
+          . {journey.connection}{' '}
+          <a href={journey.companion.href}>{journey.companion.label}</a>.
+        </p>
+        <div class="capability-project-output">
+          <div>
+            <h3>{journey.outcomeTitle}</h3>
+          </div>
+          <ul>
+            {journey.outcomes.map((outcome) => (
+              <li>{outcome}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
+
+      <section
+        id="design"
+        class="capability-section"
+        aria-labelledby="design-title"
+      >
+        <div class="capability-section-heading">
+          <h2 id="design-title">Decisions that shape the system.</h2>
+        </div>
+        <div class="capability-design-grid">
+          <ol class="capability-decisions">
+            {guide.decisions.map((decision, index) => (
+              <li>
+                <span class="card-number">0{index + 1}</span>
+                <div>
+                  <h3>{decision.title}</h3>
+                  <p>{decision.copy}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+          <aside class="capability-inputs" aria-labelledby="inputs-title">
+            <h3 id="inputs-title">What we need to understand.</h3>
+            <ul>
+              {guide.inputs.map((input) => (
+                <li>{input}</li>
+              ))}
+            </ul>
+            <p class="capability-input-note">
+              If these requirements are still taking shape, defining them can be
+              the first part of the engagement.
+            </p>
+          </aside>
+        </div>
+      </section>
+
+      <section
+        id="evaluation"
+        class="capability-section"
+        aria-labelledby="evaluation-title"
+      >
+        <div class="capability-section-heading">
+          <h2 id="evaluation-title">How we would evaluate it.</h2>
+          <p>
+            Criteria are agreed for the intended task and tested on
+            representative material. The items below describe the evaluation
+            approach.
+          </p>
+        </div>
+        <dl class="capability-evaluation">
+          {guide.evaluation.map((item) => (
+            <div>
+              <dt>{item.measure}</dt>
+              <dd>{item.approach}</dd>
+            </div>
+          ))}
+        </dl>
+        <aside class="capability-perspective">
+          <h3>{guide.perspective.title}</h3>
+          <p>{guide.perspective.copy}</p>
+          <p class="capability-reading-links">
+            Explore the reasoning:
+            {guide.reading.map((item) => (
+              <a href={item.href}>{item.title}</a>
+            ))}
+          </p>
+        </aside>
+      </section>
+
+      <section
+        id="questions"
+        class="capability-section capability-questions"
+        aria-labelledby="questions-title"
+      >
+        <div class="capability-section-heading">
+          <h2 id="questions-title">Practical questions.</h2>
+        </div>
+        <div>
+          {guide.questions.map((item) => (
+            <details>
+              <summary>{item.question}</summary>
+              <p>{item.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section class="capability-project" aria-labelledby="project-title">
+        <h2 id="project-title">What would make this useful for you?</h2>
+        <p>{guide.invitation}</p>
+        <p class="capability-service-note">
+          We build client solutions using established models. Integrations, data
+          access and operating arrangements are agreed for the project. Our{' '}
+          <a href="/research-development/proprietary-models/">
+            proprietary model programme
+          </a>{' '}
+          explores future deployment options.
+        </p>
+        <a class="button button-dark" href={projectHref}>
+          Discuss your project
+        </a>
+        <a
+          class="text-link capability-demo-link"
+          href={enquiryHref('demo', offer.id)}
+        >
+          Explore this in a walkthrough
+        </a>
+      </section>
+    </div>
+  </main>
+</Editorial>

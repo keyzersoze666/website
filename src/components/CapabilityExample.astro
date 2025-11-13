@@ -1,0 +1,279 @@
+---
+interface Props {
+  kind: string;
+}
+const { kind } = Astro.props;
+---
+
+<div class:list={['capability-example', `capability-example-${kind}`]}>
+  <p class="capability-example-label">
+    ILLUSTRATIVE DESIGN / SAMPLE INFORMATION
+  </p>
+  {kind === 'ai-agents' && (
+    <>
+      <div class="example-request">
+        <span class="example-label">REQUEST</span>
+        <p>“Please change the delivery address on order EX-104.”</p>
+      </div>
+      <ol class="agent-example-steps">
+        <li>
+          <span class="example-step-number">01</span>
+          <div>
+            <h3>Identify the request</h3>
+            <p>
+              Extract the order reference and ask for the new address if it is
+              missing.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="example-step-number">02</span>
+          <div>
+            <h3>Read permitted records</h3>
+            <p>
+              Retrieve the order status and the applicable address-change rule.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="example-step-number">03</span>
+          <div>
+            <h3>Check the fixed rule</h3>
+            <p>In this sample, only orders awaiting dispatch can proceed.</p>
+          </div>
+        </li>
+        <li class="example-review-step">
+          <span class="example-step-number">04</span>
+          <div>
+            <h3>Prepare the change for approval</h3>
+            <p>
+              Show the existing and proposed address to the authorised reviewer.
+            </p>
+            <span class="example-state">Awaiting approval</span>
+          </div>
+        </li>
+        <li>
+          <span class="example-step-number">05</span>
+          <div>
+            <h3>Apply the approved action</h3>
+            <p>
+              Use the agreed write operation. Preserve a failure or an
+              unconfirmed result for recovery.
+            </p>
+          </div>
+        </li>
+        <li>
+          <span class="example-step-number">06</span>
+          <div>
+            <h3>Report the confirmed result</h3>
+            <p>Completion depends on a confirmation from the order system.</p>
+          </div>
+        </li>
+      </ol>
+      <details class="example-variation">
+        <summary>What changes if the order has already shipped?</summary>
+        <p>
+          The fixed rule stops the address update. The workflow prepares a
+          handoff with the request, order status and policy context. Approval
+          does not bypass a rule unless that exception has been explicitly
+          designed.
+        </p>
+      </details>
+      <a
+        class="text-link example-prototype-link"
+        href="/research-development/workflow-designer/"
+      >
+        Explore the editable workflow prototype
+      </a>
+    </>
+  )}
+  {kind === 'chatbots' && (
+    <>
+      <aside
+        class="example-source"
+        id="sample-equipment-guide"
+        aria-label="Sample source material"
+      >
+        <span class="example-label">SAMPLE SOURCE / EQUIPMENT GUIDE, §3</span>
+        <p>
+          For replacement equipment, submit an equipment request with the asset
+          reference and a description of the issue. The employee’s team lead
+          reviews the request.
+        </p>
+      </aside>
+      <div class="example-conversation">
+        <div class="example-utterance example-user">
+          <span class="example-label">EMPLOYEE</span>
+          <p>“How do I request replacement equipment?”</p>
+        </div>
+        <div class="example-utterance example-assistant">
+          <span class="example-label">EXAMPLE ANSWER</span>
+          <p>
+            Submit an equipment request with the asset reference and a
+            description of the issue. Your team lead will review it.
+          </p>
+          <a href="#sample-equipment-guide">
+            Source: sample equipment guide, §3
+          </a>
+        </div>
+      </div>
+      <details class="example-variation">
+        <summary>A follow-up the source does not answer</summary>
+        <p class="example-follow-up">“Can I borrow a laptop while I wait?”</p>
+        <p>
+          The sample guide does not cover temporary equipment. A useful response
+          makes that gap clear and refers the question to the equipment team.
+        </p>
+      </details>
+    </>
+  )}
+  {kind === 'voice-bots' && (
+    <>
+      <p class="example-format-note">
+        Illustrative dialogue. This example contains no recorded or generated
+        audio.
+      </p>
+      <ol class="voice-example-turns">
+        <li>
+          <span class="example-speaker">Caller</span>
+          <p>“I need a service visit. Tuesday afternoon would work.”</p>
+        </li>
+        <li>
+          <span class="example-speaker">Assistant</span>
+          <p>“I have Tuesday afternoon as your—”</p>
+        </li>
+        <li class="voice-interruption">
+          <span class="example-speaker">Caller interrupts</span>
+          <p>“Actually, make that Thursday morning.”</p>
+        </li>
+        <li class="voice-system-note">
+          <span class="example-label">INTENDED SYSTEM BEHAVIOUR</span>
+          <p>
+            Stop playback. Discard the unfinished confirmation and update the
+            preferred time.
+          </p>
+        </li>
+        <li>
+          <span class="example-speaker">Assistant</span>
+          <p>
+            “Thursday morning is your preference. The service team will confirm
+            an available time.”
+          </p>
+        </li>
+      </ol>
+      <div class="example-record">
+        <span class="example-label">PREPARED REQUEST</span>
+        <dl>
+          <div>
+            <dt>Preferred time</dt>
+            <dd>Thursday morning</dd>
+          </div>
+          <div>
+            <dt>Appointment status</dt>
+            <dd>Awaiting confirmation</dd>
+          </div>
+        </dl>
+      </div>
+      <details class="example-variation">
+        <summary>What if the service system does not respond?</summary>
+        <p>
+          The assistant preserves the request and explains the handoff. It does
+          not announce a booking. Whether a retry or transfer is appropriate
+          depends on the channel and agreed process.
+        </p>
+      </details>
+    </>
+  )}
+  {kind === 'text-to-speech' && (
+    <>
+      <div class="example-script">
+        <span class="example-label">APPROVED SOURCE TEXT</span>
+        <p>Order AB-204 is ready. Collection closes at 17:30.</p>
+      </div>
+      <div class="example-pronunciation">
+        <span class="example-label">EXAMPLE AGREED READINGS</span>
+        <dl>
+          <div>
+            <dt>AB-204</dt>
+            <dd>“A B two zero four”</dd>
+          </div>
+          <div>
+            <dt>17:30</dt>
+            <dd>“Five thirty p.m.”</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="example-spoken-script">
+        <span class="example-label">SCRIPT PREPARED FOR SPEECH</span>
+        <p>
+          “Order A B two zero four is ready. Collection closes at five thirty
+          p.m.”
+        </p>
+      </div>
+      <p class="example-format-note">
+        This is a text preparation example. Voice suitability and audio quality
+        require listening to actual candidate output.
+      </p>
+      <details class="example-variation">
+        <summary>What happens to an ambiguous date such as 06/05?</summary>
+        <p>
+          The source needs a known date convention or an explicit date. The
+          preparation step should request clarification when the intended
+          meaning is unknown. An agreed pronunciation cannot resolve missing
+          context.
+        </p>
+      </details>
+    </>
+  )}
+  {kind === 'speech-to-text' && (
+    <>
+      <div class="example-script">
+        <span class="example-label">
+          PROPOSED TRANSCRIPT FORMAT / SAMPLE CONTENT
+        </span>
+        <p>
+          “Work order four one seven. Replaced valve{' '}
+          <mark>V12 — confirm identifier</mark>. Return Thursday.”
+        </p>
+      </div>
+      <div class="example-review-note">
+        <span class="example-label">REVIEW FLAG</span>
+        <h3>Confirm the part identifier against the recording.</h3>
+        <p>
+          The flag illustrates a review requirement. It is not an uncertainty
+          score produced by a model.
+        </p>
+      </div>
+      <div class="example-record">
+        <span class="example-label">SEPARATE STEP / PROPOSED JOB RECORD</span>
+        <dl>
+          <div>
+            <dt>Work order</dt>
+            <dd>417</dd>
+          </div>
+          <div>
+            <dt>Part identifier</dt>
+            <dd>Unconfirmed</dd>
+          </div>
+          <div>
+            <dt>Follow-up</dt>
+            <dd>Thursday — calendar date to confirm</dd>
+          </div>
+          <div>
+            <dt>Update status</dt>
+            <dd>Draft for review</dd>
+          </div>
+        </dl>
+      </div>
+      <details class="example-variation">
+        <summary>Why keep the transcript and report separate?</summary>
+        <p>
+          The report normalises wording and extracts fields. Those operations
+          add interpretation. Keeping them distinct makes it possible to check
+          whether a mistake came from recognition or from the later processing
+          step.
+        </p>
+      </details>
+    </>
+  )}
+</div>

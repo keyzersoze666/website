@@ -1,0 +1,123 @@
+---
+interface Props {
+  stage?: number;
+  all?: boolean;
+}
+import { agentNodes, agentEdges, agentRoutes } from '../scripts/agent-network';
+const { stage = 0, all = false } = Astro.props;
+const stages = all ? [0, 1, 2, 3, 4, 5] : [stage];
+const knot = Array.from({ length: 401 }, (_, i) => {
+  const a = (i / 400) * Math.PI * 2,
+    r = 0.77 + 0.27 * Math.cos(3 * a);
+  return `${i ? 'L' : 'M'}${200 + r * Math.cos(2 * a) * 110},${170 - r * Math.sin(2 * a) * 110}`;
+}).join(' ');
+const centers = agentNodes.map(([x, y]) => [200 + x * 105, 170 - y * 105]);
+const signalPaths = agentRoutes.map((route) =>
+  route
+    .map(
+      (node, index) =>
+        `${index ? 'L' : 'M'}${centers[node]![0]} ${centers[node]![1]}`
+    )
+    .join(' ')
+);
+---
+
+<svg
+  class="sculpture-fallback"
+  viewBox="0 0 400 340"
+  fill="none"
+  aria-hidden="true"
+>
+  {stages.map((s) => (
+    <g class={`fallback-form fallback-${s}`}>
+      {s === 0 && (
+        <>
+          <ellipse
+            cx="200"
+            cy="170"
+            rx="155"
+            ry="74"
+            transform="rotate(-18 200 170)"
+            opacity=".16"
+          />
+          <path
+            d={knot}
+            stroke-width="15"
+            stroke-dasharray=".1 4.8"
+            stroke-linecap="round"
+          />
+          <path d={knot} opacity=".2" stroke-width="23" />
+        </>
+      )}
+      {s === 1 && (
+        <>
+          {agentEdges.map(([source, target]) => (
+            <path
+              d={`M${centers[source]![0]} ${centers[source]![1]} L${centers[target]![0]} ${centers[target]![1]}`}
+              opacity=".35"
+            />
+          ))}
+          {centers.map(([x, y]) => (
+            <circle
+              cx={x}
+              cy={y}
+              r="18"
+              stroke-width="9"
+              stroke-dasharray=".1 4"
+              stroke-linecap="round"
+            />
+          ))}
+          {signalPaths.map((path, index) => (
+            <circle class="agent-signal" r="2.8" fill="#ddffed" stroke="none">
+              <animateMotion
+                dur="8.5s"
+                begin={`${index * -2.5}s`}
+                repeatCount="indefinite"
+                path={path}
+              />
+            </circle>
+          ))}
+        </>
+      )}
+      {s === 2 && (
+        <path
+          d="M105 80h190a22 22 0 0 1 22 22v126a22 22 0 0 1-22 22H170l-53 39 8-39h-20a22 22 0 0 1-22-22V102a22 22 0 0 1 22-22ZM148 165h1m50 0h1m50 0h1"
+          stroke-width="7"
+          stroke-linecap="round"
+          stroke-dasharray=".1 4"
+        />
+      )}
+      {s === 3 && (
+        <path
+          d="M45 170h24l13-25 15 57 15-95 15 122 15-169 15 216 15-240 15 251 15-232 15 211 15-177 15 143 15-103 15 67 15-33 14 12h37"
+          stroke-width="7"
+          stroke-linecap="round"
+          stroke-dasharray=".1 4"
+        />
+      )}
+      {s === 4 && (
+        <path
+          d="M80 140h43l70-63v186l-70-63H80v-60Zm151-30q64 60 0 120m27-150q101 90 0 180"
+          stroke-width="7"
+          stroke-linecap="round"
+          stroke-dasharray=".1 4"
+        />
+      )}
+      {s === 5 && (
+        <text
+          x="200"
+          y="230"
+          text-anchor="middle"
+          fill="currentColor"
+          stroke="none"
+          font-size="180"
+          font-family="Arial,sans-serif"
+          font-weight="600"
+          opacity=".75"
+        >
+          Aa
+        </text>
+      )}
+    </g>
+  ))}
+</svg>
