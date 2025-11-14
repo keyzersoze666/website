@@ -1,0 +1,93 @@
+---
+import SculptureFallback from './SculptureFallback.astro';
+---
+
+<div
+  class="scene-viewport"
+  id="scene-viewport"
+  data-stage="1"
+  role="group"
+  aria-label="A visual explanation of custom AI agents"
+>
+  <div class="scene-art" id="scene-art">
+    <div class="scene-glow" aria-hidden="true"></div>
+    <div class="scene-fallback">
+      <SculptureFallback all />
+    </div>
+    <canvas id="particle-scene" aria-hidden="true"></canvas>
+  </div>
+  <button
+    class="motion-toggle"
+    type="button"
+    id="motion-toggle"
+    aria-label="Pause animation"
+    aria-pressed="false"
+    disabled
+  >
+    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
+      <path class="pause-symbol" d="M5 3v10M11 3v10"></path>
+      <path class="play-symbol" d="m5 3 8 5-8 5V3Z"></path>
+    </svg>
+    <span>Pause motion</span>
+  </button>
+  <div class="scene-caption">
+    <div class="scene-label">
+      <span class="scene-status" aria-hidden="true"></span>
+      <span id="scene-label">REQUEST → CONTEXT → ACTION</span>
+    </div>
+    <p class="scene-sub" id="scene-sub">
+      A workflow shaped around you.
+    </p>
+  </div>
+</div>
+<style>
+  .motion-toggle {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    z-index: 3;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 38px;
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+    border-radius: 5px;
+    background: #090d12cc;
+    color: #b7d2c7;
+    font-size: 12px;
+    pointer-events: auto;
+  }
+  .motion-toggle[hidden] {
+    display: none;
+  }
+  .motion-toggle:hover {
+    border-color: var(--mint-dim);
+  }
+  .motion-toggle svg {
+    width: 14px;
+    height: 14px;
+    stroke: currentColor;
+    stroke-width: 1.4;
+  }
+  .motion-toggle .play-symbol,
+  .motion-toggle[aria-pressed='true'] .pause-symbol {
+    display: none;
+  }
+  .motion-toggle[aria-pressed='true'] .play-symbol {
+    display: block;
+  }
+  @media (max-width: 760px) {
+    .motion-toggle {
+      top: 0;
+      right: calc(50% - 18px);
+      width: 36px;
+      min-height: 36px;
+      padding: 10px;
+    }
+    .motion-toggle span {
+      display: none;
+    }
+  }
+</style>
