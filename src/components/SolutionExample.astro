@@ -1,0 +1,209 @@
+---
+interface Props {
+  kind: string;
+}
+const { kind } = Astro.props;
+---
+
+<div class="solution-example">
+  <p class="sample-kicker">
+    <span class="sample-dot" aria-hidden="true"></span>ILLUSTRATIVE WORKFLOW
+  </p>
+  {kind === 'customer-support' && (
+    <>
+      <div class="sample-message">
+        <span class="sample-label">CUSTOMER / CHAT OR VOICE</span>
+        <p>“Can I change the delivery address on my order?”</p>
+      </div>
+      <div class="sample-checks">
+        <span>Order status checked</span>
+        <span>Change policy retrieved</span>
+      </div>
+      <div class="sample-response">
+        <span class="sample-label">PREPARED NEXT STEP</span>
+        <p>
+          The order is awaiting dispatch. Confirm the new address, then request
+          the required approval.
+        </p>
+        <div class="sample-source">
+          Context: sample order record + change policy
+        </div>
+      </div>
+      <div class="sample-handoff">
+        <span class="sample-status">Review point</span>
+        <p>
+          A restricted change goes to the support team with the request and
+          relevant records.
+        </p>
+      </div>
+    </>
+  )}
+  {kind === 'document-processing' && (
+    <>
+      <div class="sample-document">
+        <span class="sample-label">SAMPLE SUPPLIER INVOICE</span>
+        <strong>INV-2048</strong>
+        <dl>
+          <div>
+            <dt>Supplier</dt>
+            <dd>Example Supplier</dd>
+          </div>
+          <div>
+            <dt>Line item</dt>
+            <dd>Replacement filter × 2</dd>
+          </div>
+          <div>
+            <dt>PO reference</dt>
+            <dd class="sample-missing">Not supplied</dd>
+          </div>
+        </dl>
+      </div>
+      <p class="sample-connector">EXTRACT &amp; CHECK</p>
+      <div class="sample-response">
+        <span class="sample-label">STRUCTURED DRAFT</span>
+        <dl>
+          <div>
+            <dt>Invoice reference</dt>
+            <dd>INV-2048</dd>
+          </div>
+          <div>
+            <dt>Quantity</dt>
+            <dd>2</dd>
+          </div>
+          <div>
+            <dt>Purchase order</dt>
+            <dd class="sample-missing">Needs confirmation</dd>
+          </div>
+        </dl>
+      </div>
+      <p class="sample-status">Held for review before an update</p>
+    </>
+  )}
+  {kind === 'employee-assistance' && (
+    <>
+      <div class="sample-message">
+        <span class="sample-label">EMPLOYEE QUESTION</span>
+        <p>“How do I request replacement equipment?”</p>
+      </div>
+      <div class="sample-response">
+        <span class="sample-label">EXAMPLE GROUNDED ANSWER</span>
+        <p>
+          Open an equipment request, include the asset reference and describe
+          the issue. Your team lead reviews the request.
+        </p>
+        <div class="sample-source">
+          Supporting material: example equipment guide, §3
+        </div>
+      </div>
+      <div class="sample-handoff">
+        <span class="sample-label">WHEN THE ANSWER IS MISSING</span>
+        <p>
+          “The available guide does not cover temporary replacements. Please
+          confirm this with the equipment team.”
+        </p>
+      </div>
+    </>
+  )}
+  {kind === 'sales-operations' && (
+    <>
+      <div class="sample-message">
+        <span class="sample-label">INCOMING ENQUIRY</span>
+        <p>
+          “We want to turn our service team's voice notes into job reports.”
+        </p>
+      </div>
+      <div class="sample-response">
+        <span class="sample-label">PREPARED BRIEF</span>
+        <dl>
+          <div>
+            <dt>Need</dt>
+            <dd>Voice-to-report workflow</dd>
+          </div>
+          <div>
+            <dt>Known context</dt>
+            <dd>Service team</dd>
+          </div>
+          <div>
+            <dt>To clarify</dt>
+            <dd>Audio conditions, report fields, destination system</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="sample-draft">
+        <span class="sample-status">Draft for salesperson review</span>
+        <p>
+          Follow-up questions and a proposed CRM note are prepared together.
+        </p>
+      </div>
+    </>
+  )}
+  {kind === 'field-operations' && (
+    <>
+      <div class="sample-voice">
+        <div class="sample-wave" aria-hidden="true">
+          {[
+            12, 24, 16, 34, 22, 42, 29, 18, 36, 24, 14, 31, 20, 38, 25, 16, 28,
+            12,
+          ].map((height) => (
+            <i style={`height:${height}px`}></i>
+          ))}
+        </div>
+        <span class="sample-label">SAMPLE VOICE-NOTE TRANSCRIPT</span>
+        <p>
+          “Replaced the filter on unit four. Tested the unit. We need a
+          follow-up visit to check the valve.”
+        </p>
+      </div>
+      <p class="sample-connector">TRANSCRIBE &amp; STRUCTURE</p>
+      <div class="sample-response">
+        <span class="sample-label">PROPOSED JOB REPORT</span>
+        <dl>
+          <div>
+            <dt>Asset</dt>
+            <dd>Unit 4</dd>
+          </div>
+          <div>
+            <dt>Work completed</dt>
+            <dd>Filter replaced; unit tested</dd>
+          </div>
+          <div>
+            <dt>Follow-up</dt>
+            <dd>Valve inspection</dd>
+          </div>
+          <div>
+            <dt>Part quantity</dt>
+            <dd class="sample-missing">Confirm with technician</dd>
+          </div>
+        </dl>
+      </div>
+    </>
+  )}
+  {kind === 'speech-content' && (
+    <>
+      <div class="sample-path">
+        <span class="sample-label">01 / AUDIO TO TEXT</span>
+        <h3>A recording becomes readable.</h3>
+        <ol>
+          <li>Source recording</li>
+          <li>Draft transcript</li>
+          <li>Terminology review</li>
+          <li>Transcript or timed captions</li>
+        </ol>
+      </div>
+      <div class="sample-path">
+        <span class="sample-label">02 / TEXT TO AUDIO</span>
+        <h3>Written guidance gains a voice.</h3>
+        <ol>
+          <li>Approved text</li>
+          <li>Voice and pronunciation choices</li>
+          <li>Listener review</li>
+          <li>Audio for the intended application</li>
+        </ol>
+      </div>
+      <p class="sample-footnote">
+        These paths illustrate the process. Audio samples are not included in
+        this example.
+      </p>
+    </>
+  )}
+</div>

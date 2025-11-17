@@ -1,0 +1,240 @@
+---
+import Editorial from '../../layouts/Editorial.astro';
+import SolutionExample from '../../components/SolutionExample.astro';
+import { solutionAreas, deliveryStages } from '../../data/solutions';
+import { offerings } from '../../data/site';
+import '../../styles/solutions.css';
+import '../../styles/solution-areas.css';
+import { enquiryHref } from '../../data/enquiry-topics';
+const capabilityHref = (id: string) =>
+  offerings.find((offer) => offer.id === id)!.href;
+---
+
+<Editorial
+  title="Custom AI Solutions — QWERTY Labs"
+  label="Solutions"
+  description="Explore custom AI workflows for customer support, documents, employee assistance, sales, field operations and speech. Built around your business."
+>
+  <main id="main-content" class="solutions-main">
+    <div class="solutions-container">
+      <header class="solutions-hero solutions-overview-hero">
+        <h1>Custom AI solutions</h1>
+        <p class="solutions-lead">
+          Connect your business knowledge, conversations and systems in a
+          solution designed for the work you need done.
+        </p>
+        <p class="solutions-hero-note">
+          We define the process with you, build the appropriate AI capabilities
+          around it using established models, and evaluate the result against
+          your requirements.
+        </p>
+        <div class="detail-actions">
+          <a class="button button-dark" href="/contact/">
+            Discuss your project
+          </a>
+          <a class="text-link" href="#solution-areas">
+            Explore example workflows
+          </a>
+        </div>
+      </header>
+
+      <nav
+        id="solution-areas"
+        class="solution-contents"
+        aria-label="Solution areas"
+      >
+        {solutionAreas.map((area, index) => (
+          <a href={`#${area.id}`}>
+            <span>0{index + 1}</span>
+            {area.short}
+          </a>
+        ))}
+      </nav>
+      <p class="solution-evidence-note">
+        The examples below illustrate workflows we can design with you. Project
+        scope, integrations, permissions and expected outcomes are agreed for
+        each engagement.
+      </p>
+
+      {solutionAreas.map((area) => (
+        <section
+          id={area.id}
+          class="solution-area"
+          aria-labelledby={`${area.id}-title`}
+        >
+          <div class="solution-area-grid">
+            <div class="solution-brief">
+              <h2 id={`${area.id}-title`}>{area.name}</h2>
+              <p class="solution-description">
+                {area.headline} {area.description}
+              </p>
+              <div class="solution-situation">
+                <span class="solutions-small-label">A PLACE TO START</span>
+                <p>{area.situation}</p>
+              </div>
+              <ol class="solution-flow" aria-label="Proposed workflow">
+                {area.stages.map((stage) => (
+                  <li>{stage}</li>
+                ))}
+              </ol>
+              <p class="solution-also">
+                <strong>Also useful for</strong> {area.uses.join(' · ')}
+              </p>
+              <a class="text-link" href={enquiryHref('contact', area.id)}>
+                Discuss this workflow
+              </a>
+            </div>
+            <figure class="solution-figure">
+              <SolutionExample kind={area.id} />
+              <figcaption>
+                Sample information and outputs illustrating the proposed
+                process.
+              </figcaption>
+            </figure>
+          </div>
+          <div class="solution-supporting">
+            <div class="solution-measure">
+              <span class="solutions-small-label">WHAT WE WOULD EVALUATE</span>
+              <p>{area.evaluation}</p>
+            </div>
+            <div class="solution-building-blocks">
+              <span class="solutions-small-label">
+                CAPABILITIES WE CAN COMBINE
+              </span>
+              <div>
+                {area.capabilities.map((capability) => (
+                  <a href={capabilityHref(capability.id)}>{capability.label}</a>
+                ))}
+              </div>
+            </div>
+          </div>
+          <details class="solution-exceptions">
+            <summary>How exceptions and review fit this workflow</summary>
+            <p>{area.exception}</p>
+            <a href={area.reading.href}>
+              Background reading: {area.reading.title}
+            </a>
+          </details>
+        </section>
+      ))}
+
+      <section
+        id="delivery"
+        class="solutions-section"
+        aria-labelledby="delivery-title"
+      >
+        <div class="solutions-section-heading">
+          <div>
+            <h2 id="delivery-title">How we build your solution</h2>
+          </div>
+          <p>
+            A useful outcome starts with a clear scope. We agree the sources,
+            decisions, review points and evaluation criteria before expanding a
+            workflow. Each stage gives your team something to review before
+            deciding how to proceed.
+          </p>
+        </div>
+        <ol class="solutions-delivery">
+          {deliveryStages.map(([name, copy], index) => (
+            <li>
+              <span>0{index + 1}</span>
+              <div>
+                <h3>{name}</h3>
+                <p>{copy}</p>
+              </div>
+            </li>
+          ))}
+        </ol>
+        <p class="solution-delivery-next">
+          You do not need to arrive with a finished specification.{' '}
+          <a href={enquiryHref('contact', 'help-me-decide')}>
+            Describe the part of the work you want to improve.
+          </a>
+        </p>
+      </section>
+
+      <aside class="solution-prototype" aria-labelledby="prototype-link-title">
+        <div>
+          <h2 id="prototype-link-title">Explore the workflow designer</h2>
+          <p>
+            Our workflow designer lets you connect steps, define conditions and
+            walk through example scenarios in your browser.
+          </p>
+        </div>
+        <a class="text-link" href="/research-development/workflow-designer/">
+          Explore the designer
+        </a>
+      </aside>
+
+      <section
+        class="solutions-questions solutions-section"
+        aria-labelledby="questions-title"
+      >
+        <div>
+          <h2 id="questions-title">Practical questions.</h2>
+        </div>
+        <div>
+          <details>
+            <summary>Can we start with one part of a process?</summary>
+            <p>
+              Yes. A focused workflow gives us a clear starting point for
+              understanding inputs, exceptions and useful outputs.
+              Transcription, spoken content or a knowledge assistant can also be
+              a complete engagement.
+            </p>
+          </details>
+          <details>
+            <summary>How do you choose the models and capabilities?</summary>
+            <p>
+              We assess the task, representative information, language or audio
+              conditions, response requirements and operating arrangements.
+              Current client solutions use established models, with capabilities
+              selected for the work.
+            </p>
+          </details>
+          <details>
+            <summary>Which systems can a solution connect to?</summary>
+            <p>
+              We assess the required sources and destinations with your team.
+              Each connection depends on the available integration mechanisms,
+              permitted access and the actions agreed for your project.
+            </p>
+          </details>
+          <details>
+            <summary>How do people stay involved?</summary>
+            <p>
+              We define which steps prepare information, which actions require
+              approval and when a case should move to a person. Missing
+              information, conflicting records and system failures need explicit
+              handling.
+            </p>
+          </details>
+          <details>
+            <summary>How will we judge whether the solution is useful?</summary>
+            <p>
+              We establish a baseline and agree task-specific criteria. These
+              can include completion, accuracy, processing time, correction
+              effort and cost per completed task under stated conditions.
+            </p>
+          </details>
+        </div>
+      </section>
+
+      <section class="solutions-cta" aria-labelledby="solutions-cta-title">
+        <h2 id="solutions-cta-title">
+          Start with <span>one workflow.</span>
+        </h2>
+        <p>
+          Tell us what starts the process, which information or systems it
+          touches, and what a useful outcome would look like.
+        </p>
+        <a class="button button-dark" href="/contact/">
+          Discuss your project
+        </a>
+        <a class="text-link" href={enquiryHref('demo', 'combined')}>
+          Explore a workflow in a walkthrough
+        </a>
+      </section>
+    </div>
+  </main>
+</Editorial>
