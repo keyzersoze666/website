@@ -1,0 +1,247 @@
+---
+import { enquiryTopics } from '../data/enquiry-topics';
+interface Props {
+  demo?: boolean;
+}
+const { demo = false } = Astro.props;
+const groups = [...new Set(enquiryTopics.map((topic) => topic.group))];
+const stages = demo
+  ? [
+      [
+        'Choose a scenario',
+        'A task, a conversation or a piece of content you would like to explore.',
+      ],
+      [
+        'Look at the decisions',
+        'Discuss the information, review points and integrations a useful walkthrough should demonstrate.',
+      ],
+      [
+        'Define what to test',
+        'Identify the examples and success criteria for an evaluation in your own setting.',
+      ],
+    ]
+  : [
+      [
+        'Describe the work',
+        'What starts the process, where it gets stuck and who depends on the result.',
+      ],
+      [
+        'Find a useful first step',
+        'Define a focused scope around the information, systems and people involved.',
+      ],
+      [
+        'Agree what good looks like',
+        'Choose the outcomes and evidence that would make a trial worth pursuing.',
+      ],
+    ];
+---
+
+<section class="enquiry-section enquiry-journey">
+  <header class="enquiry-intro">
+    <h1 class="destination-title">{demo ? 'Book a demo' : 'Contact us'}</h1>
+    <p class="destination-copy">
+      {demo
+        ? 'Tell us what you would like a walkthrough to show. We can frame the conversation around a task, the decisions it involves and the result your team needs.'
+        : 'Tell us where work gets difficult, repetitive or slow. You do not need a model choice or a finished specification to start a conversation.'}
+    </p>
+    <p class="enquiry-context" data-enquiry-context hidden>
+      Continuing from <a data-enquiry-return></a>.
+      <span>You can choose a different area below.</span>
+    </p>
+  </header>
+  <div class="enquiry-layout">
+    <aside
+      class="enquiry-expectations"
+      aria-labelledby="enquiry-approach-title"
+    >
+      <h2 id="enquiry-approach-title">
+        {demo
+          ? 'Make it relevant to your work.'
+          : 'Start small. Make the outcome clear.'}
+      </h2>
+      <ol>
+        {stages.map(([heading, copy]) => (
+          <li>
+            <h3>{heading}</h3>
+            <p>{copy}</p>
+          </li>
+        ))}
+      </ol>
+      <p class="enquiry-alternative">
+        {demo
+          ? 'Still defining the problem? '
+          : 'Prefer to explore a particular capability? '}
+        <a href={demo ? '/contact/' : '/book-a-demo/'} data-enquiry-switch>
+          {demo
+            ? 'Start with a project conversation.'
+            : 'Prepare a demo request.'}
+        </a>
+      </p>
+    </aside>
+    <form
+      class="lead-form"
+      id="lead-form"
+      data-enquiry-kind={demo ? 'Demo request' : 'Project enquiry'}
+      data-delivery-url="/api/enquiries"
+    >
+      <div class="full-width enquiry-form-heading">
+        <h2>{demo ? 'Your demo brief' : 'Tell us about your work'}</h2>
+        <p>A short description is enough to begin.</p>
+      </div>
+      <label>
+        Your name
+        <input name="name" autocomplete="name" required maxlength="120" />
+      </label>
+      <label>
+        Work email
+        <input
+          name="email"
+          type="email"
+          autocomplete="email"
+          required
+          maxlength="254"
+        />
+      </label>
+      <label>
+        Company
+        <input
+          name="company"
+          autocomplete="organization"
+          required
+          maxlength="160"
+        />
+      </label>
+      <label>
+        {demo
+          ? 'What would you like to explore?'
+          : 'Where would you like to start?'}
+        <select name="interest" required>
+          <option value="">Choose an area</option>
+          {groups.map((group) => (
+            <optgroup label={group}>
+              {enquiryTopics
+                .filter((topic) => topic.group === group)
+                .map((topic) => (
+                  <option value={topic.id}>{topic.label}</option>
+                ))}
+            </optgroup>
+          ))}
+        </select>
+      </label>
+      <label class="full-width">
+        {demo
+          ? 'What should the walkthrough help you understand?'
+          : 'What would you like to make work better?'}
+        <textarea
+          name="message"
+          required
+          maxlength="3000"
+          aria-describedby="enquiry-message-help"
+          placeholder={
+            demo
+              ? 'For example: how a voice assistant could handle service requests, correct a date and hand over to our team.'
+              : 'For example: our team checks incoming documents against order records. Missing details create a lot of back-and-forth.'
+          }
+        ></textarea>
+      </label>
+      <p
+        id="enquiry-message-help"
+        class="form-note full-width enquiry-message-help"
+      >
+        {demo
+          ? 'Mention the task, who would use it and any decisions you want to examine. This is a request to discuss a walkthrough; it does not reserve an appointment.'
+          : 'The current process, the people involved and your intended result are useful starting points. It is fine if you are still working these out.'}
+      </p>
+      <div class="enquiry-honeypot" aria-hidden="true" inert>
+        <label>
+          Leave this field empty
+          <input
+            name="website"
+            tabindex="-1"
+            autocomplete="off"
+            maxlength="200"
+          />
+        </label>
+      </div>
+      <div class="full-width enquiry-verification">
+        <div
+          data-enquiry-captcha
+          data-sitekey={import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || ''}
+        ></div>
+        <p class="form-note">
+          Protected by Cloudflare Turnstile. See{' '}
+          <a href="https://www.cloudflare.com/privacypolicy/" rel="external">
+            Cloudflare’s Privacy Policy
+          </a>
+          .
+        </p>
+      </div>
+      <div class="enquiry-actions full-width">
+        <button
+          type="button"
+          id="lead-review"
+          class="button button-outline"
+          disabled
+        >
+          {demo ? 'Review demo brief' : 'Review enquiry'}
+        </button>
+        <button
+          type="button"
+          id="lead-submit"
+          class="button button-dark"
+          aria-describedby="enquiry-privacy-note"
+        >
+          {demo ? 'Submit demo request' : 'Submit enquiry'}
+        </button>
+      </div>
+      <p
+        class="form-note full-width enquiry-delivery-status"
+        id="enquiry-status"
+        role="status"
+        aria-live="polite"
+        tabindex="-1"
+        hidden
+      ></p>
+      <p class="form-note full-width" id="enquiry-privacy-note">
+        We use these details to respond to your request. Please avoid sharing
+        passwords or sensitive client records. Read our{' '}
+        <a href="/privacy/">Privacy Policy</a>.
+      </p>
+      <noscript>
+        <p class="form-note full-width">
+          Please enable JavaScript to submit this form.
+        </p>
+      </noscript>
+      <div
+        class="form-review full-width"
+        id="form-review"
+        hidden
+        aria-labelledby="enquiry-review-title"
+        tabindex="-1"
+      >
+        <h2 id="enquiry-review-title">
+          {demo ? 'Your demo brief' : 'Your enquiry'}
+        </h2>
+        <p class="form-note">Check your details before submitting.</p>
+        <p data-enquiry-prompt></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<style>
+  .enquiry-honeypot {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+  }
+  .enquiry-verification {
+    min-height: 2rem;
+  }
+  [data-enquiry-captcha] {
+    max-width: 100%;
+    overflow: hidden;
+  }
+</style>

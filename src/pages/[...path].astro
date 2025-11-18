@@ -1,0 +1,23 @@
+---
+import Editorial from '../layouts/Editorial.astro';
+import EnquiryForm from '../components/EnquiryForm.astro';
+export function getStaticPaths() {
+  return [
+    ['contact', 'Contact Us'],
+    ['book-a-demo', 'Book a Demo'],
+  ].map(([path, title]) => ({ params: { path }, props: { title } }));
+}
+const { title } = Astro.props;
+const path = Astro.params.path;
+---
+
+<Editorial title={`${title} — QWERTY Labs`} label={title} noindex>
+  <main id="main-content" class="destination-main">
+    <div class="container">
+      <EnquiryForm demo={path === 'book-a-demo'} />
+    </div>
+  </main>
+  <script>
+    import '../scripts/enquiry';
+  </script>
+</Editorial>
