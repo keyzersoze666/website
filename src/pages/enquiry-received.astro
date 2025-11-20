@@ -1,0 +1,62 @@
+---
+import Base from '../layouts/Base.astro';
+import ReceptionEnvelope from '../components/ReceptionEnvelope.astro';
+import { brand } from '../data/site';
+import '../styles/reception.css';
+---
+
+<Base
+  title={`We’ll contact you soon — ${brand.name}`}
+  description={`${brand.name} will review your enquiry and contact you soon to discuss your project or arrange a demo.`}
+  noindex
+>
+  <main id="main-content" class="reception-main">
+    <div class="container reception-layout">
+      <div class="reception-copy">
+        <h1>
+          We’ll contact <span>you soon.</span>
+        </h1>
+        <p class="reception-lead">
+          Thank you for getting in touch with {brand.name}.
+        </p>
+        <p class="reception-follow-up">
+          Our team will follow up using the contact details you provided to
+          discuss your project or arrange a demo.
+        </p>
+        <div class="reception-actions">
+          <a href="/" class="button button-dark">
+            Back to home
+          </a>
+          <a href="/solutions/" class="text-link">
+            Explore our solutions
+          </a>
+        </div>
+      </div>
+      <div class="reception-art">
+        <div class="reception-visual" data-reception-scene>
+          <ReceptionEnvelope />
+        </div>
+        <div
+          class="reception-animation-controls"
+          role="group"
+          aria-label="Enquiry animation"
+        >
+          <button
+            class="reception-motion"
+            type="button"
+            aria-pressed="false"
+            disabled
+          >
+            Pause animation
+          </button>
+          <button class="reception-replay" type="button" disabled>
+            Replay animation
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script>
+    import '../scripts/reception';
+  </script>
+</Base>

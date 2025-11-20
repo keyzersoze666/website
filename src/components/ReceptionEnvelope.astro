@@ -1,0 +1,154 @@
+---
+import { brand } from '../data/site';
+import { receptionPackets, receptionPath } from '../scripts/reception-motion';
+---
+
+<svg
+  class="reception-envelope"
+  viewBox="0 0 620 460"
+  fill="none"
+  role="img"
+  aria-labelledby="envelope-title envelope-description"
+>
+  <title id="envelope-title">Your enquiry to {brand.name}</title>
+  <desc id="envelope-description">
+    Speech waveforms, writing and linked data drop from above into an open
+    envelope below. Once received, the envelope closes, rises to the centre and
+    shows a tick to confirm the end of your enquiry journey.
+  </desc>
+  <defs>
+    <linearGradient
+      id="envelope-paper"
+      x1="340"
+      y1="200"
+      x2="570"
+      y2="350"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#254d3e" />
+      <stop offset="1" stop-color="#122b22" />
+    </linearGradient>
+    <linearGradient
+      id="envelope-lining"
+      x1="455"
+      y1="112"
+      x2="455"
+      y2="280"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#1d3e31" />
+      <stop offset="1" stop-color="#0c1c16" />
+    </linearGradient>
+    <linearGradient
+      id="envelope-flap"
+      x1="455"
+      y1="200"
+      x2="455"
+      y2="282"
+      gradientUnits="userSpaceOnUse"
+    >
+      <stop stop-color="#2a5543" />
+      <stop offset="1" stop-color="#1b3c2e" />
+    </linearGradient>
+  </defs>
+
+  <g class="envelope-currents" stroke-linecap="round">
+    <path
+      class="envelope-flow envelope-flow-voice"
+      d={receptionPath(receptionPackets[0]!)}
+    />
+    <path
+      class="envelope-flow envelope-flow-text"
+      d={receptionPath(receptionPackets[1]!)}
+    />
+    <path
+      class="envelope-flow envelope-flow-data"
+      d={receptionPath(receptionPackets[2]!)}
+    />
+  </g>
+
+  <g class="envelope-carrier">
+    <ellipse cx="455" cy="375" rx="123" ry="8" fill="#b7f7da" opacity="0.035" />
+    <g class="envelope-shell" stroke-linejoin="round">
+      <rect
+        x="340"
+        y="200"
+        width="230"
+        height="150"
+        rx="10"
+        fill="url(#envelope-lining)"
+      />
+      <g class="envelope-open-flap">
+        <path
+          d="M340 202L447 116Q455 110 463 116L570 202"
+          fill="url(#envelope-lining)"
+        />
+        <path d="M350 200L455 124L560 200" class="envelope-fold-detail" />
+      </g>
+      <g class="envelope-note">
+        <rect
+          x="370"
+          y="170"
+          width="170"
+          height="145"
+          rx="5"
+          fill="#d4e5d9"
+          stroke="#d4e5d9"
+        />
+        <path
+          d="M387 189h51m-51 12h121m-121 12h105m-105 12h113"
+          stroke="#456858"
+          stroke-width="2"
+          opacity="0.65"
+        />
+      </g>
+    </g>
+  </g>
+
+  <g class="envelope-packet envelope-packet-voice" stroke-linecap="round">
+    <path d="M-22 0C-17 0-18-12-14-12S-10 13-6 13-2-9 2-9 6 10 10 10 15 0 22 0" />
+  </g>
+  <g class="envelope-packet envelope-packet-text" stroke-linecap="round">
+    <path d="M-15-6h10m5 0h12M-15 0h23m5 0h3M-15 6h7m5 0h15" />
+  </g>
+  <g
+    class="envelope-packet envelope-packet-data"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <path d="M-5-8 6 4M-5 9 6 4" opacity="0.6" />
+    <rect x="-18" y="-13" width="12" height="9" rx="2" />
+    <rect x="-18" y="5" width="12" height="9" rx="2" />
+    <rect x="6" y="-1" width="14" height="10" rx="2" />
+  </g>
+
+  <g class="envelope-carrier">
+    <g class="envelope-shell" stroke-linejoin="round">
+      <path
+        d="M340 205L449 276Q455 280 461 276L570 205V340Q570 350 560 350H350Q340 350 340 340Z"
+        fill="url(#envelope-paper)"
+      />
+      <path d="M342 345L416 274M568 345L494 274" class="envelope-fold-detail" />
+      <g class="envelope-closed-flap">
+        <path
+          d="M340 201H570L463 280Q455 286 447 280Z"
+          fill="url(#envelope-flap)"
+        />
+        <path
+          d="M350 205L450 278Q455 282 460 278L560 205"
+          class="envelope-fold-detail"
+        />
+      </g>
+      <text x="455" y="331" text-anchor="middle" class="envelope-brand">
+        {brand.name.toUpperCase()}
+      </text>
+    </g>
+    <g transform="translate(455 280)">
+      <g class="envelope-confirmation">
+        <circle r="24" class="envelope-seal-ring" />
+        <circle r="18" class="envelope-seal" />
+        <path d="m-7 0 5 5L8-6" />
+      </g>
+    </g>
+  </g>
+</svg>
