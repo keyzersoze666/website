@@ -1,0 +1,26 @@
+---
+import type { MarkdownHeading } from 'astro';
+interface Props {
+  headings: MarkdownHeading[];
+}
+const { headings } = Astro.props;
+---
+
+<nav class="contents-nav" aria-label="Article contents">
+  <ol>
+    {headings
+      .filter((h) => h.depth === 2)
+      .map((h) => (
+        <li>
+          <a href={`#${h.slug}`} data-contents-link>
+            {h.text}
+          </a>
+        </li>
+      ))}
+    <li>
+      <a href="#references" data-contents-link>
+        References
+      </a>
+    </li>
+  </ol>
+</nav>

@@ -1,0 +1,24 @@
+---
+import Journal from '../../layouts/Journal.astro';
+import PostCard from '../../components/journal/PostCard.astro';
+import { publishedPosts } from '../../scripts/blog-content';
+const posts = await publishedPosts();
+const [latest, ...rest] = posts;
+---
+
+<Journal
+  title="Research journal — QWERTY Labs"
+  description="Research and engineering notes on efficient language models, AI workflows and practical enterprise systems."
+>
+  <main id="main-content" class="journal-main journal-landing">
+    <header class="journal-intro">
+      <h1>Research journal</h1>
+      <p>Evidence and engineering behind useful enterprise AI.</p>
+    </header>
+    {latest && <PostCard post={latest} featured />}
+    <section class="journal-archive" aria-labelledby="journal-archive-title">
+      <h2 id="journal-archive-title">All articles</h2>
+      {rest.map((post) => <PostCard post={post} />)}
+    </section>
+  </main>
+</Journal>

@@ -1,0 +1,63 @@
+---
+import Base from './Base.astro';
+import '@fontsource-variable/source-sans-3';
+import '@fontsource-variable/source-sans-3/wght-italic.css';
+import 'katex/dist/katex.min.css';
+import '../styles/editorial-theme.css';
+import '../styles/journal.css';
+interface Props {
+  title: string;
+  description: string;
+  structuredData?: Record<string, unknown>;
+  article?: boolean;
+}
+const { title, description, structuredData, article = false } = Astro.props;
+---
+
+<Base
+  title={title}
+  description={description}
+  journal
+  structuredData={structuredData}
+  ogType={article ? 'article' : 'website'}
+>
+  <div class="reading-progress" aria-hidden="true" hidden>
+    <span></span>
+  </div>
+  <div class="journal-utility">
+    <a href="/blog/" class="journal-wordmark">
+      <span class="journal-mark" aria-hidden="true"></span>THE QWERTY LABS
+      JOURNAL
+    </a>
+    <button
+      id="reading-theme"
+      class="reading-theme"
+      type="button"
+      aria-pressed="false"
+      aria-label="Switch to dark reading theme"
+    >
+      <span class="theme-symbol" aria-hidden="true">
+        ◐
+      </span>
+      <span data-theme-label>Dark reading</span>
+    </button>
+  </div>
+  <slot />
+  <dialog
+    class="figure-dialog"
+    id="figure-dialog"
+    aria-labelledby="figure-dialog-caption"
+  >
+    <div class="figure-dialog-toolbar">
+      <span>Figure view</span>
+      <button type="button" data-close-figure>
+        Close
+      </button>
+    </div>
+    <img id="figure-dialog-image" alt="" />
+    <p id="figure-dialog-caption"></p>
+  </dialog>
+  <script>
+    import '../scripts/journal';
+  </script>
+</Base>

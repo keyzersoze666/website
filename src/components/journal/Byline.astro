@@ -1,0 +1,30 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { authors } from '../../data/authors';
+import { formatPostDate, readingMinutes } from '../../scripts/blog-content';
+import SvgAsset from '../SvgAsset.astro';
+interface Props {
+  post: CollectionEntry<'blog'>;
+  compact?: boolean;
+}
+const { post, compact = false } = Astro.props;
+const author = authors[post.data.author];
+---
+
+<div class:list={['journal-byline', { compact }]}>
+  <SvgAsset
+    src={author.avatar}
+    class="journal-avatar"
+    label="QWERTY Labs team profile icon"
+  />
+  <div>
+    <span class="byline-name">{author.name}</span>
+    <span class="byline-details">
+      <time datetime={post.data.publishedAt.toISOString().slice(0, 10)}>
+        {formatPostDate(post.data.publishedAt)}
+      </time>
+      <span aria-hidden="true">·</span>
+      <span>{readingMinutes(post.body)} min read</span>
+    </span>
+  </div>
+</div>

@@ -1,0 +1,145 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import type { MarkdownHeading } from 'astro';
+import Journal from './Journal.astro';
+import Byline from '../components/journal/Byline.astro';
+import SvgAsset from '../components/SvgAsset.astro';
+import Contents from '../components/journal/Contents.astro';
+import PostCard from '../components/journal/PostCard.astro';
+import { authors } from '../data/authors';
+import { readingMinutes, postHref } from '../scripts/blog-content';
+import { articleJourney } from '../data/customer-journey';
+import { enquiryHref } from '../data/enquiry-topics';
+interface Props {
+  post: CollectionEntry<'blog'>;
+  headings: MarkdownHeading[];
+  related: CollectionEntry<'blog'>[];
+}
+const { post, headings, related } = Astro.props;
+const author = authors[post.data.author];
+const canonical = new URL(postHref(post), Astro.site).href;
+const journey = articleJourney(post.id);
+const structuredData = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.publishedAt.toISOString(),
+  author: {
+    '@type': 'Organization',
+    name: author.name,
+    url: new URL('/about/#research-title', Astro.site).href,
+  },
+  publisher: {
+    '@type': 'Organization',
+    '@id': new URL('#organization', Astro.site).href,
+    name: 'QWERTY Labs',
+  },
+  mainEntityOfPage: canonical,
+  image: new URL(post.data.cover, Astro.site).href,
+  timeRequired: `PT${readingMinutes(post.body)}M`,
+  inLanguage: 'en',
+};
+---
+
+<Journal
+  title={`${post.data.title} — QWERTY Labs Journal`}
+  description={post.data.description}
+  article
+  structuredData={structuredData}
+>
+  <main id="main-content" class="journal-main article-page">
+    <header class="article-header">
+      <a href="/blog/" class="back-journal">
+        All articles
+      </a>
+      <h1>{post.data.title}</h1>
+      <Byline post={post} />
+      <p class="article-category">
+        {post.data.category}
+        <span aria-hidden="true">/</span>
+        {post.data.articleType}
+      </p>
+      <p class="article-deck">{post.data.description}</p>
+    </header>
+    <div class="article-grid">
+      <div class="article-column">
+        <details class="mobile-contents">
+          <summary>On this page</summary>
+          <Contents headings={headings} />
+        </details>
+        <p class="evidence-note">
+          <span>ABOUT THE EVIDENCE</span>
+          {post.data.evidenceNote}
+        </p>
+        <div class="article-prose" data-article-body>
+          <slot />
+        </div>
+        <section class="article-references" aria-labelledby="references">
+          <h2 id="references">References</h2>
+          <ol>
+            {post.data.references.map((ref, index) => (
+              <li id={`ref-${ref.id}`}>
+                <span class="reference-number">{index + 1}</span>
+                <div>
+                  <a href={ref.url} target="_blank" rel="noopener noreferrer">
+                    {ref.title}
+                  </a>
+                  <p>
+                    {ref.author}
+                    {ref.publishedAt &&
+                      ` · ${ref.publishedAt.getUTCFullYear()}`}
+                  </p>
+                  <a class="reference-back" href={`#cite-${ref.id}`}>
+                    Back to text
+                  </a>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+        <div class="author-note">
+          <SvgAsset
+            src={author.avatar}
+            class="journal-avatar"
+            label="QWERTY Labs team profile icon"
+          />
+          <div>
+            <h2>{author.name}</h2>
+            <span>{author.role}</span>
+            <p>{author.bio}</p>
+          </div>
+        </div>
+        <aside class="journal-project" aria-labelledby="article-project-title">
+          <h2 id="article-project-title">{journey.title}</h2>
+          <p>{journey.copy}</p>
+          <div>
+            <a href={journey.href}>{journey.label}</a>
+            <a href={enquiryHref('contact', journey.topicId)}>
+              Discuss your requirements
+            </a>
+          </div>
+        </aside>
+      </div>
+      <aside class="desktop-contents">
+        <div class="contents-sticky">
+          <span class="contents-title">ON THIS PAGE</span>
+          <Contents headings={headings} />
+        </div>
+      </aside>
+    </div>
+    {related.length > 0 && (
+      <section class="related-reading" aria-labelledby="related-title">
+        <div class="related-heading">
+          <h2 id="related-title">Continue reading</h2>
+          <a href="/blog/">View the journal</a>
+        </div>
+        <div class="journal-grid">
+          {related.map((item) => (
+            <PostCard post={item} />
+          ))}
+        </div>
+      </section>
+    )}
+  </main>
+</Journal>

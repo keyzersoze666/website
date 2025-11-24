@@ -1,0 +1,34 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import Byline from './Byline.astro';
+import { postHref } from '../../scripts/blog-content';
+interface Props {
+  post: CollectionEntry<'blog'>;
+  featured?: boolean;
+}
+const { post, featured = false } = Astro.props;
+---
+
+<article class:list={['journal-card', { featured }]}>
+  <a class="journal-card-link" href={postHref(post)}>
+    <div class="card-figure">
+      <img
+        src={post.data.cover}
+        alt={post.data.coverAlt}
+        width="1200"
+        height="750"
+        loading={featured ? 'eager' : 'lazy'}
+      />
+    </div>
+    <div class="card-copy">
+      <h2>{post.data.title}</h2>
+      <div class="card-meta">
+        {featured && <span class="latest-label">Latest article</span>}
+        <span>{post.data.category}</span>
+      </div>
+      <Byline post={post} compact />
+      <p>{post.data.description}</p>
+      <span class="read-article">Read the article</span>
+    </div>
+  </a>
+</article>
