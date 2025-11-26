@@ -1,0 +1,42 @@
+.about-logo {
+  display: grid;
+  justify-items: center;
+  gap: 26px;
+  width: min(100%, 520px);
+  min-width: 0;
+  margin-inline: auto;
+  padding-block: 36px;
+  color: var(--j-accent);
+}
+.about-logo-mark {
+  width: clamp(160px, 17vw, 220px);
+  height: clamp(144px, 15.3vw, 198px);
+}
+.about-logo-name {
+  margin: 0;
+  font-family: 'Manrope Variable', Arial, sans-serif;
+  font-size: clamp(30px, 3.4vw, 44px);
+  font-weight: 750;
+  line-height: 1.2;
+  letter-spacing: -0.045em;
+  text-align: center;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .about-logo {
+    animation: about-logo-reveal 900ms cubic-bezier(0.22, 0.61, 0.36, 1) both;
+  }
+}
+@keyframes about-logo-reveal {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@media (max-width: 760px) {
+  .about-logo {
+    gap: 22px;
+    padding-block: 24px;
+  }
+}

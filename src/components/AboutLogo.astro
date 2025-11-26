@@ -1,0 +1,10 @@
+---
+import SvgAsset from './SvgAsset.astro';
+import { brand } from '../data/site';
+import '../styles/about-logo.css';
+---
+
+<div class="about-logo">
+  <SvgAsset src={brand.mark} class="about-logo-mark" />
+  <p class="about-logo-name">{brand.name}</p>
+</div>
