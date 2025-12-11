@@ -1,0 +1,11 @@
+family_size,train_fraction,cross_split_probability,evidence
+1,0.8,-5.551115123125783e-17,Analytical independent assignment
+2,0.8,0.32,Analytical independent assignment
+3,0.8,0.47999999999999987,Analytical independent assignment
+4,0.8,0.5887999999999999,Analytical independent assignment
+5,0.8,0.6719999999999999,Analytical independent assignment
+6,0.8,0.7377919999999999,Analytical independent assignment
+7,0.8,0.7902719999999999,Analytical independent assignment
+8,0.8,0.83222528,Analytical independent assignment
+9,0.8,0.86578176,Analytical independent assignment
+10,0.8,0.8926257151999999,Analytical independent assignment

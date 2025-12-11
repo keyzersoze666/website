@@ -1,0 +1,5 @@
+stage,documents_retained,evidence
+Raw inventory,100000,Illustrative corpus counts
+After deduplication,78000,Illustrative corpus counts
+After quality checks,70000,Illustrative corpus counts
+After rights / privacy review,62000,Illustrative corpus counts
