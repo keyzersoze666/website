@@ -1,0 +1,5 @@
+independent_trials,upper_failure_fraction_95pct,evidence
+100,0.029513049607039932,Analytical; not a security test result
+1000,0.0029912495450953314,Analytical; not a security test result
+10000,0.00029952835977664627,Analytical; not a security test result
+100000,2.995687401941005e-05,Analytical; not a security test result
