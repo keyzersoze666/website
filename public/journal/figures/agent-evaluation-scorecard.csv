@@ -1,0 +1,5 @@
+outcome,cases,evidence
+"Autonomous, correct",320,Illustrative; not evaluation results
+"Autonomous, wrong",15,Illustrative; not evaluation results
+Completed after handoff,125,Illustrative; not evaluation results
+Unresolved,40,Illustrative; not evaluation results
