@@ -1,0 +1,5 @@
+parameters,payload_bits,group_size,metadata_bits_per_group,ideal_decimal_gb,evidence
+8000000000,4,32,32,5.0,Analytical invented storage format
+8000000000,4,64,32,4.5,Analytical invented storage format
+8000000000,4,128,32,4.25,Analytical invented storage format
+8000000000,4,256,32,4.125,Analytical invented storage format
