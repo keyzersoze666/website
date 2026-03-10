@@ -1,0 +1,321 @@
+---
+import { components, scenarios, fields } from '../scripts/workflow-model';
+const groups = [...new Set(components.map((item) => item.group))];
+---
+
+<section
+  id="workflow-designer"
+  class="designer-section"
+  aria-labelledby="designer-title"
+>
+  <div class="solutions-section-heading designer-heading">
+    <div>
+      <h2 id="designer-title">Explore the designer.</h2>
+    </div>
+    <p>
+      Build manually or start with an example. Connect the steps, define the
+      decisions and walk through sample scenarios.
+    </p>
+  </div>
+  <div class="workflow-designer" data-workflow-designer>
+    <div class="wf-mode-bar">
+      <div class="wf-modes" role="group" aria-label="Design method">
+        <button type="button" class="wf-mode is-active" aria-pressed="true">
+          Build manually
+        </button>
+        <button type="button" class="wf-mode wf-mode-disabled" disabled>
+          Describe your workflow <span>In development</span>
+        </button>
+      </div>
+      <span class="wf-local-label">Browser workspace</span>
+    </div>
+    <p class="wf-development-note">
+      Typed and spoken prompt design is in development. Use the designer by
+      building manually or opening an example.
+    </p>
+    <div class="wf-document-bar">
+      <label class="wf-name-label">
+        Workflow name
+        <input
+          data-wf-name
+          maxlength="100"
+          value="Untitled workflow"
+          data-enable
+          disabled
+        />
+      </label>
+      <label>
+        Open draft
+        <select
+          data-wf-drafts
+          data-enable
+          disabled
+          aria-label="Open a workflow draft"
+        >
+          <option>Untitled workflow</option>
+        </select>
+      </label>
+      <div class="wf-document-actions">
+        <button type="button" data-wf-action="new" data-enable disabled>
+          New draft
+        </button>
+        <button type="button" data-wf-action="example" data-enable disabled>
+          Open invoice example
+        </button>
+      </div>
+    </div>
+    <div class="wf-toolbar" role="group" aria-label="Workflow tools">
+      <div>
+        <button type="button" data-wf-action="undo" disabled>
+          Undo
+        </button>
+        <button type="button" data-wf-action="redo" disabled>
+          Redo
+        </button>
+        <button type="button" data-wf-action="save" data-enable disabled>
+          Save draft
+        </button>
+      </div>
+      <div>
+        <button type="button" data-wf-action="validate" data-enable disabled>
+          Validate
+        </button>
+        <button type="button" data-wf-action="export-json" data-enable disabled>
+          Export JSON
+        </button>
+        <button type="button" data-wf-action="export-svg" data-enable disabled>
+          Export diagram
+        </button>
+        <button type="button" data-wf-action="import" data-enable disabled>
+          Import JSON
+        </button>
+        <input
+          type="file"
+          accept=".json,application/json"
+          data-wf-import
+          hidden
+        />
+      </div>
+    </div>
+    <div class="wf-workspace">
+      <aside class="wf-library" aria-labelledby="wf-library-title">
+        <h3 id="wf-library-title">Components</h3>
+        <p>Drag onto the canvas or select Add.</p>
+        {groups.map((group) => (
+          <div class="wf-library-group">
+            <h4>{group}</h4>
+            {components
+              .filter((item) => item.group === group)
+              .map((item) => (
+                <button
+                  type="button"
+                  class="wf-library-item"
+                  data-add={item.kind}
+                  draggable="true"
+                  data-enable
+                  disabled
+                  title={item.description}
+                >
+                  <span class="wf-component-icon" aria-hidden="true">
+                    {item.short}
+                  </span>
+                  <span>
+                    {item.label}
+                    <small>Add component</small>
+                  </span>
+                </button>
+              ))}
+          </div>
+        ))}
+      </aside>
+      <div class="wf-canvas-column">
+        <div class="wf-canvas-tools">
+          <span data-wf-step-count>0 steps</span>
+          <button
+            class="wf-show-config"
+            type="button"
+            data-wf-action="configure"
+            data-enable
+            disabled
+          >
+            Configure step
+          </button>
+          <div role="group" aria-label="Canvas zoom">
+            <button
+              type="button"
+              data-wf-action="zoom-out"
+              aria-label="Zoom out"
+              data-enable
+              disabled
+            >
+              −
+            </button>
+            <output data-wf-zoom>100%</output>
+            <button
+              type="button"
+              data-wf-action="zoom-in"
+              aria-label="Zoom in"
+              data-enable
+              disabled
+            >
+              +
+            </button>
+            <button type="button" data-wf-action="fit" data-enable disabled>
+              Fit
+            </button>
+          </div>
+        </div>
+        <div
+          class="wf-canvas"
+          data-wf-canvas
+          tabindex="0"
+          aria-label="Workflow canvas. Use component Add buttons and configuration controls as alternatives to dragging."
+        >
+          <div class="wf-scaled-area" data-wf-area>
+            <div class="wf-world" data-wf-world>
+              <svg
+                data-wf-edges
+                aria-label="Workflow connections"
+                role="group"
+              ></svg>
+              <div data-wf-nodes></div>
+            </div>
+          </div>
+          <div class="wf-empty" data-wf-empty>
+            <span class="wf-empty-mark" aria-hidden="true">
+              01
+            </span>
+            <h3>What starts your workflow?</h3>
+            <p>Add a trigger, then connect a model, a decision or an action.</p>
+            <div>
+              <button type="button" data-add="trigger" data-enable disabled>
+                Start with a trigger
+              </button>
+              <button
+                type="button"
+                data-wf-action="example"
+                data-enable
+                disabled
+              >
+                Open invoice example
+              </button>
+            </div>
+          </div>
+        </div>
+        <p class="wf-canvas-hint">
+          Select an output on a step, then select its destination to connect.
+          Move selected steps with arrow keys; Shift moves further. Escape
+          cancels a connection.
+        </p>
+      </div>
+      <aside class="wf-inspector" aria-labelledby="wf-inspector-title">
+        <h3 id="wf-inspector-title">Configuration</h3>
+        <div data-wf-inspector>
+          <p>Select a step to configure its task, inputs and connections.</p>
+        </div>
+      </aside>
+    </div>
+    <p class="wf-status" data-wf-status role="status" aria-live="polite">
+      Your design stays in this workspace until you save or export it.
+    </p>
+    <section
+      class="wf-validation"
+      data-wf-validation
+      hidden
+      aria-labelledby="wf-validation-title"
+    >
+      <h3 id="wf-validation-title">Design checks</h3>
+      <div data-wf-issues></div>
+    </section>
+    <section class="wf-walkthrough" aria-labelledby="wf-walkthrough-title">
+      <div class="wf-walkthrough-heading">
+        <div>
+          <h3 id="wf-walkthrough-title">Walk through sample data</h3>
+          <p>
+            Conditions use the values below. Model steps and system actions are
+            illustrative.
+          </p>
+        </div>
+        <button type="button" data-wf-action="walkthrough" data-enable disabled>
+          Start walkthrough
+        </button>
+      </div>
+      <div class="wf-sample-controls">
+        <label>
+          Scenario
+          <select data-wf-scenario data-enable disabled>
+            {scenarios.map((s) => (
+              <option value={s.id}>{s.name}</option>
+            ))}
+          </select>
+        </label>
+        <p data-wf-scenario-description>{scenarios[0].description}</p>
+      </div>
+      <details class="wf-sample-data">
+        <summary>Inspect sample values</summary>
+        <dl data-wf-sample-values></dl>
+      </details>
+      <details class="wf-custom-data">
+        <summary>Use your own sample values</summary>
+        <p>
+          Supply a JSON object with text, number or true/false values.
+          Conditions inspect these field names. Model and tool outputs remain
+          illustrative.
+        </p>
+        <label>
+          Sample values
+          <textarea
+            data-wf-custom-values
+            rows="7"
+            maxlength="20000"
+            spellcheck="false"
+          ></textarea>
+        </label>
+        <div>
+          <button
+            type="button"
+            data-wf-action="apply-sample"
+            data-enable
+            disabled
+          >
+            Use sample values
+          </button>
+          <button
+            type="button"
+            data-wf-action="reset-sample"
+            data-enable
+            disabled
+          >
+            Restore selected scenario
+          </button>
+        </div>
+      </details>
+      <datalist id="wf-field-suggestions">
+        {fields.map(([value, label]) => (
+          <option value={value}>{label}</option>
+        ))}
+      </datalist>
+      <div class="wf-trace" data-wf-trace aria-live="polite">
+        <p>
+          Open an example or finish a design, then start a sample walkthrough.
+        </p>
+      </div>
+    </section>
+    <div class="wf-storage-note">
+      <p>
+        Save stores a draft only in this browser. Exports download to your
+        device. This designer does not call models, submit information or update
+        business systems.
+      </p>
+      <button type="button" data-wf-action="clear-saved" data-enable disabled>
+        Clear saved drafts
+      </button>
+    </div>
+    <noscript>
+      <p class="wf-no-script">
+        JavaScript is needed for the designer. The invoice workflow and its
+        illustrative prompt are explained below.
+      </p>
+    </noscript>
+  </div>
+</section>
