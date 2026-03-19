@@ -1,0 +1,268 @@
+---
+import { enquiryHref } from '../../data/enquiry-topics';
+import Editorial from '../../layouts/Editorial.astro';
+import WorkflowWorkspace from '../../components/WorkflowDesigner.astro';
+import { invoicePrompt } from '../../scripts/workflow-model';
+import '../../styles/solutions.css';
+import '../../styles/workflow-designer.css';
+---
+
+<Editorial
+  title="Workflow Designer — QWERTY Labs R&D"
+  label="Workflow Designer"
+  description="Plan workflows with QWERTY Labs: connect steps, define conditions, explore scenarios and export your designs."
+>
+  <main id="main-content" class="solutions-main research-main">
+    <div class="solutions-container">
+      <header class="solutions-hero">
+        <h1>Workflow designer</h1>
+        <p class="research-status">
+          <span aria-hidden="true"></span>In development
+        </p>
+        <p class="solutions-lead">
+          Use our workflow designer to connect steps, define decisions and
+          examine different scenarios in your browser.
+        </p>
+        <p class="solutions-hero-note">
+          The designer helps you reason about a process before implementation.
+          Our research also explores connections with evaluated proprietary
+          models. QWERTY Labs builds custom client solutions using established
+          models today.
+        </p>
+        <nav class="solutions-jump-links" aria-label="Explore this page">
+          <a href="#workflow-designer">Explore the designer</a>
+          <a href="#invoice-example">See the invoice example</a>
+          <a href="#development-scope">Current scope and development</a>
+        </nav>
+      </header>
+      <aside
+        class="prototype-disclosure"
+        aria-label="Working with the designer"
+      >
+        <strong>Plan, test and refine</strong>
+        <p>
+          Edit a workflow and use scenario data to examine its branches,
+          approvals and recovery paths. Save drafts in this browser or export a
+          design to your device.
+        </p>
+      </aside>
+    </div>
+    <WorkflowWorkspace />
+    <div class="solutions-container">
+      <section
+        id="invoice-example"
+        class="solutions-section"
+        aria-labelledby="invoice-title"
+      >
+        <div class="solutions-section-heading">
+          <div>
+            <h2 id="invoice-title">
+              From supplier invoice
+              <br />
+              <span>to approved ERP entry.</span>
+            </h2>
+          </div>
+          <p>
+            An invoice can refer to several orders, arrive before all the goods
+            and contain a price difference. The workflow needs to establish what
+            matches and who can resolve the rest.
+          </p>
+        </div>
+        <div class="example-brief">
+          <span class="solutions-small-label">THE WORKFLOW BRIEF</span>
+          <blockquote>{invoicePrompt}</blockquote>
+          <p>
+            Open the invoice workflow below to inspect its steps and decisions.
+          </p>
+        </div>
+        <div
+          class="invoice-illustration"
+          aria-label="Illustrative invoice workflow"
+        >
+          <div class="invoice-main-step">
+            <span>01 / UNDERSTAND</span>
+            <h3>Read and structure the invoice</h3>
+            <p>
+              Extract references, line items, quantities and amounts. Flag
+              uncertain information.
+            </p>
+          </div>
+          <div class="invoice-parallel">
+            <article>
+              <span>02A / CHECK</span>
+              <h3>Supplier &amp; duplicates</h3>
+              <p>Read the supplier record and compare invoice references.</p>
+            </article>
+            <article>
+              <span>02B / MATCH</span>
+              <h3>Orders &amp; receipts</h3>
+              <p>Compare invoiced quantities with orders and received goods.</p>
+            </article>
+            <article>
+              <span>02C / VERIFY</span>
+              <h3>Prices &amp; agreement</h3>
+              <p>Compare prices with the approved contract and order.</p>
+            </article>
+          </div>
+          <div class="invoice-routing">
+            <span>03 / RESOLVE &amp; REVIEW</span>
+            <h3>Route each exception to its owner</h3>
+            <div>
+              <p data-case-path="duplicate">
+                <strong>Possible duplicate</strong>
+                <span>Hold for duplicate review.</span>
+              </p>
+              <p data-case-path="partial">
+                <strong>Quantity difference</strong>
+                <span>Receiving team reviews the delivery.</span>
+              </p>
+              <p data-case-path="price">
+                <strong>Price difference</strong>
+                <span>Procurement reviews the agreement.</span>
+              </p>
+              <p data-case-path="matching">
+                <strong>Records agree</strong>
+                <span>Continue to the required approval.</span>
+              </p>
+            </div>
+          </div>
+          <div class="invoice-main-step invoice-finish">
+            <span>04 / PREPARE &amp; RECORD</span>
+            <h3>Apply approvals, then prepare the ERP entry</h3>
+            <p>
+              Use an invoice reference to identify the intended action. Bound
+              retries and hand off persistent failures.
+            </p>
+          </div>
+        </div>
+        <div class="illustration-controls">
+          <div role="group" aria-label="Illustration scenario">
+            <button
+              type="button"
+              data-illustration-scenario="matching"
+              aria-pressed="true"
+            >
+              Matching invoice
+            </button>
+            <button
+              type="button"
+              data-illustration-scenario="partial"
+              aria-pressed="false"
+            >
+              Partial delivery
+            </button>
+            <button
+              type="button"
+              data-illustration-scenario="price"
+              aria-pressed="false"
+            >
+              Price difference
+            </button>
+            <button
+              type="button"
+              data-illustration-scenario="combined"
+              aria-pressed="false"
+            >
+              Multiple exceptions
+            </button>
+          </div>
+          <p data-illustration-description role="status">
+            Matching records proceed to the required finance approval.
+          </p>
+          <button class="button button-dark" type="button" data-open-invoice>
+            Open this example in the designer
+          </button>
+          <p class="illustration-note">
+            Opens a separate editable draft. Your current draft stays in the
+            workspace.
+          </p>
+        </div>
+      </section>
+
+      <section
+        id="development-scope"
+        class="solutions-section"
+        aria-labelledby="scope-title"
+      >
+        <div class="solutions-section-heading">
+          <div>
+            <h2 id="scope-title">Current features and development plans</h2>
+          </div>
+          <p>
+            The designer makes workflow structure tangible. Connecting a design
+            to evaluated models and real business systems requires further
+            development and project-specific implementation.
+          </p>
+        </div>
+        <div class="solution-areas prototype-scope">
+          <article>
+            <span>01 / WORKFLOW PLANNING</span>
+            <h3>Design and inspect.</h3>
+            <p>
+              Add and configure components, connect named paths, validate a
+              graph and explore conditions, approvals and recovery with sample
+              data. Undo/redo, separate drafts, browser saving and JSON/SVG
+              exports are available.
+            </p>
+          </article>
+          <article>
+            <span>02 / IN DEVELOPMENT</span>
+            <h3>Describe and generate.</h3>
+            <p>
+              Typed and spoken prompt design is in development. Future work aims
+              to connect the designer with evaluated proprietary models. Live
+              inference, business-system execution and deployment are outside
+              this planning workspace.
+            </p>
+          </article>
+          <article>
+            <span>03 / CUSTOM SERVICES</span>
+            <h3>Build around your business.</h3>
+            <p>
+              Client solutions are scoped and built by QWERTY Labs using
+              established models today. Their sources, integrations,
+              permissions, review points and operating arrangements are agreed
+              for each project.
+            </p>
+            <a href="/solutions/" class="text-link">
+              Explore custom solutions
+            </a>
+          </article>
+        </div>
+      </section>
+      <nav
+        class="solutions-related"
+        aria-label="Related development and reading"
+      >
+        <span class="eyebrow">KEEP EXPLORING</span>
+        <a href="/research-development/proprietary-models/">
+          Proprietary Models
+        </a>
+        <a href="/capabilities/ai-agents/">Custom AI agents</a>
+        <a href="/blog/agentic-invoice-to-erp-workflow/">
+          Read the invoice workflow blueprint
+        </a>
+      </nav>
+      <section class="solutions-cta" aria-labelledby="designer-cta-title">
+        <h2 id="designer-cta-title">
+          Have a workflow
+          <br />
+          <span>in mind?</span>
+        </h2>
+        <p>
+          Tell us about the process, its information and the outcome you need.
+          We can define a custom solution around that work.
+        </p>
+        <a
+          class="button button-dark"
+          href={enquiryHref('contact', 'workflow-designer')}
+        >
+          Discuss your project
+        </a>
+      </section>
+    </div>
+  </main>
+  <script>
+    import '../../scripts/workflow-designer';
+  </script>
+</Editorial>
