@@ -1,0 +1,11 @@
+layers,kv_heads,head_dimension,tokens,sequences,bytes_per_value,ideal_gib,evidence
+32,8,128,8192,1,2,1.0,Analytical hypothetical architecture
+32,8,128,16384,1,2,2.0,Analytical hypothetical architecture
+32,8,128,32768,1,2,4.0,Analytical hypothetical architecture
+32,8,128,65536,1,2,8.0,Analytical hypothetical architecture
+32,8,128,131072,1,2,16.0,Analytical hypothetical architecture
+32,8,128,8192,4,2,4.0,Analytical hypothetical architecture
+32,8,128,16384,4,2,8.0,Analytical hypothetical architecture
+32,8,128,32768,4,2,16.0,Analytical hypothetical architecture
+32,8,128,65536,4,2,32.0,Analytical hypothetical architecture
+32,8,128,131072,4,2,64.0,Analytical hypothetical architecture
