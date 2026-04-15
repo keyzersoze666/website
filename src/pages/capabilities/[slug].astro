@@ -10,6 +10,7 @@ import {
 import '../../styles/capabilities.css';
 import { capabilityJourneys } from '../../data/customer-journey';
 import { enquiryHref } from '../../data/enquiry-topics';
+import { capabilitySeoTitles } from '../../data/seo';
 
 export function getStaticPaths() {
   return offerings.map((offer) => ({
@@ -30,7 +31,7 @@ const projectHref = enquiryHref('contact', offer.id);
 ---
 
 <Editorial
-  title={`${offer.short} — QWERTY Labs`}
+  title={capabilitySeoTitles[offer.id]}
   label={offer.short}
   description={guide.description}
 >
