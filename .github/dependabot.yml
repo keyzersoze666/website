@@ -1,0 +1,15 @@
+version: 2
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      katex-rendering:
+        patterns:
+          ['katex', 'rehype-katex', 'remark-math', '@astrojs/markdown-remark']
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
