@@ -9,10 +9,11 @@
   "scripts": {
     "dev": "astro dev --host 0.0.0.0",
     "check": "astro check",
-    "build": "astro build",
+    "build": "astro build && node scripts/finalize-site.mjs",
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
     "format": "prettier --write .",
-    "format:check": "prettier --check ."
+    "format:check": "prettier --check .",
+    "validate:site": "node scripts/validate-site.mjs"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "6.3.8",
