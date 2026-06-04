@@ -1,0 +1,4 @@
+path,fraction,cases,human_minutes_each,human_hours,evidence
+Routine,0.7,700,2,23.333333333333332,Illustrative
+Review,0.2,200,8,26.666666666666668,Illustrative
+Exception,0.1,100,25,41.666666666666664,Illustrative
