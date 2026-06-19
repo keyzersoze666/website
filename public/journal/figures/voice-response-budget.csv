@@ -1,0 +1,6 @@
+stage,duration_ms,evidence
+End-of-turn wait,350,Illustrative sequential turn; not production percentiles
+Transcript finalization,120,Illustrative sequential turn; not production percentiles
+Model first useful output,280,Illustrative sequential turn; not production percentiles
+Speech first audio,150,Illustrative sequential turn; not production percentiles
+Transport + playout,100,Illustrative sequential turn; not production percentiles
