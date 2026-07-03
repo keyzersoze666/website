@@ -1,0 +1,9 @@
+workers,serial_fraction,parallel_fraction,overhead_per_extra_worker,relative_time,speedup,evidence
+1,0.3,0.7,0.04,1.0,1.0,Illustrative; not an agent benchmark
+2,0.3,0.7,0.04,0.69,1.4492753623188408,Illustrative; not an agent benchmark
+3,0.3,0.7,0.04,0.6133333333333333,1.6304347826086958,Illustrative; not an agent benchmark
+4,0.3,0.7,0.04,0.595,1.680672268907563,Illustrative; not an agent benchmark
+5,0.3,0.7,0.04,0.6,1.6666666666666667,Illustrative; not an agent benchmark
+6,0.3,0.7,0.04,0.6166666666666667,1.6216216216216215,Illustrative; not an agent benchmark
+7,0.3,0.7,0.04,0.6399999999999999,1.5625000000000002,Illustrative; not an agent benchmark
+8,0.3,0.7,0.04,0.6675,1.4981273408239701,Illustrative; not an agent benchmark
