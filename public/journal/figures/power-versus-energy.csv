@@ -1,0 +1,3 @@
+configuration,power_watts,duration_seconds,energy_joules,evidence
+A,60,4,240,Illustrative constant-power calculation
+B,25,12,300,Illustrative constant-power calculation

@@ -1,0 +1,4 @@
+device,metric,moe_to_same_device_dense_baseline,source,evidence
+Apple M2 Pro,Throughput,0.9,arxiv:2606.21428v3 abstract,Approximate author-reported ratio
+Jetson Orin Nano 8 GB,Throughput,0.69,arxiv:2606.21428v3 abstract,Approximate author-reported ratio
+Jetson Orin Nano 8 GB,Energy per token,2.1,arxiv:2606.21428v3 abstract,Approximate author-reported ratio
