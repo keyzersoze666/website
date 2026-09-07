@@ -1,0 +1,88 @@
+---
+import Editorial from './Editorial.astro';
+import { legalDetails, legalDate } from '../data/legal';
+import '../styles/legal.css';
+interface Props {
+  title: string;
+  description: string;
+  sections: { id: string; title: string }[];
+  relatedHref: string;
+  relatedLabel: string;
+}
+const { title, description, sections, relatedHref, relatedLabel } = Astro.props;
+---
+
+<Editorial
+  title={`${title} — ${legalDetails.tradingName}`}
+  label={title}
+  description={description}
+  noindex
+>
+  <main id="main-content" class="destination-main legal-page">
+    <div class="container">
+      <header class="legal-header">
+        <h1 class="destination-title">{title}</h1>
+        <p class="legal-introduction">{description}</p>
+        <dl class="legal-metadata">
+          <div>
+            <dt>Last revised</dt>
+            <dd>
+              <time datetime={legalDetails.lastUpdated}>
+                {legalDate(legalDetails.lastUpdated)}
+              </time>
+            </dd>
+          </div>
+          {legalDetails.effectiveDate && (
+            <div>
+              <dt>Effective date</dt>
+              <dd>
+                <time datetime={legalDetails.effectiveDate}>
+                  {legalDate(legalDetails.effectiveDate)}
+                </time>
+              </dd>
+            </div>
+          )}
+          <div>
+            <dt>Version</dt>
+            <dd>{legalDetails.documentVersion}</dd>
+          </div>
+        </dl>
+      </header>
+      <div class="legal-layout">
+        <aside class="legal-desktop-contents">
+          <nav aria-label="Document contents">
+            <span class="legal-contents-label">CONTENTS</span>
+            <ol>
+              {sections.map((section) => (
+                <li>
+                  <a href={`#${section.id}`}>{section.title}</a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        </aside>
+        <div class="legal-document">
+          <details class="legal-mobile-contents">
+            <summary>Contents</summary>
+            <nav aria-label="Document contents on mobile">
+              <ol>
+                {sections.map((section) => (
+                  <li>
+                    <a href={`#${section.id}`}>{section.title}</a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          </details>
+          <article class="legal-prose" aria-label={title}>
+            <slot />
+          </article>
+          <nav class="legal-related" aria-label="Related legal document">
+            <span>Related document</span>
+            <a href={relatedHref}>{relatedLabel}</a>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </main>
+</Editorial>

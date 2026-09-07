@@ -1,0 +1,328 @@
+---
+import Legal from '../layouts/Legal.astro';
+import LegalContact from '../components/LegalContact.astro';
+import { legalDetails, legalValue } from '../data/legal';
+const sections = [
+  { id: 'parties', title: 'Parties and scope' },
+  { id: 'eligibility', title: 'Eligibility and lawful use' },
+  { id: 'enquiries', title: 'Enquiries and contract formation' },
+  { id: 'engagements', title: 'Scope, fees and changes' },
+  { id: 'responsibilities', title: 'Client responsibilities' },
+  { id: 'confidentiality', title: 'Client data and confidentiality' },
+  { id: 'intellectual-property', title: 'Intellectual property' },
+  { id: 'examples', title: 'Website tools and AI outputs' },
+  { id: 'acceptable-use', title: 'Acceptable use' },
+  { id: 'availability', title: 'Availability and third-party services' },
+  { id: 'liability', title: 'Warranties and liability' },
+  { id: 'termination', title: 'Suspension and termination' },
+  { id: 'disputes', title: 'Indian law and dispute resolution' },
+  { id: 'changes', title: 'Changes and general provisions' },
+  { id: 'notices', title: 'Company details and legal notices' },
+];
+---
+
+<Legal
+  title="Terms of Service"
+  description="Terms governing the QWERTY Labs website, workflow tools and separately agreed client services."
+  sections={sections}
+  relatedHref="/privacy/"
+  relatedLabel="Privacy Policy"
+>
+  <section id="parties" aria-labelledby="parties-title">
+    <h2 id="parties-title">1. Parties and scope</h2>
+    <p>
+      These Terms of Service (“Terms”) state the conditions on which{' '}
+      {legalValue('legalEntityName')}, trading as {legalDetails.tradingName}{' '}
+      (“QWERTY Labs”, “we”, “us” or “our”), at {legalValue('businessAddress')},
+      makes this website, its content and browser-based tools available. “You”
+      means the person using them and, where applicable, the organisation that
+      person is authorised to represent.
+    </p>
+    <p>
+      Client services require a separate written agreement accepted by both
+      parties. That agreement must identify the contracting parties and the
+      applicable scope. Its expressly agreed service terms govern the
+      engagement; these website Terms do not unilaterally alter it. Mandatory
+      law takes precedence over a conflicting contractual provision.
+    </p>
+    <p>
+      The Privacy Policy explains data handling. Reading or using the website
+      does not itself provide consent for unrelated processing of personal
+      information.
+    </p>
+  </section>
+  <section id="eligibility" aria-labelledby="eligibility-title">
+    <h2 id="eligibility-title">2. Eligibility and lawful use</h2>
+    <p>
+      A person requesting or entering a service agreement must be at least
+      eighteen years old, competent to contract under Indian law and, if acting
+      for an organisation, authorised to bind it. Information provided for a
+      business discussion must be accurate to the best of that person's
+      knowledge. Website access must comply with applicable law and these Terms.
+    </p>
+  </section>
+  <section id="enquiries" aria-labelledby="enquiries-title">
+    <h2 id="enquiries-title">3. Enquiries and contract formation</h2>
+    <p>
+      Contact and Book a Demo forms allow you to describe your requirements and
+      request a conversation. An enquiry or its automated confirmation does not
+      reserve an appointment, place an order, accept a quotation or create a
+      service agreement. A demo time must be agreed separately.
+    </p>
+    <p>
+      Website descriptions are an invitation to discuss requirements. A client
+      engagement begins only when authorised representatives accept the relevant
+      written agreement, including by a legally valid electronic method where
+      agreed. An automated confirmation is not acceptance of an engagement by
+      QWERTY Labs.
+    </p>
+  </section>
+  <section id="engagements" aria-labelledby="engagements-title">
+    <h2 id="engagements-title">4. Scope, fees and changes</h2>
+    <p>
+      Before paid work begins, the service agreement or statement of work must
+      specify deliverables, assumptions, client inputs, integrations,
+      milestones, acceptance criteria, fees, payment dates, applicable taxes,
+      operating charges and any support period. No price, delivery date,
+      integration, service level or model release is promised merely by its
+      appearance in an illustrative example.
+    </p>
+    <p>
+      Changes to scope, timing or charges require agreement through the
+      engagement's change process. Cancellation, refunds, unearned advances and
+      work already performed must be addressed in that agreement, subject to
+      mandatory law.
+    </p>
+  </section>
+  <section id="responsibilities" aria-labelledby="responsibilities-title">
+    <h2 id="responsibilities-title">5. Client responsibilities</h2>
+    <p>
+      For an agreed engagement, the client is responsible for supplying the
+      information, decisions and access allocated to it in the scope, and for
+      having authority to provide that material. Personal information,
+      recordings and protected material must be supported by the notices,
+      permissions, licences or other lawful basis required for the intended use.
+    </p>
+    <p>
+      The parties must identify who approves actions, reviews outputs and
+      administers the relevant systems. A client dependency or change affecting
+      delivery must be discussed promptly; any resulting change to price or
+      timing requires the agreed contractual process. This allocation does not
+      excuse QWERTY Labs from its own legal or contractual obligations.
+    </p>
+  </section>
+  <section id="confidentiality" aria-labelledby="confidentiality-title">
+    <h2 id="confidentiality-title">6. Client data and confidentiality</h2>
+    <p>
+      Client Data has the meaning given in the Privacy Policy. The client and
+      its licensors retain their rights in that material. QWERTY Labs may
+      process it only for the agreed engagement and lawful instructions; access
+      is restricted to authorised staff who need it for the task.
+    </p>
+    <p>
+      QWERTY Labs does not use Client Data to train or fine-tune its own or
+      third-party models or add it to training datasets. Before a contractor,
+      hosting provider or model service receives it, the parties must establish
+      permitted processing, confidentiality, training restrictions, locations,
+      retention and the required authorisation.
+    </p>
+    <p>
+      For an engagement, each party must protect the other's non-public business
+      information and use it only for the agreed purpose. Disclosure is limited
+      to persons bound by appropriate confidentiality obligations or to the
+      extent legally required. Information is excluded only where the recipient
+      can demonstrate that it was lawfully public, already lawfully known,
+      independently developed or lawfully obtained without a confidentiality
+      duty.
+    </p>
+    <p>
+      The project agreement must specify security measures, incident cooperation
+      and return or deletion of data. Those terms cannot reduce mandatory
+      protection. Confidentiality obligations continue after completion or
+      termination. Neither party may use the other's name, logo or confidential
+      project information in publicity without written permission.
+    </p>
+  </section>
+  <section
+    id="intellectual-property"
+    aria-labelledby="intellectual-property-title"
+  >
+    <h2 id="intellectual-property-title">7. Intellectual property</h2>
+    <p>
+      Website text, design, original figures, software and branding belong to
+      QWERTY Labs or the relevant rights holders. You may read, reference and
+      download material made available for that purpose for lawful personal or
+      internal business use, retaining attribution and notices. Redistribution,
+      republication or commercial exploitation requires permission unless a
+      stated licence or applicable law permits it. Third-party research and
+      materials retain their own rights and licence conditions.
+    </p>
+    <p>
+      You retain your rights in workflows and material you create or import into
+      the browser-based designer. Using the tool does not transfer those rights
+      to QWERTY Labs. Rights in commissioned deliverables, pre-existing tools,
+      source code, model weights and third-party components must be specified in
+      the client agreement. No exclusive ownership of model-generated output or
+      assignment of rights is implied by a website example.
+    </p>
+  </section>
+  <section id="examples" aria-labelledby="examples-title">
+    <h2 id="examples-title">8. Website tools and AI outputs</h2>
+    <p>
+      Worked examples, calculations and sample dialogues illustrate proposed
+      behaviour. They are not reports of a customer deployment or guaranteed
+      performance. Proprietary-model development directions do not represent
+      released models or an undertaking to release them on a particular date.
+    </p>
+    <p>
+      The workflow designer is a browser-based planning tool. Its walkthroughs
+      evaluate workflow logic using the selected scenario data. Exported JSON
+      and diagrams are design documents; they do not deploy automation or
+      authorise a real-world transaction. Users must manage local drafts and
+      downloaded copies on their own devices.
+    </p>
+    <p>
+      AI outputs can be inaccurate, incomplete or unsuitable for a particular
+      decision. A production engagement must establish representative
+      evaluation, appropriate review and authorised actions. Website examples
+      are not a substitute for that work or for advice from a qualified
+      professional where the subject requires it.
+    </p>
+  </section>
+  <section id="acceptable-use" aria-labelledby="acceptable-use-title">
+    <h2 id="acceptable-use-title">9. Acceptable use</h2>
+    <p>You must not use the website or sample tools to:</p>
+    <ul>
+      <li>
+        Access systems or information without authority, evade access controls,
+        introduce malicious code or disrupt services.
+      </li>
+      <li>
+        Infringe intellectual-property, confidentiality or privacy rights, or
+        process material you are not entitled to use.
+      </li>
+      <li>
+        Impersonate another person, make fraudulent representations or use an
+        example as a false claim of approval or performance.
+      </li>
+      <li>
+        Attempt to connect sample workflows to live systems through an
+        unauthorised mechanism.
+      </li>
+    </ul>
+    <p>
+      Security testing that could affect the site or others requires prior
+      written authorisation. Ordinary use of the available design and export
+      functions remains subject to applicable law.
+    </p>
+  </section>
+  <section id="availability" aria-labelledby="availability-title">
+    <h2 id="availability-title">10. Availability and third-party services</h2>
+    <p>
+      The free website and prototypes may be changed, interrupted or withdrawn
+      for maintenance, security, legal or operational reasons. No
+      continuous-availability commitment applies to them. A paid engagement's
+      service levels and change obligations are determined by its agreement.
+    </p>
+    <p>
+      External links are provided for reference. The linked operator's terms
+      apply to its service. Selection of a third-party model, infrastructure or
+      integration for client work requires the assessment and agreement
+      described in the scope and Privacy Policy; a reference on this website is
+      not a guarantee of that provider's availability or suitability.
+    </p>
+  </section>
+  <section id="liability" aria-labelledby="liability-title">
+    <h2 id="liability-title">11. Warranties and liability</h2>
+    <p>
+      To the extent Indian law permits, free website content and sample tools
+      are provided as available, without a promise that they will meet a
+      particular production requirement or be free from every error. We remain
+      responsible for express commitments and liabilities that cannot lawfully
+      be excluded. Paid services are subject to the warranties, remedies and
+      allocation of risk expressly agreed for them.
+    </p>
+    <p>
+      To the extent legally permitted, neither party is liable under these
+      website Terms for indirect or consequential loss, or loss that was not
+      reasonably foreseeable from the relevant breach. This does not exclude
+      recovery that applicable law requires.
+    </p>
+    <p>
+      Nothing in these Terms excludes liability for fraud, wilful misconduct,
+      gross negligence, breach of an applicable confidentiality or
+      data-protection obligation, or any other liability that cannot lawfully be
+      restricted. Statutory consumer rights and remedies remain available where
+      the Consumer Protection Act, 2019 applies.
+    </p>
+  </section>
+  <section id="termination" aria-labelledby="termination-title">
+    <h2 id="termination-title">12. Suspension and termination</h2>
+    <p>
+      Website access may be restricted where reasonably necessary to address a
+      breach of these Terms, unlawful activity or a security risk. Notice and an
+      opportunity to resolve the matter will be given where practicable;
+      immediate action may be taken where required for security or law.
+    </p>
+    <p>
+      Ending a client engagement, cure periods, payment for completed work,
+      treatment of advances and transition assistance are governed by its
+      agreement and applicable law. Ending access does not transfer ownership of
+      Client Data or authorise its use for another purpose. Return, deletion and
+      lawful retention must follow the agreed data-handling terms.
+    </p>
+  </section>
+  <section id="disputes" aria-labelledby="disputes-title">
+    <h2 id="disputes-title">13. Indian law and dispute resolution</h2>
+    <p>
+      These Terms are governed by the laws of India, including the Indian
+      Contract Act, 1872 and the Information Technology Act, 2000, as
+      applicable. The parties should first attempt to resolve a dispute through
+      a written notice describing the issue and the remedy sought. That process
+      does not suspend a statutory limitation period or prevent urgent relief.
+    </p>
+    <p>
+      Subject to mandatory law, courts at {legalValue('jurisdictionCity')},{' '}
+      {legalValue('jurisdictionState')}, India shall have jurisdiction only to
+      the extent those courts otherwise have territorial, subject-matter and
+      pecuniary jurisdiction. This provision does not confer jurisdiction on an
+      otherwise incompetent court.
+    </p>
+    <p>
+      No website term requires compulsory arbitration or prevents a person from
+      approaching a competent consumer commission, regulator or other statutory
+      forum where the law permits. Any arbitration arrangement for a client
+      engagement requires a separately accepted written agreement.
+    </p>
+  </section>
+  <section id="changes" aria-labelledby="changes-title">
+    <h2 id="changes-title">14. Changes and general provisions</h2>
+    <p>
+      Revised website Terms will display their revision and effective dates.
+      Changes apply prospectively, with notice and acceptance where required. A
+      website update does not amend an existing client agreement; amendments to
+      it require the agreed process.
+    </p>
+    <p>
+      If a provision is unenforceable, it will be applied only to the lawful
+      extent, and the remaining provisions continue where they can operate
+      independently. A failure to enforce a provision on one occasion is not a
+      waiver of it. These Terms do not create a partnership, agency or
+      employment relationship.
+    </p>
+  </section>
+  <section id="notices" aria-labelledby="notices-title">
+    <h2 id="notices-title">15. Company details and legal notices</h2>
+    <p>
+      For contractual or website-related legal notices, use the details below or
+      follow the notice procedure in an existing client agreement. Privacy
+      requests should use the contact route in the Privacy Policy.
+    </p>
+    <LegalContact />
+    <p>
+      A legal notice must follow any procedure required by applicable law or an
+      existing agreement. An enquiry confirmation does not waive those
+      requirements.
+    </p>
+  </section>
+</Legal>

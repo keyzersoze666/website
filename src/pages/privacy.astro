@@ -1,0 +1,354 @@
+---
+import Legal from '../layouts/Legal.astro';
+import LegalContact from '../components/LegalContact.astro';
+import { legalDetails } from '../data/legal';
+const sections = [
+  { id: 'scope', title: 'Scope and responsibility' },
+  { id: 'website-data', title: 'Information on this website' },
+  { id: 'client-data', title: 'Client project information' },
+  { id: 'purposes', title: 'Purposes and lawful handling' },
+  { id: 'confidentiality', title: 'Confidentiality and restricted access' },
+  { id: 'training', title: 'No training with client data' },
+  { id: 'security', title: 'Project security requirements' },
+  { id: 'disclosure', title: 'Providers, disclosure and transfers' },
+  { id: 'retention', title: 'Retention, return and deletion' },
+  { id: 'incidents', title: 'Security incidents' },
+  { id: 'rights', title: 'Your choices and rights' },
+  { id: 'children', title: 'Children and sensitive information' },
+  { id: 'changes', title: 'Changes to this policy' },
+  { id: 'grievances', title: 'Privacy requests and grievances' },
+];
+---
+
+<Legal
+  title="Privacy Policy"
+  description="How QWERTY Labs handles website information and client data, including confidentiality, restricted access, model-training restrictions and privacy requests."
+  sections={sections}
+  relatedHref="/terms/"
+  relatedLabel="Terms of Service"
+>
+  <section id="scope" aria-labelledby="scope-title">
+    <h2 id="scope-title">1. Scope and responsibility</h2>
+    <p>
+      This Privacy Policy describes the handling of personal information by{' '}
+      {legalDetails.tradingName} (“QWERTY Labs”, “we”, “us” or “our”). It
+      applies to this website, communications with us, and personal information
+      processed in connection with a client engagement.
+    </p>
+    <p>
+      “Client Data” means information, documents, recordings, records,
+      credentials and other material provided by or accessed on behalf of a
+      client for an agreed engagement. The confidentiality and use restrictions
+      below also protect Client Data that is not personal information.
+    </p>
+    <p>
+      Indian privacy requirements apply according to their scope and
+      commencement. These include the Information Technology Act, 2000 and the
+      Information Technology (Reasonable Security Practices and Procedures and
+      Sensitive Personal Data or Information) Rules, 2011, while applicable and
+      in force. The Digital Personal Data Protection Act, 2023 and Digital
+      Personal Data Protection Rules, 2025 have phased commencement; their
+      duties and statutory remedies apply from the relevant notified dates. This
+      policy does not limit mandatory rights.
+    </p>
+  </section>
+  <section id="website-data" aria-labelledby="website-data-title">
+    <h2 id="website-data-title">2. Information on this website</h2>
+    <h3>2.1 Enquiries and demo requests</h3>
+    <p>
+      The forms ask for a name, work email address, company, area of interest
+      and message. We use enquiry information to understand your requirements,
+      respond to your request and discuss a possible engagement. Please provide
+      only information needed for that conversation. Form details are not saved
+      in browser storage by this website or included in the confirmation URL.
+      Browser autofill and device features operate separately.
+    </p>
+    <p>
+      Enquiries are validated through a Vercel server function, transmitted
+      through Google Apps Script and recorded in Google Sheets under our
+      control. Google processes this information as a service provider under its
+      applicable terms. An internal email notification includes the submitted
+      details. Access to enquiry records and notifications is restricted to
+      authorised staff handling business communications. These records may be
+      processed outside India, subject to applicable transfer requirements. They
+      must be deleted when no longer needed for the enquiry or a related
+      engagement, except where lawful record-keeping requires retention.
+    </p>
+    <p>
+      Enquiry forms use Cloudflare Turnstile to check for automated abuse.
+      Cloudflare may process technical information, including your IP address
+      and browser characteristics, under its{' '}
+      <a href="https://www.cloudflare.com/privacypolicy/" rel="external">
+        Privacy Policy
+      </a>
+      . The form service also applies request limits using short-lived keyed
+      hashes of network addresses and email addresses. Raw network addresses are
+      not stored in the enquiry spreadsheet or its notification emails.
+    </p>
+    <h3>2.2 Local preferences and workflow drafts</h3>
+    <p>
+      The reading-theme preference is stored in this browser. In the workflow
+      designer, Save stores the draft locally only when selected. Clear saved
+      drafts removes those saved copies. Exported files remain on the user's
+      device and must be removed separately. The designer does not upload
+      drafts, sample inputs or exported files to QWERTY Labs or run them against
+      live business systems.
+    </p>
+    <h3>2.3 Hosting and technical information</h3>
+    <p>
+      Hosting and access services may process an IP address, request time,
+      browser or device information, requested pages and security events to
+      deliver and protect the site. The production website is hosted on Vercel.
+      The hosting platform's account, authentication and infrastructure
+      processing is also subject to its own applicable terms and privacy
+      notices.
+    </p>
+    <p>
+      We have not added advertising pixels, marketing cookies or third-party
+      analytics scripts to the website. The hosting or authentication platform
+      may use essential storage or cookies. A public topic identifier in an
+      enquiry link selects a capability or workflow; it does not contain the
+      visitor's form details.
+    </p>
+  </section>
+  <section id="client-data" aria-labelledby="client-data-title">
+    <h2 id="client-data-title">3. Client project information</h2>
+    <p>
+      An engagement may require business contact details, source documents,
+      customer or employee records, text or audio, system identifiers,
+      authorised access details and evaluation material. The relevant
+      categories, individuals, purposes and systems must be identified in the
+      engagement's written scope before access is granted. Only material
+      necessary for that scope should be provided.
+    </p>
+    <p>
+      Where the client determines the purpose of processing and QWERTY Labs acts
+      on its behalf, QWERTY Labs follows the client's documented, lawful
+      instructions. The agreement must identify the parties' respective
+      responsibilities, including notices, permissions and assistance with
+      individual requests. QWERTY Labs remains responsible for obligations that
+      applicable law places directly on it. Business contact, contract and
+      compliance records handled for our own purposes are considered separately.
+    </p>
+    <p>
+      The client and its licensors retain their rights in Client Data.
+      Permission to process it for a project does not transfer ownership or
+      authorise unrelated use.
+    </p>
+  </section>
+  <section id="purposes" aria-labelledby="purposes-title">
+    <h2 id="purposes-title">4. Purposes and lawful handling</h2>
+    <p>
+      Information received through a business channel may be used to respond to
+      the communication, assess requirements, negotiate or administer an
+      engagement, deliver the agreed work, maintain necessary business records,
+      protect systems and comply with law. The purpose and any necessary consent
+      must be established before personal information is collected or used.
+    </p>
+    <p>
+      A privacy notice or a visit to this website is not blanket consent for new
+      processing. Where consent is required, it must be specific to the proposed
+      use. A material change of purpose requires the appropriate notice,
+      permission and contractual change before it takes effect. We do not sell
+      personal information or Client Data.
+    </p>
+  </section>
+  <section id="confidentiality" aria-labelledby="confidentiality-title">
+    <h2 id="confidentiality-title">5. Confidentiality and restricted access</h2>
+    <p>
+      Client Data is subject to restricted staff access. Only staff authorised
+      for the engagement and the task may access it. A commercial relationship
+      does not authorise access to the client's other information or systems.
+    </p>
+    <p>
+      Before any contractor or external provider receives Client Data, the
+      engagement must establish its permitted role, confidentiality obligations,
+      access restrictions and processing instructions. Client names, logos,
+      records, recordings and project details must not be used in publicity,
+      demonstrations or case studies without separate written permission.
+      Confidentiality continues after the engagement, subject to lawful
+      disclosure requirements.
+    </p>
+  </section>
+  <section id="training" aria-labelledby="training-title">
+    <h2 id="training-title">6. No training with client data</h2>
+    <p class="legal-callout">
+      QWERTY Labs does not use Client Data to train or fine-tune its own or
+      third-party AI models, or include it in model-training datasets. This
+      prohibition also applies to the proprietary-model research programme.
+    </p>
+    <p>
+      Using an approved model to process an input for the agreed task does not
+      authorise training, unrelated evaluation or reuse of the input. Any
+      processing provider proposed for an engagement must be assessed for these
+      restrictions; its permitted use, retention and model-training terms must
+      be agreed before Client Data is sent to it. Client Data must not be
+      entered into an unapproved public AI account or training-enabled service.
+    </p>
+  </section>
+  <section id="security" aria-labelledby="security-title">
+    <h2 id="security-title">7. Project security requirements</h2>
+    <p>
+      Restricted staff access and the prohibition on training with Client Data
+      are current policies. Additional technical safeguards depend on the system
+      and must be documented and verified before the relevant project data is
+      processed. The security schedule must address:
+    </p>
+    <ul>
+      <li>
+        Authorised users, access permissions, privileged accounts,
+        authentication requirements and removal of access.
+      </li>
+      <li>
+        Encryption in transit and at rest, key management, and any limitations
+        of the selected infrastructure.
+      </li>
+      <li>
+        Separation of client environments, approved devices, credential handling
+        and secure transfer methods.
+      </li>
+      <li>
+        Logging, security updates, vulnerability handling, backups, recovery and
+        incident responsibilities.
+      </li>
+      <li>
+        Retention periods, deletion of working copies and treatment of backups
+        and legally required records.
+      </li>
+    </ul>
+    <p>
+      A control that is required by applicable law cannot be waived by a project
+      agreement. This policy does not represent that every proposed control is
+      already implemented in every environment, or that QWERTY Labs holds an
+      independent security certification. No system can guarantee absolute
+      security.
+    </p>
+  </section>
+  <section id="disclosure" aria-labelledby="disclosure-title">
+    <h2 id="disclosure-title">8. Providers, disclosure and transfers</h2>
+    <p>
+      Project access by hosting, model or support providers must be limited to
+      the agreed purpose and covered by appropriate written restrictions. The
+      client must be informed of the providers and material processing locations
+      proposed for its data. A provider change or transfer must follow the
+      agreed authorisation process and applicable law.
+    </p>
+    <p>
+      Cross-border processing requires the applicable legal conditions, any
+      required permission, appropriate protection and consideration of
+      sector-specific localisation requirements. QWERTY Labs does not promise
+      that all processing occurs in India or that a self-hosted system excludes
+      all third-party access. Those matters must be established for the actual
+      deployment.
+    </p>
+    <p>
+      Information may also be disclosed where a valid law, court order or
+      authorised government request requires it. Disclosure must be limited to
+      what is legally required. Where permitted, affected clients will be
+      informed of a demand concerning their data.
+    </p>
+  </section>
+  <section id="retention" aria-labelledby="retention-title">
+    <h2 id="retention-title">9. Retention, return and deletion</h2>
+    <p>
+      Client Data must be retained only for the agreed purpose and period, or as
+      required by law. Before an engagement begins, the parties must specify a
+      retention schedule and the process for return or deletion on completion or
+      termination. Any backup-deletion cycle and legally required exceptions
+      must be explained; retained copies must remain restricted and unavailable
+      for unrelated use.
+    </p>
+    <p>
+      Business correspondence, contracts and compliance records may need a
+      different retention period from project working files. Where CERT-In
+      directions apply, required ICT logs must be retained for the prescribed
+      period, including the applicable 180-day minimum and Indian-jurisdiction
+      requirement. This is not a blanket retention period for all Client Data.
+    </p>
+    <p>
+      Local browser preferences and saved drafts remain until removed through
+      the relevant controls or browser settings. QWERTY Labs cannot remotely
+      erase files exported to a user's device.
+    </p>
+  </section>
+  <section id="incidents" aria-labelledby="incidents-title">
+    <h2 id="incidents-title">10. Security incidents</h2>
+    <p>
+      Project agreements must identify the contacts and procedures for
+      containment, investigation, preservation of necessary evidence and
+      restoration. QWERTY Labs will notify an affected client without undue
+      delay after becoming aware of a personal-data breach affecting its
+      project, with available information and subsequent material updates,
+      subject to lawful restrictions and any stricter applicable deadline.
+    </p>
+    <p>
+      Statutory reports must be made within the relevant legal time limits.
+      Where the CERT-In directions apply, listed cyber incidents must be
+      reported to CERT-In within six hours of noticing them or being informed of
+      them. This authority-reporting requirement is separate from client
+      notification. Any duties to notify affected individuals or the Data
+      Protection Board apply according to the relevant law and its commencement.
+    </p>
+  </section>
+  <section id="rights" aria-labelledby="rights-title">
+    <h2 id="rights-title">11. Your choices and rights</h2>
+    <p>
+      You may request information about the personal information QWERTY Labs
+      holds about you, correction of inaccurate details, withdrawal of consent
+      where consent is the basis of processing, or deletion where there is no
+      lawful reason to retain it. The request will be assessed under applicable
+      law and the relevant processing role. Where QWERTY Labs acts for a client,
+      it may need to refer the request to that client and assist it rather than
+      disclose the client's records directly.
+    </p>
+    <p>
+      We may ask for proportionate information to verify identity and authority.
+      Withdrawal applies to future consent-based processing and may affect a
+      service that needs the information; it does not remove lawful retention
+      duties. We will explain any restriction or refusal that the law permits us
+      to explain.
+    </p>
+    <p>
+      Rights under the Digital Personal Data Protection Act, including its
+      specific access, correction, erasure, grievance and nomination mechanisms,
+      apply when the relevant provisions commence and the processing is within
+      scope. Nothing here excludes a statutory complaint or remedy.
+    </p>
+  </section>
+  <section id="children" aria-labelledby="children-title">
+    <h2 id="children-title">12. Children and sensitive information</h2>
+    <p>
+      This website and its enquiry process are intended for business users, not
+      children. Do not put passwords, financial account details, health records,
+      biometric information or children's information into website examples or
+      enquiry forms. Processing such information in a client engagement requires
+      a separately agreed lawful purpose, required permissions and safeguards
+      appropriate to the information.
+    </p>
+  </section>
+  <section id="changes" aria-labelledby="changes-title">
+    <h2 id="changes-title">13. Changes to this policy</h2>
+    <p>
+      Revisions will identify the date and version of the updated policy.
+      Material changes to project processing must also follow the client's
+      agreement and any required notice or consent procedure. Updating this page
+      does not retrospectively authorise a new use of Client Data.
+    </p>
+  </section>
+  <section id="grievances" aria-labelledby="grievances-title">
+    <h2 id="grievances-title">14. Privacy requests and grievances</h2>
+    <p>
+      Send a privacy request or grievance using the contact details below.
+      Describe the matter and how you can be contacted; avoid sending
+      unnecessary sensitive records. Where the 2011 SPDI Rules apply, grievances
+      must be addressed expeditiously and within one month of receipt, or within
+      a shorter period required by another applicable rule.
+    </p>
+    <LegalContact privacy />
+    <p>
+      Clearly identify privacy requests so they can be directed to the person
+      responsible for data protection. An enquiry confirmation does not replace
+      a substantive response to a privacy request.
+    </p>
+  </section>
+</Legal>

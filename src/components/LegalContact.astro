@@ -1,0 +1,67 @@
+---
+import { legalDetails, legalValue } from '../data/legal';
+interface Props {
+  privacy?: boolean;
+}
+const { privacy = false } = Astro.props;
+const email = privacy
+  ? legalDetails.privacyEmail.trim()
+  : legalDetails.legalEmail.trim();
+interface ContactDetail {
+  label: string;
+  value: string;
+  href?: string;
+}
+const details: ContactDetail[] = privacy
+  ? [
+      {
+        label: 'Grievance Officer',
+        value: legalValue('grievanceOfficerName'),
+      },
+      {
+        label: 'Privacy and grievances',
+        value: email,
+        href: `mailto:${email}`,
+      },
+      { label: 'Telephone', value: legalValue('contactPhone') },
+    ]
+  : [
+      { label: 'Registered location', value: legalValue('businessAddress') },
+      {
+        label: 'Registration number',
+        value: legalValue('registrationNumber'),
+      },
+      {
+        label: 'Legal notices and enquiries',
+        value: email || `Contact ${legalDetails.tradingName}`,
+        href: email ? `mailto:${email}` : '/contact/',
+      },
+      { label: 'Telephone', value: legalValue('contactPhone') },
+    ];
+const visibleDetails = details.filter(({ value }) => value.trim());
+---
+
+<div class:list={{ 'legal-company-details': !privacy }}>
+  {!privacy && (
+    <header class="legal-company-heading">
+      <h3>{legalValue('legalEntityName')}</h3>
+      <p>Trading as {legalDetails.tradingName}</p>
+    </header>
+  )}
+  {visibleDetails.length > 0 && (
+    <dl class="legal-contact">
+      {visibleDetails.map(({ label, value, href }) => (
+        <div>
+          <dt>{label}</dt>
+          <dd>{href ? <a href={href}>{value}</a> : value}</dd>
+        </div>
+      ))}
+    </dl>
+  )}
+  {privacy && !email && (
+    <p>
+      For privacy and data protection enquiries,{' '}
+      <a href="/contact/">contact {legalDetails.tradingName}</a>.
+    </p>
+  )}
+</div>
