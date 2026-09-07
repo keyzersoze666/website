@@ -1,6 +1,7 @@
 ---
 import Logo from './Logo.astro';
-import { brand, capabilities } from '../data/site';
+import { capabilities } from '../data/site';
+import { legalDetails } from '../data/legal';
 ---
 
 <footer class="site-footer">
@@ -38,7 +39,7 @@ import { brand, capabilities } from '../data/site';
   </div>
   <div class="footer-bottom container">
     <span>
-      © {new Date().getUTCFullYear()} {brand.name}. All rights
+      © {new Date().getUTCFullYear()} {legalDetails.legalEntityName}. All rights
       reserved.
     </span>
     <div>
