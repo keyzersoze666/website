@@ -1,0 +1,4 @@
+parameters,bits_per_weight,ideal_decimal_gb,evidence
+35000000000,16,70.0,Analytical; not a runtime benchmark
+35000000000,8,35.0,Analytical; not a runtime benchmark
+35000000000,4,17.5,Analytical; not a runtime benchmark
