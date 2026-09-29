@@ -1,24 +1,122 @@
 ---
 import Journal from '../../layouts/Journal.astro';
 import PostCard from '../../components/journal/PostCard.astro';
-import { publishedPosts } from '../../scripts/blog-content';
+import { publishedPosts, postHref } from '../../scripts/blog-content';
 const posts = await publishedPosts();
 const [latest, ...rest] = posts;
+const readingRoutes = [
+  {
+    title: 'Planning a first AI workflow',
+    description:
+      'Start with a familiar process, then map its information, actions and review points.',
+    articles: [
+      {
+        id: 'support-agents-that-resolve-requests',
+        label: 'Map a support workflow',
+      },
+      {
+        id: 'agentic-invoice-to-erp-workflow',
+        label: 'Work through an invoice example',
+      },
+    ],
+  },
+  {
+    title: 'Evaluating reliability and business value',
+    description:
+      'Look beyond a convincing demo to completion, human review and the whole cost of a task.',
+    articles: [
+      {
+        id: 'evaluating-agents-beyond-the-demo',
+        label: 'Test whether an agent is reliable',
+      },
+      { id: 'measuring-agentic-ai-roi', label: 'Assess the business case' },
+    ],
+  },
+  {
+    title: 'Understanding smaller models and deployment choices',
+    description:
+      'Consider the task, the hardware budget and where business data needs to stay.',
+    articles: [
+      {
+        id: 'when-smaller-models-work-better',
+        label: 'Decide when a smaller model fits',
+      },
+      {
+        id: 'quantisation-without-guesswork',
+        label: 'Understand the memory trade-offs',
+      },
+      { id: 'private-enterprise-ai', label: 'Compare deployment choices' },
+    ],
+  },
+].map((route) => ({
+  ...route,
+  articles: route.articles.map((article) => {
+    const post = posts.find((post) => post.id === article.id);
+    if (!post)
+      throw new Error(`Reading route article is missing: ${article.id}`);
+    return {
+      label: article.label,
+      href: postHref(post),
+      title: post.data.title,
+    };
+  }),
+}));
 ---
 
 <Journal
   title="Research journal — QWERTY Labs"
-  description="Research and engineering notes on efficient language models, AI workflows and practical enterprise systems."
+  description="Readable research and engineering notes on efficient language models, tailored AI agents and the evidence behind useful enterprise AI."
 >
   <main id="main-content" class="journal-main journal-landing">
     <header class="journal-intro">
       <h1>Research journal</h1>
-      <p>Evidence and engineering behind useful enterprise AI.</p>
+      <p>
+        How language models work. Where agents help.
+        <br class="desktop-break" /> What it takes to make both useful.
+      </p>
+      <div class="journal-explore">
+        <a href="/solutions/">
+          Explore the business workflows behind these questions
+        </a>
+        <a href="/research-development/proprietary-models/">
+          Our model development direction
+        </a>
+      </div>
     </header>
     {latest && <PostCard post={latest} featured />}
-    <section class="journal-archive" aria-labelledby="journal-archive-title">
-      <h2 id="journal-archive-title">All articles</h2>
-      {rest.map((post) => <PostCard post={post} />)}
+    <section
+      class="journal-reading-routes"
+      aria-labelledby="reading-routes-title"
+    >
+      <h2 id="reading-routes-title">Find a starting point</h2>
+      <div class="reading-route-grid">
+        {readingRoutes.map((route) => (
+          <article class="reading-route">
+            <h3>{route.title}</h3>
+            <p>{route.description}</p>
+            <ol>
+              {route.articles.map((article) => (
+                <li>
+                  <a href={article.href} title={article.title}>
+                    {article.label}
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </article>
+        ))}
+      </div>
+    </section>
+    <section class="journal-archive" aria-labelledby="archive-title">
+      <div class="archive-heading">
+        <h2 id="archive-title">From the journal</h2>
+        <span>{posts.length} articles · Newest first</span>
+      </div>
+      <div class="journal-grid">
+        {rest.map((post) => (
+          <PostCard post={post} />
+        ))}
+      </div>
     </section>
   </main>
 </Journal>
