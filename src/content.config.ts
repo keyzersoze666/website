@@ -1,5 +1,5 @@
 import { defineCollection } from 'astro:content';
-import { z } from 'astro:content';
+import { z } from 'astro/zod';
 import { glob } from 'astro/loaders';
 
 const blog = defineCollection({
@@ -28,7 +28,7 @@ const blog = defineCollection({
           id: z.string().regex(/^[a-z0-9-]+$/),
           title: z.string(),
           author: z.string(),
-          url: z.string().url(),
+          url: z.url(),
           publishedAt: z.coerce.date().optional(),
         })
       )

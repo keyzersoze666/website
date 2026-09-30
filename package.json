@@ -18,22 +18,26 @@
     "figures:journal": "python3 scripts/generate-journal-figures.py"
   },
   "dependencies": {
-    "@astrojs/markdown-remark": "6.3.8",
-    "@fontsource-variable/manrope": "5.2.8",
-    "@fontsource-variable/source-sans-3": "5.2.9",
-    "astro": "5.15.3",
-    "gsap": "3.13.0",
-    "katex": "0.16.25",
+    "@astrojs/markdown-remark": "7.3.1",
+    "@fontsource-variable/manrope": "5.3.0",
+    "@fontsource-variable/source-sans-3": "5.3.0",
+    "astro": "7.3.5",
+    "gsap": "3.15.0",
+    "katex": "0.18.9",
     "rehype-katex": "7.0.1",
     "remark-math": "6.0.0",
-    "three": "0.181.0"
+    "three": "0.186.0"
   },
   "devDependencies": {
-    "@astrojs/check": "0.9.5",
-    "@types/node": "24.9.2",
-    "@types/three": "0.181.0",
-    "prettier": "3.6.2",
-    "prettier-plugin-astro": "0.14.1",
-    "typescript": "5.9.3"
+    "@astrojs/check": "0.9.10",
+    "@types/node": "24.19.0",
+    "@types/three": "0.186.0",
+    "prettier": "3.9.9",
+    "prettier-plugin-astro": "1.1.0",
+    "typescript": "6.0.3"
+  },
+  "description": "Company website, research journal and workflow designer for QWERTY Labs.",
+  "overrides": {
+    "katex": "$katex"
   }
 }

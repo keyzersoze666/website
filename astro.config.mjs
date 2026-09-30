@@ -1,4 +1,5 @@
 import { defineConfig } from 'astro/config';
+import { unified } from '@astrojs/markdown-remark';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
 import { existsSync } from 'node:fs';
@@ -25,8 +26,10 @@ export default defineConfig({
       '/blog/measuring-agentic-ai-roi/',
   },
   markdown: {
-    remarkPlugins: [remarkMath],
-    rehypePlugins: [[rehypeKatex, { trust: false }]],
+    processor: unified({
+      remarkPlugins: [remarkMath],
+      rehypePlugins: [[rehypeKatex, { trust: false }]],
+    }),
     shikiConfig: { themes: { light: 'github-light', dark: 'github-dark' } },
   },
   trailingSlash: 'always',
