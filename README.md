@@ -18,9 +18,11 @@ npm test
 npm run check
 npm run build
 npm run validate:site
+npm run validate:journal
+npm run format:check
 ```
 
-The build writes `dist/` and adds page-specific content security policies.
+The build writes `dist/` and adds page-specific content security policies. Journal validation checks article links, figures and equation styles/fonts.
 
 ## Configuration
 
@@ -38,4 +40,4 @@ Enquiries need Turnstile keys, the deployed Apps Script URL and a shared secret.
 - `public/`, `assets/`: served assets and editable artwork.
 - `tests/`, `scripts/`: regression checks, validation and figure calculations.
 
-Maintained by QWERTY Labs. Repository owner: [@keyzersoze666](https://github.com/keyzersoze666). See [architecture](docs/architecture.md) for implementation details, [asset replacement](docs/asset-replacement.md) for branding/photos.
+Maintained by QWERTY Labs. Repository owner: [@keyzersoze666](https://github.com/keyzersoze666). See [architecture](docs/architecture.md) for implementation details, [asset replacement](docs/asset-replacement.md) for branding/photos, and [legal configuration](docs/legal-drafting-notes.md) before adopting the policy documents.
