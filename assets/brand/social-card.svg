@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
 <rect width="1200" height="630" fill="#0c1918"/>
 <rect x="64" y="64" width="1072" height="502" rx="24" fill="none" stroke="#2a4c43" stroke-width="2"/>
-<g transform="translate(83 150) scale(.5)"><title>QWERTY Labs symbol</title>
+<g transform="translate(83 150) scale(.5)"><title>SAMVIT Labs symbol</title>
   <rect width="640" height="576" fill="none"/>
 
   <!-- Dot above the emblem -->
@@ -80,7 +80,7 @@
   </g>
 </g>
 <g font-family="DejaVu Sans, sans-serif">
-<text x="456" y="262" font-size="64" font-weight="700" fill="#faf9f5">QWERTY Labs</text>
+<text x="456" y="262" font-size="64" font-weight="700" fill="#faf9f5">SAMVIT Labs</text>
 <text x="460" y="332" font-size="29" fill="#8de3c1">Custom AI built around</text>
 <text x="460" y="377" font-size="29" fill="#8de3c1">your business.</text>
 </g></svg>

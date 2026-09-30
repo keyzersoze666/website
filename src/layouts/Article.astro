@@ -33,7 +33,7 @@ const structuredData = {
   publisher: {
     '@type': 'Organization',
     '@id': new URL('#organization', Astro.site).href,
-    name: 'QWERTY Labs',
+    name: 'SAMVIT Labs',
   },
   mainEntityOfPage: canonical,
   image: new URL(post.data.cover, Astro.site).href,
@@ -43,7 +43,7 @@ const structuredData = {
 ---
 
 <Journal
-  title={`${post.data.title} — QWERTY Labs Journal`}
+  title={`${post.data.title} — SAMVIT Labs Journal`}
   description={post.data.description}
   article
   structuredData={structuredData}
@@ -102,7 +102,7 @@ const structuredData = {
           <SvgAsset
             src={author.avatar}
             class="journal-avatar"
-            label="QWERTY Labs team profile icon"
+            label="SAMVIT Labs team profile icon"
           />
           <div>
             <h2>{author.name}</h2>

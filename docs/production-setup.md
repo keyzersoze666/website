@@ -1,8 +1,8 @@
 # Vercel deployment, security and search setup
 
-The production target is **Vercel**, connected to `keyzersoze666/labs_website`, branch `main`. Use the package name `qwerty-labs-website`, Node **24.x**, Astro, build command `npm run build`, and output directory `dist`. Root `api/enquiries.ts` is a separate Vercel Node function: publishing only the static `dist` directory to another host will not provide form delivery.
+The production target is **Vercel**, connected to `keyzersoze666/labs_website`, branch `main`. Use the package name `samvit-labs-website`, Node **24.x**, Astro, build command `npm run build`, and output directory `dist`. Root `api/enquiries.ts` is a separate Vercel Node function: publishing only the static `dist` directory to another host will not provide form delivery.
 
-The primary domain is **https://qwertylabs.com**. The project owner records domain acquisition in October 2025 and initial website hosting in November 2025. Vercel Production uses this origin when `SITE_URL` is unset. An explicit `SITE_URL` overrides it for a future domain change. Page metadata and form-origin/Turnstile hostname checks share the same configuration. Complete the private service settings below before enabling form delivery; the form refuses to claim success while its service is unconfigured.
+The primary domain is **https://samvitlabs.com**. The project owner records domain acquisition in October 2025 and initial website hosting in November 2025. Vercel Production uses this origin when `SITE_URL` is unset. An explicit `SITE_URL` overrides it for a future domain change. Page metadata and form-origin/Turnstile hostname checks share the same configuration. Complete the private service settings below before enabling form delivery; the form refuses to claim success while its service is unconfigured.
 
 ## 1. Domain and environment variables
 
@@ -10,7 +10,7 @@ In Vercel → Project → Settings → Environment Variables, set these for **Pr
 
 | Setting                     | Value and purpose                                                                                                                                                     |
 | --------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `SITE_URL`                  | `https://qwertylabs.com`. Optional in Vercel Production, which defaults to this origin. Overrides must be HTTPS origins with no path, query, credentials or fragment. |
+| `SITE_URL`                  | `https://samvitlabs.com`. Optional in Vercel Production, which defaults to this origin. Overrides must be HTTPS origins with no path, query, credentials or fragment. |
 | `SITE_INDEXABLE`            | `true` for the final public site; `false` while preparing a temporary domain or before launch.                                                                        |
 | `PUBLIC_TURNSTILE_SITE_KEY` | Cloudflare Turnstile site key. This is intentionally public.                                                                                                          |
 | `TURNSTILE_SECRET_KEY`      | Matching Turnstile secret; server only.                                                                                                                               |
@@ -19,9 +19,9 @@ In Vercel → Project → Settings → Environment Variables, set these for **Pr
 
 Generate a secret locally using a password manager or `node -e "console.log(require('node:crypto').randomBytes(32).toString('hex'))"`. Copy it directly into the two private settings; do not paste it into source, issues, screenshots or public chats. The secret is not a Google account password.
 
-If an older `SITE_URL` is already set in Vercel, change it to `https://qwertylabs.com` or remove it to use the production default. Set `SITE_INDEXABLE=true` for launch; use `false` while preparing the public site. For an intentionally separate temporary production domain, override `SITE_URL` and set `SITE_INDEXABLE=false`. Configure Turnstile for the matching hostname. The CI fixture `example.com` is only for unpublished validation builds.
+If an older `SITE_URL` is already set in Vercel, change it to `https://samvitlabs.com` or remove it to use the production default. Set `SITE_INDEXABLE=true` for launch; use `false` while preparing the public site. For an intentionally separate temporary production domain, override `SITE_URL` and set `SITE_INDEXABLE=false`. Configure Turnstile for the matching hostname. The CI fixture `example.com` is only for unpublished validation builds.
 
-In Vercel → Domains, connect `qwertylabs.com` as the primary domain and redirect `www.qwertylabs.com` to it. Configure DNS as Vercel instructs and verify HTTPS and redirects on the deployed site. If the domain changes later, update `SITE_URL`, the Turnstile hostname allowlist, and the verification/sitemap properties in Google and Bing; redeploy. Configure an HTTP 301/308 redirect from the old domain to the new one when you control both. **No application source edit is needed to override the domain.**
+In Vercel → Domains, connect `samvitlabs.com` as the primary domain and redirect `www.samvitlabs.com` to it. Configure DNS as Vercel instructs and verify HTTPS and redirects on the deployed site. If the domain changes later, update `SITE_URL`, the Turnstile hostname allowlist, and the verification/sitemap properties in Google and Bing; redeploy. Configure an HTTP 301/308 redirect from the old domain to the new one when you control both. **No application source edit is needed to override the domain.**
 
 The setting controls canonical links, Open Graph URLs/images, Organization/WebSite identities, article and breadcrumb URLs, `sitemap.xml`, `robots.txt`, accepted form Origin and Turnstile hostname checks. Paths, titles and company details remain in `src/data/seo.ts`, page frontmatter, and `src/data/legal-details.json`. Add new public routes to `publicPagePaths` in `seo.ts`; published journal articles join the sitemap automatically. Keep noindex pages out of it.
 
@@ -29,7 +29,7 @@ Vercel Preview deployments always emit `noindex` and disallow crawling, and thei
 
 ## 2. Turnstile and Google Sheets
 
-Create a **Managed** Turnstile widget in the Cloudflare dashboard and allow `qwertylabs.com`. It works with a Vercel-hosted domain; changing DNS providers is not required. Add the public and private keys above. Never use Cloudflare's always-pass test keys in production. The server validates every token with Cloudflare, including its hostname and `enquiry` action.
+Create a **Managed** Turnstile widget in the Cloudflare dashboard and allow `samvitlabs.com`. It works with a Vercel-hosted domain; changing DNS providers is not required. Add the public and private keys above. Never use Cloudflare's always-pass test keys in production. The server validates every token with Cloudflare, including its hostname and `enquiry` action.
 
 Follow [Google Sheets and email setup](google-sheets-enquiries.md) to keep the sheet Restricted, install the authenticated receiver, set the internal recipient, authorise MailApp, install the pending-mail worker and deploy a new Apps Script version. Replace any older public receiver deployment with this code or archive it: an old unauthenticated receiver would remain an alternate write path.
 
@@ -62,10 +62,10 @@ For automatic deployments from this private repository, GitHub must associate th
 Do this after the final domain is live, public, and `SITE_INDEXABLE=true`:
 
 1. In **Google Search Console**, add a **Domain property**, copy Google's TXT verification value into your domain's DNS, and verify. A Domain property covers HTTPS and www/non-www variants. DNS verification needs no HTML tag or source-code change. If you use a URL-prefix property instead, follow its exact URL scope and verification method.
-2. Submit `https://qwertylabs.com/sitemap.xml` in Sitemaps. Use URL Inspection → Test live URL on `/`, `/about/`, `/solutions/`, key capabilities and articles, then request indexing for the most important pages. Check that Google sees the selected canonical and that indexing is allowed.
-3. Use Google's Rich Results Test / Schema Markup Validator on the homepage and an article. Organization/WebSite/Breadcrumb/BlogPosting data describes real site content; it does not guarantee a rich result. Monitor Page Indexing, HTTPS, Core Web Vitals and Search Performance, including searches for “QWERTY Labs”.
+2. Submit `https://samvitlabs.com/sitemap.xml` in Sitemaps. Use URL Inspection → Test live URL on `/`, `/about/`, `/solutions/`, key capabilities and articles, then request indexing for the most important pages. Check that Google sees the selected canonical and that indexing is allowed.
+3. Use Google's Rich Results Test / Schema Markup Validator on the homepage and an article. Organization/WebSite/Breadcrumb/BlogPosting data describes real site content; it does not guarantee a rich result. Monitor Page Indexing, HTTPS, Core Web Vitals and Search Performance, including searches for “SAMVIT Labs”.
 4. In **Bing Webmaster Tools**, import the verified Search Console property or verify by DNS, then submit the same sitemap. Bing discovery can also help DuckDuckGo, which draws on Bing among other sources. DuckDuckGo has no equivalent mandatory Search Console submission.
-5. Link the website from genuine company profiles and relevant independent listings, and use the exact “QWERTY Labs” name consistently. Add real social-profile links to structured data only when those profiles exist and are verified. Continue publishing useful, original material and earning relevant references. If eligible and appropriate, maintain a verified Google Business Profile with accurate business details; do not invent a public office address.
+5. Link the website from genuine company profiles and relevant independent listings, and use the exact “SAMVIT Labs” name consistently. Add real social-profile links to structured data only when those profiles exist and are verified. Continue publishing useful, original material and earning relevant references. If eligible and appropriate, maintain a verified Google Business Profile with accurate business details; do not invent a public office address.
 
 No SEO work or Search Console setting can guarantee the first result. These changes make the site crawlable and its company identity clearer; placement depends on indexing, competition, relevance and external reputation. Keep the existing intentional exclusions: forms, confirmation, legal pages and 404. The sitemap omits them; `robots.txt` allows crawlers to see their `noindex` directives.
 

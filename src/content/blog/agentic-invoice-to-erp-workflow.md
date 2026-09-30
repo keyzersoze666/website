@@ -2,7 +2,7 @@
 title: 'From Invoice to ERP: Designing an Agentic Accounts-Payable Workflow'
 description: 'A concrete invoice-processing blueprint with source-backed extraction, approval controls, idempotent posting and an honest calculation of potential handling-time savings.'
 publishedAt: 2026-06-04
-author: qwerty-labs-research
+author: samvit-labs-research
 category: Agentic AI
 articleType: Use-case blueprint
 tags: [accounts payable, document AI, workflow automation]

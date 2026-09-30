@@ -2,13 +2,13 @@
 title: 'From LLMs to SLMs: When a Smaller Model Is the Better System'
 description: 'How to choose a compact language model for a bounded business task, design a sensible fallback route and calculate the cost of getting an accepted result.'
 publishedAt: 2026-01-09
-author: qwerty-labs-research
+author: samvit-labs-research
 category: Model Research
 articleType: Engineering guide
 tags: [small language models, routing, evaluation]
 cover: /journal/figures/small-model-routing-cost.svg
 coverAlt: 'An illustrative routing-cost curve shows when a small-first model cascade costs less than sending every request to a larger model.'
-evidenceNote: 'Model releases and methods are attributed to their authors. Routing costs are invented normalized units used to explain the calculation, not QWERTY Labs pricing or measured customer results.'
+evidenceNote: 'Model releases and methods are attributed to their authors. Routing costs are invented normalized units used to explain the calculation, not SAMVIT Labs pricing or measured customer results.'
 draft: false
 references:
   - id: smollm3

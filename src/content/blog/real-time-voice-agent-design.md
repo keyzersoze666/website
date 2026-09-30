@@ -2,7 +2,7 @@
 title: 'Real-Time Voice Agents: Designing for Latency, Interruptions and Reliable Actions'
 description: 'A practical voice-agent design guide covering response budgets, turn detection, barge-in, transcription errors and the difference between stopping speech and cancelling a transaction.'
 publishedAt: 2026-06-19
-author: qwerty-labs-research
+author: samvit-labs-research
 category: Engineering
 articleType: Engineering guide
 tags: [voice agents, speech recognition, real-time systems]

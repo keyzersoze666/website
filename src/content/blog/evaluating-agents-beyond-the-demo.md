@@ -2,13 +2,13 @@
 title: 'Evaluating Agents Beyond the Demo: Completion, Reliability and Human Review'
 description: 'How to test an agent against business outcomes, distinguish autonomous coverage from assisted completion and measure whether success survives repeated attempts.'
 publishedAt: 2026-02-12
-author: qwerty-labs-research
+author: samvit-labs-research
 category: Agentic AI
 articleType: Engineering guide
 tags: [evaluation, reliability, human review]
 cover: /journal/figures/agent-evaluation-scorecard.svg
 coverAlt: 'An invented evaluation scorecard separates correct autonomous work, incorrect autonomous work, successful human handoffs and unresolved cases.'
-evidenceNote: 'The scorecard contains invented cases and the reliability curves are analytical illustrations. Published evaluation practices are attributed to their authors; no chart reports a QWERTY Labs benchmark.'
+evidenceNote: 'The scorecard contains invented cases and the reliability curves are analytical illustrations. Published evaluation practices are attributed to their authors; no chart reports a SAMVIT Labs benchmark.'
 draft: false
 references:
   - id: eval-guide

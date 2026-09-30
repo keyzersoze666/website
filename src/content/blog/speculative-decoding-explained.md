@@ -2,7 +2,7 @@
 title: 'Speculative Decoding: Faster Generation While Preserving the Target Distribution'
 description: 'How a small draft model and a larger verifier can advance several tokens at once, why correction sampling matters and how to calculate when drafting is worth the overhead.'
 publishedAt: 2026-04-16
-author: qwerty-labs-research
+author: samvit-labs-research
 category: Model Research
 articleType: Research analysis
 tags: [speculative decoding, inference, sampling]

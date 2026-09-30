@@ -2,13 +2,13 @@
 title: 'Distilling Domain-Specific SLMs: Building a Smaller Student That Earns Its Place'
 description: 'How teacher models, reviewed examples and independent tests can support a compact domain model, with a clear distinction between imitation, correctness and serving economics.'
 publishedAt: 2026-03-12
-author: qwerty-labs-research
+author: samvit-labs-research
 category: Model Research
 articleType: Research review
 tags: [distillation, small language models, training]
 cover: /journal/figures/distillation-break-even.svg
 coverAlt: 'An illustrative cost curve shows how a fixed student-training cost can be recovered through lower serving cost after enough accepted tasks.'
-evidenceNote: 'Research methods are attributed to their authors. The training pipeline is conceptual and all cost values are invented normalized units, not QWERTY Labs training results or commercial prices.'
+evidenceNote: 'Research methods are attributed to their authors. The training pipeline is conceptual and all cost values are invented normalized units, not SAMVIT Labs training results or commercial prices.'
 draft: false
 references:
   - id: hinton

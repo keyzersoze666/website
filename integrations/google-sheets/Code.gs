@@ -1,5 +1,5 @@
 /**
- * QWERTY Labs private enquiry receiver. See docs/google-sheets-enquiries.md.
+ * SAMVIT Labs private enquiry receiver. See docs/google-sheets-enquiries.md.
  * Secrets and spreadsheet IDs belong in Script Properties, never in source.
  * Only the authenticated Vercel proxy may submit. Keep the spreadsheet Restricted.
  */
@@ -254,8 +254,8 @@ function enquiryNotify_(sheet, rowNumber, row, properties) {
     MailApp.sendEmail({
       to: recipient,
       replyTo: plain[4],
-      name: 'QWERTY Labs website',
-      subject: 'QWERTY Labs: new ' + plain[2].toLowerCase(),
+      name: 'SAMVIT Labs website',
+      subject: 'SAMVIT Labs: new ' + plain[2].toLowerCase(),
       body:
         'A new website enquiry has been saved.\n\n' +
         'Submission ID: ' +

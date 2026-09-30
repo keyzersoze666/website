@@ -15,7 +15,7 @@ interface Props {
   ogType?: 'website' | 'article';
 }
 const {
-  title = 'QWERTY Labs | Custom AI Solutions & Workflow Automation',
+  title = 'SAMVIT Labs | Custom AI Solutions & Workflow Automation',
   description = 'Custom AI agents, chatbots, voice bots, speech-to-text and text-to-speech solutions for enterprises.',
   noindex = false,
   journal = false,
@@ -55,14 +55,14 @@ const excludeFromSearch = noindex || !siteConfiguration().indexable;
     <meta property="og:description" content={description} />
     <meta property="og:type" content={ogType} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:site_name" content="QWERTY Labs" />
+    <meta property="og:site_name" content="SAMVIT Labs" />
     <meta property="og:image" content={socialImage} />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta
       property="og:image:alt"
-      content="QWERTY Labs — Custom AI built around your business"
+      content="SAMVIT Labs — Custom AI built around your business"
     />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />

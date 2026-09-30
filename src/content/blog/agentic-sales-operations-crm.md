@@ -2,7 +2,7 @@
 title: 'Agentic Sales Operations: From Lead Research to Reviewed CRM Updates'
 description: 'A practical research-to-CRM workflow with field-level evidence, controlled updates and an honest distinction between faster preparation and better sales outcomes.'
 publishedAt: 2026-08-13
-author: qwerty-labs-research
+author: samvit-labs-research
 category: Agentic AI
 articleType: Use-case blueprint
 tags: [sales operations, CRM, evidence]

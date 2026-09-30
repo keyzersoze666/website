@@ -30,9 +30,9 @@ const json = (body, status = 200) =>
 test('the production domain default governs form origins and Turnstile hostnames', async () => {
   const config = { ...env, SITE_URL: undefined };
   for (const [origin, hostname, expectedStatus, expectedCalls] of [
-    ['https://qwertylabs.com', 'qwertylabs.com', 200, 2],
-    ['https://qwertylabs.com', 'example.com', 400, 1],
-    ['https://example.com', 'qwertylabs.com', 403, 0],
+    ['https://samvitlabs.com', 'samvitlabs.com', 200, 2],
+    ['https://samvitlabs.com', 'example.com', 400, 1],
+    ['https://example.com', 'samvitlabs.com', 403, 0],
   ]) {
     let calls = 0;
     const result = await handleEnquiry(

@@ -2,7 +2,7 @@
 title: 'From Prototype to Production: Shipping AI Workflows with Monitoring and Rollback'
 description: 'How to version an AI workflow, release it in controlled stages, observe real outcomes and recover without confusing a model rollback with undoing completed business actions.'
 publishedAt: 2026-04-30
-author: qwerty-labs-research
+author: samvit-labs-research
 category: Engineering
 articleType: Engineering guide
 tags: [production AI, monitoring, rollout]

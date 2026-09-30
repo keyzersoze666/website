@@ -132,7 +132,7 @@ const identities = JSON.parse(
 )['@graph'];
 assert.ok(
   identities.some(
-    (item) => item['@type'] === 'Organization' && item.name === 'QWERTY Labs'
+    (item) => item['@type'] === 'Organization' && item.name === 'SAMVIT Labs'
   )
 );
 assert.ok(identities.some((item) => item['@type'] === 'WebSite'));

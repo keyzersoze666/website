@@ -779,7 +779,7 @@ function initialiseWorkflowDesigner(root: HTMLElement) {
           'font-family': 'Arial, sans-serif',
           'font-size': 20,
         },
-        `${draft.name} — QWERTY Labs workflow design`
+        `${draft.name} — SAMVIT Labs workflow design`
       )
     );
     const group = svgElement('g', { transform: 'translate(0 55)' });
@@ -1159,14 +1159,14 @@ function initialiseWorkflowDesigner(root: HTMLElement) {
         : null;
     if (!target || !event.dataTransfer) return;
     event.dataTransfer.setData(
-      'application/x-qwerty-labs-component',
+      'application/x-samvit-labs-component',
       target.dataset.add!
     );
     event.dataTransfer.effectAllowed = 'copy';
   });
   canvas.addEventListener('dragover', (event) => {
     if (
-      event.dataTransfer?.types.includes('application/x-qwerty-labs-component')
+      event.dataTransfer?.types.includes('application/x-samvit-labs-component')
     ) {
       event.preventDefault();
       event.dataTransfer.dropEffect = 'copy';
@@ -1174,7 +1174,7 @@ function initialiseWorkflowDesigner(root: HTMLElement) {
   });
   canvas.addEventListener('drop', (event) => {
     const kind = event.dataTransfer?.getData(
-      'application/x-qwerty-labs-component'
+      'application/x-samvit-labs-component'
     );
     if (!components.some((c) => c.kind === kind)) return;
     event.preventDefault();

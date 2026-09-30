@@ -2,13 +2,13 @@
 title: 'Billion-Parameter Models on Modest Hardware: Smarter Expert Loading, Caching and Offloading'
 description: 'Why a model can exceed working memory yet remain usable, how recent expert-loading research helps, and which storage, latency and quality limits still matter.'
 publishedAt: 2026-09-24
-author: qwerty-labs-research
+author: samvit-labs-research
 category: Model Research
 articleType: Research review
 tags: [inference, mixture-of-experts, memory, caching]
 cover: /journal/figures/model-weight-storage.svg
 coverAlt: 'A calculated comparison of the ideal weight storage required by a 35-billion-parameter model at different precisions.'
-evidenceNote: 'Research results are reported by their original authors. The storage chart is arithmetic, and the loading diagram is conceptual; neither is a QWERTY Labs hardware benchmark.'
+evidenceNote: 'Research results are reported by their original authors. The storage chart is arithmetic, and the loading diagram is conceptual; neither is a SAMVIT Labs hardware benchmark.'
 draft: false
 references:
   - id: flash-memory

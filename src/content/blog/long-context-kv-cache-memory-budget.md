@@ -2,7 +2,7 @@
 title: 'Long Context on a Memory Budget: KV Caches, Paging and Prefix Reuse'
 description: 'Why attention state can outgrow model weights, how to calculate a realistic cache budget and what paging, grouped-query attention and cache quantisation actually change.'
 publishedAt: 2026-03-27
-author: qwerty-labs-research
+author: samvit-labs-research
 category: Model Research
 articleType: Engineering guide
 tags: [KV cache, long context, memory efficiency]

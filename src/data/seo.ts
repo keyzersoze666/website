@@ -12,11 +12,11 @@ export const publicPagePaths = [
 ];
 
 export const capabilitySeoTitles: Record<string, string> = {
-  'ai-agents': 'Custom AI Agent Development — QWERTY Labs',
-  chatbots: 'Custom AI Chatbot Development — QWERTY Labs',
-  'voice-bots': 'Voice AI & Voicebot Development — QWERTY Labs',
-  'text-to-speech': 'Custom Text-to-Speech Solutions — QWERTY Labs',
-  'speech-to-text': 'Speech-to-Text Integration for Business — QWERTY Labs',
+  'ai-agents': 'Custom AI Agent Development — SAMVIT Labs',
+  chatbots: 'Custom AI Chatbot Development — SAMVIT Labs',
+  'voice-bots': 'Voice AI & Voicebot Development — SAMVIT Labs',
+  'text-to-speech': 'Custom Text-to-Speech Solutions — SAMVIT Labs',
+  'speech-to-text': 'Speech-to-Text Integration for Business — SAMVIT Labs',
 };
 
 export function siteIdentity(site: URL) {

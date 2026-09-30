@@ -1,6 +1,6 @@
 export const storageKeys = {
-  readingTheme: 'qwerty-labs-reading-theme',
-  workflows: 'qwerty-labs-workflows-v1',
+  readingTheme: 'samvit-labs-reading-theme',
+  workflows: 'samvit-labs-workflows-v1',
 } as const;
 
 // Read previously saved browser data after the company rename. New writes use

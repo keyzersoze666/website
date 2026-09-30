@@ -2,13 +2,13 @@
 title: 'Private Enterprise AI: Data Isolation, Model Ownership and Deployment Choices'
 description: 'A practical guide to where enterprise AI data travels, how identity and authorization should constrain it, and what deployment ownership actually means.'
 publishedAt: 2026-01-23
-author: qwerty-labs-research
+author: samvit-labs-research
 category: Engineering
 articleType: Engineering guide
 tags: [private AI, deployment, data isolation, evaluation]
 cover: /journal/figures/private-ai-boundaries.svg
 coverAlt: 'An illustrative architecture places identity and policy checks before retrieval, model execution and connected tools.'
-evidenceNote: 'The architecture is a design example. The confidence chart is a mathematical illustration, not a QWERTY Labs security assessment or a claim of certification.'
+evidenceNote: 'The architecture is a design example. The confidence chart is a mathematical illustration, not a SAMVIT Labs security assessment or a claim of certification.'
 draft: false
 references:
   - id: zero-trust

@@ -363,7 +363,7 @@ export const capabilityPages: CapabilityPage[] = [
     example: {
       title: 'Decide how the text should sound.',
       intro:
-        'This illustrative script shows the preparation before speech generation. An order identifier and a clock time need a consistent spoken form. These are editorial choices, not audio samples from a released QWERTY Labs model.',
+        'This illustrative script shows the preparation before speech generation. An order identifier and a clock time need a consistent spoken form. These are editorial choices, not audio samples from a released SAMVIT Labs model.',
       takeaway:
         'Ambiguous dates, abbreviations and identifiers need an agreed interpretation. A pleasant voice does not make an incorrect reading acceptable.',
     },

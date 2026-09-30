@@ -2,7 +2,7 @@
 title: 'RAG, Fine-Tuning or Both? Choosing How an Enterprise Model Learns'
 description: 'A practical way to separate changing business knowledge from stable task behaviour, diagnose missing evidence and decide which part of an AI system to improve.'
 publishedAt: 2025-12-22
-author: qwerty-labs-research
+author: samvit-labs-research
 category: Engineering
 articleType: Engineering guide
 tags: [retrieval, fine-tuning, enterprise knowledge]

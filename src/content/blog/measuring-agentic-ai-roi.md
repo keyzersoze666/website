@@ -2,7 +2,7 @@
 title: 'Measuring Agentic AI ROI: Cycle Time, Accuracy and Cost per Completed Task'
 description: 'A worked example of the business case for an AI agent: count review and exceptions, separate capacity from cash savings, and measure the whole process.'
 publishedAt: 2026-08-27
-author: qwerty-labs-research
+author: samvit-labs-research
 category: Agentic AI
 articleType: Worked example
 tags: [agents, evaluation, operations, ROI]

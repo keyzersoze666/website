@@ -2,13 +2,13 @@
 title: 'Multi-Agent Systems: When Specialisation Helps and When It Adds Cost'
 description: 'How to identify genuinely parallel agent work, budget coordination overhead and keep evidence, verification and external actions under clear ownership.'
 publishedAt: 2026-07-03
-author: qwerty-labs-research
+author: samvit-labs-research
 category: Agentic AI
 articleType: Research analysis
 tags: [multi-agent systems, orchestration, reliability]
 cover: /journal/figures/multi-agent-parallelism.svg
 coverAlt: 'An illustrative speedup curve peaks at four parallel workers as coordination overhead grows with each additional worker.'
-evidenceNote: 'Published observations are attributed to their authors. The parallelism curve is a hypothetical analytical model, and the architecture is a proposed blueprint rather than a measured QWERTY Labs system.'
+evidenceNote: 'Published observations are attributed to their authors. The parallelism curve is a hypothetical analytical model, and the architecture is a proposed blueprint rather than a measured SAMVIT Labs system.'
 draft: false
 references:
   - id: anthropic-research

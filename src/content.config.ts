@@ -8,7 +8,7 @@ const blog = defineCollection({
     title: z.string().min(15),
     description: z.string().min(40).max(240),
     publishedAt: z.coerce.date(),
-    author: z.literal('qwerty-labs-research'),
+    author: z.literal('samvit-labs-research'),
     category: z.enum(['Agentic AI', 'Model Research', 'Engineering']),
     articleType: z.enum([
       'Worked example',

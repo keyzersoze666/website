@@ -1,8 +1,8 @@
 # Legal pages: configuration and review notes
 
-For the current QWERTY Labs website. These notes record the factual basis and authorities used for the website templates. They are not a legal opinion, security audit or confirmation of enforceability.
+For the current SAMVIT Labs website. These notes record the factual basis and authorities used for the website templates. They are not a legal opinion, security audit or confirmation of enforceability.
 
-Revised on 7 September 2026; website documents are version 1.2. The registered entity is **QWERTY Labs Private Limited**, trading as **QWERTY Labs**, with a registered location in Bangalore. The location is rendered as Bengaluru (Bangalore), Karnataka, India. Legal formalities remain incomplete; this revision is not a new legal review.
+Revised on 7 September 2026; website documents are version 1.2. The registered entity is **SAMVIT Labs Private Limited**, trading as **SAMVIT Labs**, with a registered location in Bangalore. The location is rendered as Bengaluru (Bangalore), Karnataka, India. Legal formalities remain incomplete; this revision is not a new legal review.
 
 ## Company particulars
 

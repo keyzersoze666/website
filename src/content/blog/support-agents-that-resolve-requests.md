@@ -2,7 +2,7 @@
 title: 'Support Agents That Resolve Requests: Connecting Knowledge, Policies and Business Systems'
 description: 'A support-agent blueprint that follows a request through identity, evidence, policy, controlled actions and verified resolution—and explains how to evaluate the whole journey.'
 publishedAt: 2026-05-14
-author: qwerty-labs-research
+author: samvit-labs-research
 category: Agentic AI
 articleType: Use-case blueprint
 tags: [support, tool use, orchestration, reliability]
@@ -50,7 +50,7 @@ A support application can combine both. The model interprets an ambiguous reques
 
 ## Follow the request through six stages
 
-The sequence below is a design blueprint. It does not describe an existing retailer's policy or a measured QWERTY Labs deployment.
+The sequence below is a design blueprint. It does not describe an existing retailer's policy or a measured SAMVIT Labs deployment.
 
 <figure>
 <a href="/journal/figures/support-controlled-workflow.svg" data-figure><img src="/journal/figures/support-controlled-workflow.svg" width="1200" height="750" alt="Six stages of an illustrative support workflow: authenticate, gather context, check policy, propose action, execute once and verify or hand over." loading="lazy" /></a>

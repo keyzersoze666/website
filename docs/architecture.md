@@ -1,6 +1,6 @@
 # Architecture and maintenance
 
-QWERTY Labs is a custom AI solutions company. The website presents client workflows, AI capabilities, research and development, a research journal, and enquiry forms. The registered entity is QWERTY Labs Private Limited, based in Bengaluru (Bangalore), Karnataka, India.
+SAMVIT Labs is a custom AI solutions company. The website presents client workflows, AI capabilities, research and development, a research journal, and enquiry forms. The registered entity is SAMVIT Labs Private Limited, based in Bengaluru (Bangalore), Karnataka, India.
 
 ## Application structure
 
@@ -41,7 +41,7 @@ Founder details and legal particulars are editable data files. Placeholder names
 
 ## Deployment and verification
 
-`https://qwertylabs.com` is the default Vercel Production origin for canonical URLs, social metadata, structured data, robots, sitemap and form-origin/Turnstile hostname checks. An explicit `SITE_URL` overrides that origin and must be a clean HTTPS origin. Previews and unconfigured local builds disable indexing; `SITE_INDEXABLE=false` disables it before launch. Forms, confirmation, legal pages and 404 remain excluded from search. Public page paths are listed in `src/data/seo.ts`; published articles join the sitemap automatically.
+`https://samvitlabs.com` is the default Vercel Production origin for canonical URLs, social metadata, structured data, robots, sitemap and form-origin/Turnstile hostname checks. An explicit `SITE_URL` overrides that origin and must be a clean HTTPS origin. Previews and unconfigured local builds disable indexing; `SITE_INDEXABLE=false` disables it before launch. Forms, confirmation, legal pages and 404 remain excluded from search. Public page paths are listed in `src/data/seo.ts`; published articles join the sitemap automatically.
 
 `vercel.json` configures the Node function and security headers. The build adds Content Security Policy script hashes to HTML. Inline styles remain allowed for mathematics and graphics; unsafe inline/eval scripts are not allowed. Cloudflare permissions apply to enquiry pages only. GitHub checks use pinned actions and read-only repository permissions; Dependabot proposes dependency updates. Account authentication, permissions, branch protection and service authorisation are configured separately. See [production setup](production-setup.md).
 

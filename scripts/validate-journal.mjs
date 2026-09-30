@@ -58,7 +58,7 @@ for (const article of articles) {
       date <= new Date(`${options.to}T23:59:59Z`),
       `Date after allowed window: ${article.slug}`
     );
-  assert.equal(article.data.author, 'qwerty-labs-research');
+  assert.equal(article.data.author, 'samvit-labs-research');
   assert.ok(
     article.content.trim().split(/\s+/).length >= 1000,
     `Article too short: ${article.slug}`
@@ -376,7 +376,7 @@ if (process.argv.includes('--built')) {
       })
       .find((item) => item['@type'] === 'BlogPosting');
     assert.equal(json?.headline, article.data.title);
-    assert.equal(json?.author.name, 'QWERTY Labs Research');
+    assert.equal(json?.author.name, 'SAMVIT Labs Research');
     assert.equal(
       json?.datePublished,
       new Date(article.data.publishedAt).toISOString()

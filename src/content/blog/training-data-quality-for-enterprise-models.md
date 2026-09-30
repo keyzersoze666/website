@@ -2,13 +2,13 @@
 title: 'Training Data for Enterprise Models: Quality, Deduplication and Provenance'
 description: 'How to build a traceable domain corpus, prevent duplicate families from leaking across evaluation splits and measure data decisions before spending a training budget.'
 publishedAt: 2025-12-11
-author: qwerty-labs-research
+author: samvit-labs-research
 category: Model Research
 articleType: Engineering guide
 tags: [training data, deduplication, evaluation]
 cover: /journal/figures/training-data-audit.svg
 coverAlt: 'An invented corpus audit shows the document counts retained after deduplication, quality checks and rights and privacy review.'
-evidenceNote: 'Corpus counts are invented and the split-leakage curve is an analytical illustration. Neither demonstrates model quality, legal clearance or the contents of a QWERTY Labs training corpus.'
+evidenceNote: 'Corpus counts are invented and the split-leakage curve is an analytical illustration. Neither demonstrates model quality, legal clearance or the contents of a SAMVIT Labs training corpus.'
 draft: false
 references:
   - id: fineweb

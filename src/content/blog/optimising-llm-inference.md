@@ -2,13 +2,13 @@
 title: 'Optimising LLM Inference: Measuring Quality, Latency, Memory and Energy Together'
 description: 'A practical framework for evaluating inference efficiency, with published hardware results, worked energy calculations and a benchmark record that keeps comparisons meaningful.'
 publishedAt: 2026-07-23
-author: qwerty-labs-research
+author: samvit-labs-research
 category: Model Research
 articleType: Research analysis
 tags: [inference, benchmarks, energy, deployment]
 cover: /journal/figures/inference-reported-ratios.svg
 coverAlt: 'Published approximate benchmark ratios show that a sparse model’s throughput and energy efficiency depend on the device.'
-evidenceNote: 'The first chart summarizes approximate ratios reported by the cited authors. The power-versus-energy chart is a separate illustrative calculation. Neither reports a QWERTY Labs hardware experiment.'
+evidenceNote: 'The first chart summarizes approximate ratios reported by the cited authors. The power-versus-energy chart is a separate illustrative calculation. Neither reports a SAMVIT Labs hardware experiment.'
 draft: false
 references:
   - id: evaluation-profile
@@ -62,7 +62,7 @@ A 2026 study compared OLMoE-1B-7B with dense baselines on an Apple M2 Pro and an
 
 <figure>
 <a href="/journal/figures/inference-reported-ratios.svg" data-figure><img src="/journal/figures/inference-reported-ratios.svg" width="1200" height="750" alt="Approximate author-reported throughput ratios are 0.90 and 0.69 for the two devices; the edge-device energy-per-token ratio is 2.1 against its dense baseline." loading="lazy" /></a>
-<figcaption><strong>Figure 1.</strong> Approximate ratios transcribed from the paper's abstract. Each denominator is the dense baseline on the same device. The energy panel refers only to Orin Nano. These are author-reported results, not new QWERTY Labs measurements. <a href="/journal/figures/inference-reported-ratios.csv" download>Download the attributed data</a>.</figcaption>
+<figcaption><strong>Figure 1.</strong> Approximate ratios transcribed from the paper's abstract. Each denominator is the dense baseline on the same device. The energy panel refers only to Orin Nano. These are author-reported results, not new SAMVIT Labs measurements. <a href="/journal/figures/inference-reported-ratios.csv" download>Download the attributed data</a>.</figcaption>
 </figure>
 
 The engineering lesson is to test the claimed advantage on the actual deployment path. Lower arithmetic work per token can coexist with substantial weight movement, cache pressure and scheduling overhead. Hardware that is constrained by memory bandwidth may respond differently from hardware that is constrained by arithmetic throughput.

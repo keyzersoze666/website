@@ -1,6 +1,6 @@
-# QWERTY Labs website
+# SAMVIT Labs website
 
-Company website, research journal and workflow designer for QWERTY Labs. Built with Astro and TypeScript. Pages are static; form submissions use a separate Vercel function.
+Company website, research journal and workflow designer for SAMVIT Labs. Built with Astro and TypeScript. Pages are static; form submissions use a separate Vercel function.
 
 ## Development
 
@@ -18,13 +18,15 @@ npm test
 npm run check
 npm run build
 npm run validate:site
+npm run validate:journal
+npm run format:check
 ```
 
-The build writes `dist/` and adds page-specific content security policies.
+The build writes `dist/` and adds page-specific content security policies. Journal validation checks article links, figures and equation styles/fonts.
 
 ## Configuration
 
-Copy `.env.example` to `.env.local` for local settings. Vercel Production defaults to `https://qwertylabs.com`. Override `SITE_URL` to change the primary HTTPS origin, then redeploy. The same domain controls canonical URLs, the sitemap and form-origin checks. Previews and unconfigured local builds disable indexing; `SITE_INDEXABLE=false` disables it before launch.
+Copy `.env.example` to `.env.local` for local settings. Vercel Production defaults to `https://samvitlabs.com`. Override `SITE_URL` to change the primary HTTPS origin, then redeploy. The same domain controls canonical URLs, the sitemap and form-origin checks. Previews and unconfigured local builds disable indexing; `SITE_INDEXABLE=false` disables it before launch.
 
 Enquiries need Turnstile keys, the deployed Apps Script URL and a shared secret. Keep the spreadsheet Restricted. Missing configuration fails closed. See [deployment setup](docs/production-setup.md) and [Sheets/email setup](docs/google-sheets-enquiries.md).
 
@@ -38,4 +40,4 @@ Enquiries need Turnstile keys, the deployed Apps Script URL and a shared secret.
 - `public/`, `assets/`: served assets and editable artwork.
 - `tests/`, `scripts/`: regression checks, validation and figure calculations.
 
-Maintained by QWERTY Labs. Repository owner: [@keyzersoze666](https://github.com/keyzersoze666). See [architecture](docs/architecture.md) for implementation details, [asset replacement](docs/asset-replacement.md) for branding/photos.
+Maintained by SAMVIT Labs. Repository owner: [@keyzersoze666](https://github.com/keyzersoze666). See [architecture](docs/architecture.md) for implementation details, [asset replacement](docs/asset-replacement.md) for branding/photos, and [legal configuration](docs/legal-drafting-notes.md) before adopting the policy documents.

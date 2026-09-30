@@ -146,20 +146,20 @@ export const deploymentOptions = [
   },
   {
     number: '02',
-    name: 'QWERTY Labs managed, in your environment',
+    name: 'SAMVIT Labs managed, in your environment',
     description:
-      'Your organisation controls the hosting account. QWERTY Labs operates the system with agreed permissions.',
+      'Your organisation controls the hosting account. SAMVIT Labs operates the system with agreed permissions.',
     control:
       'Hosting ownership stays with you; operational access is explicitly defined.',
     cost: 'Infrastructure costs sit alongside an agreed management service.',
   },
   {
     number: '03',
-    name: 'QWERTY Labs hosted',
+    name: 'SAMVIT Labs hosted',
     description:
-      'QWERTY Labs runs the model in an environment agreed with your organisation.',
+      'SAMVIT Labs runs the model in an environment agreed with your organisation.',
     control:
-      'QWERTY Labs processes data in this option. Location, isolation, access and retention need clear agreements.',
+      'SAMVIT Labs processes data in this option. Location, isolation, access and retention need clear agreements.',
     cost: 'Managed operation reduces your internal workload. Dedicated capacity can cost more at low usage.',
   },
 ] as const;

@@ -2,7 +2,7 @@
 title: 'Quantisation Without Guesswork: What 4-Bit Models Save and What to Measure'
 description: 'A plain-language explanation of quantisation, group metadata and calibration, with reproducible storage arithmetic and a practical quality-testing plan.'
 publishedAt: 2026-02-26
-author: qwerty-labs-research
+author: samvit-labs-research
 category: Model Research
 articleType: Research review
 tags: [quantisation, compression, inference]

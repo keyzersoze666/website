@@ -1,6 +1,6 @@
 type DeploymentEnvironment = Record<string, string | undefined>;
 
-const productionSiteUrl = 'https://qwertylabs.com';
+const productionSiteUrl = 'https://samvitlabs.com';
 
 export function siteConfiguration(env: DeploymentEnvironment = process.env) {
   const configured =

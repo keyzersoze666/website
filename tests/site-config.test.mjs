@@ -4,7 +4,7 @@ import { siteConfiguration } from '../src/config/site.ts';
 
 test('production uses the company domain and permits a clean HTTPS override', () => {
   assert.deepEqual(siteConfiguration({ VERCEL_ENV: 'production' }), {
-    url: 'https://qwertylabs.com/',
+    url: 'https://samvitlabs.com/',
     indexable: true,
   });
   for (const SITE_URL of [

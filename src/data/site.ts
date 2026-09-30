@@ -1,5 +1,5 @@
 export const brand = {
-  name: 'QWERTY Labs',
+  name: 'SAMVIT Labs',
   logo: '/brand/logo.svg',
   mark: '/brand/logo-mark.svg',
 };

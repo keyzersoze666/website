@@ -1,7 +1,7 @@
 """Reproduce the journal's figures. Requires Python 3, numpy and matplotlib.
 
 Measured ratios are transcribed from the cited paper's abstract. Other numerical
-figures are explicitly illustrative calculations, not QWERTY Labs benchmark results.
+figures are explicitly illustrative calculations, not SAMVIT Labs benchmark results.
 """
 from pathlib import Path
 import csv
@@ -21,7 +21,7 @@ if args.preview_dir: args.preview_dir.mkdir(parents=True, exist_ok=True)
 OUT = Path(__file__).resolve().parents[1] / 'public/journal/figures'
 OUT.mkdir(parents=True, exist_ok=True)
 PAPER, INK, GREEN, SAGE, AMBER = '#faf9f5', '#25392e', '#225d47', '#9bb6a1', '#b7894c'
-plt.rcParams.update({'font.family':'DejaVu Sans','font.size':13,'axes.titlesize':18,'axes.labelsize':13,'xtick.labelsize':12,'ytick.labelsize':12,'text.color':INK,'axes.labelcolor':INK,'xtick.color':INK,'ytick.color':INK,'axes.edgecolor':'#b8c6b8','figure.facecolor':PAPER,'axes.facecolor':PAPER,'text.parse_math':False,'svg.fonttype':'path','svg.hashsalt':'qwerty-labs-journal-2026'})
+plt.rcParams.update({'font.family':'DejaVu Sans','font.size':13,'axes.titlesize':18,'axes.labelsize':13,'xtick.labelsize':12,'ytick.labelsize':12,'text.color':INK,'axes.labelcolor':INK,'xtick.color':INK,'ytick.color':INK,'axes.edgecolor':'#b8c6b8','figure.facecolor':PAPER,'axes.facecolor':PAPER,'text.parse_math':False,'svg.fonttype':'path','svg.hashsalt':'samvit-labs-journal-2026'})
 
 def base(title,kind):
     fig,ax=plt.subplots(figsize=(10,6.25));fig.subplots_adjust(left=.12,right=.94,bottom=.18,top=.78)
@@ -31,7 +31,7 @@ def base(title,kind):
     return fig,ax
 
 def save(fig,name,description):
-    path=OUT/f'{name}.svg';fig.savefig(path,format='svg',metadata={'Date':None,'Title':description,'Description':description,'Creator':'QWERTY Labs journal figure generator'})
+    path=OUT/f'{name}.svg';fig.savefig(path,format='svg',metadata={'Date':None,'Title':description,'Description':description,'Creator':'SAMVIT Labs journal figure generator'})
     if args.preview_dir: fig.savefig(args.preview_dir/f'{name}.png', dpi=120)
     plt.close(fig)
     ET.register_namespace('', 'http://www.w3.org/2000/svg');tree=ET.parse(path);root=tree.getroot();root.set('role','img')
@@ -125,7 +125,7 @@ axes[0].bar([0,1],[.90,.69],color=[GREEN,SAGE],width=.5,zorder=3);axes[0].axhlin
 for i,v in enumerate([.90,.69]):axes[0].text(i,v+.04,f'≈{v:.2f}×',ha='center',fontsize=14)
 axes[1].bar([0,1],[1,2.1],color=[SAGE,GREEN],width=.5,zorder=3);axes[1].set_xticks([0,1],['Dense\nbaseline','OLMoE']);axes[1].set_ylabel('Energy per token (normalized)');axes[1].set_ylim(0,2.7);axes[1].set_title('Orin Nano only',fontsize=13,pad=15)
 for i,v in enumerate([1,2.1]):axes[1].text(i,v+.07,f'{v:.1f}×',ha='center',fontsize=14)
-fig.text(.1,.08,'Baseline: Llama-3.2-1B on the same device. Approximate ratios from the abstract.\nSource: Alfarizy et al., arXiv:2606.21428v3. These are not QWERTY Labs measurements.',fontsize=10,color='#52675a',linespacing=1.7)
+fig.text(.1,.08,'Baseline: Llama-3.2-1B on the same device. Approximate ratios from the abstract.\nSource: Alfarizy et al., arXiv:2606.21428v3. These are not SAMVIT Labs measurements.',fontsize=10,color='#52675a',linespacing=1.7)
 save(fig,'inference-reported-ratios','Author-reported approximate OLMoE to Llama 3.2 1B ratios: throughput 0.90 on M2 Pro and 0.69 on Orin Nano; energy per token 2.1 on Orin Nano. Each comparison uses the same device.')
 data('inference-reported-ratios',['device','metric','moe_to_same_device_dense_baseline','source','evidence'],[['Apple M2 Pro','Throughput',.90,'arxiv:2606.21428v3 abstract','Approximate author-reported ratio'],['Jetson Orin Nano 8 GB','Throughput',.69,'arxiv:2606.21428v3 abstract','Approximate author-reported ratio'],['Jetson Orin Nano 8 GB','Energy per token',2.1,'arxiv:2606.21428v3 abstract','Approximate author-reported ratio']])
 fig,ax=base('Lower watts can still mean more joules','Illustrative constant-power calculation')

@@ -1,5 +1,5 @@
 {
-  "name": "qwerty-labs-website",
+  "name": "samvit-labs-website",
   "private": true,
   "version": "1.0.0",
   "type": "module",
@@ -36,7 +36,7 @@
     "prettier-plugin-astro": "1.1.0",
     "typescript": "6.0.3"
   },
-  "description": "Company website, research journal and workflow designer for QWERTY Labs.",
+  "description": "Company website, research journal and workflow designer for SAMVIT Labs.",
   "overrides": {
     "katex": "$katex"
   }
