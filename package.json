@@ -13,7 +13,9 @@
     "test": "node --experimental-strip-types --test tests/*.test.mjs",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "validate:site": "node scripts/validate-site.mjs"
+    "validate:journal": "node scripts/validate-journal.mjs --built --count=18 --from=2025-12-01 --to=2026-09-30",
+    "validate:site": "node scripts/validate-site.mjs",
+    "figures:journal": "python3 scripts/generate-journal-figures.py"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "6.3.8",
