@@ -13,7 +13,7 @@ The application uses Astro static pages, TypeScript and a separate Vercel Node f
 | Solutions    | `/solutions/`; business workflows in `src/data/solutions.ts`                               |
 | Capabilities | Five `/capabilities/` routes, sharing one page template and data in `capability-pages.ts`  |
 | Research     | `/research-development/proprietary-models/` and `/research-development/workflow-designer/` |
-| Journal      | `/blog/` and published Markdown articles in `src/content/blog/`                             |
+| Journal      | `/blog/` and eighteen Markdown articles in `src/content/blog/`                             |
 | Enquiries    | `/contact/`, `/book-a-demo/`, `/enquiry-received/` and `/api/enquiries`                    |
 | Legal        | `/privacy/`, `/terms/` and configurable `src/data/legal-details.json`                      |
 
@@ -27,7 +27,7 @@ The SVG homepage current runs through input, context, review and next-step stage
 
 ## Journal and workflow designer
 
-Articles keep their publication dates, references, evidence notes, figures, CSV calculations, author profiles and related reading. The journal has three curated reading routes and a chronological archive. Content and citations distinguish illustrative calculations from published measurements. Do not change publication dates or research claims as part of visual maintenance. `validate:journal` checks published articles, references, math rendering, compatible KaTeX CSS/fonts and linked assets. Normal builds use the committed figures and CSV calculations.
+Articles keep their publication dates, references, evidence notes, figures, CSV calculations, author profiles and related reading. The journal has three curated reading routes and a chronological archive. Content and citations distinguish illustrative calculations from published measurements. Do not change publication dates or research claims as part of visual maintenance. `validate:journal` checks all eighteen articles, references, math rendering, compatible KaTeX CSS/fonts and linked assets. Figure regeneration uses `scripts/generate-journal-figures.py`; normal builds use the committed figures and CSVs.
 
 The Workflow Designer supports manual graph editing, keyboard controls, named connections, validation, undo/redo, sample walkthroughs, local drafts and JSON/SVG exports. Its invoice example includes parallel checks, exception handling, approvals and bounded retries. It runs no live models or business-system actions. Prompt-based generation and proprietary models remain development goals. Dynamic editor state selectors are used at runtime and should not be removed solely because they are absent from initial HTML.
 
@@ -45,4 +45,4 @@ Founder details and legal particulars are editable data files. Placeholder names
 
 `vercel.json` configures the Node function and security headers. The build adds Content Security Policy script hashes to HTML. Inline styles remain allowed for mathematics and graphics; unsafe inline/eval scripts are not allowed. Cloudflare permissions apply to enquiry pages only. GitHub checks use pinned actions and read-only repository permissions; Dependabot proposes dependency updates. Account authentication, permissions, branch protection and service authorisation are configured separately. See [production setup](production-setup.md).
 
-Run `npm ci`, `npm test`, `npm run check`, `npm run build`, `npm run validate:site` before release. Keep the journal renderer and CSS versions aligned during dependency changes. Mocked tests cover Google, mail and bot-verification behaviour; a real deployment still needs a service-to-service check with its configured domain and credentials. Never commit private environment files or send production form content to logs.
+Run `npm ci`, `npm test`, `npm run check`, `npm run build`, `npm run validate:site`, `npm run validate:journal` and `npm run format:check` before release. Keep the journal renderer and CSS versions aligned during dependency changes. Mocked tests cover Google, mail and bot-verification behaviour; a real deployment still needs a service-to-service check with its configured domain and credentials. Never commit private environment files or send production form content to logs.
